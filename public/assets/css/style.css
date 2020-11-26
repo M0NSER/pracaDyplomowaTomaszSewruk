@@ -3434,7 +3434,7 @@ footer ul.social_icons {
 
 .cprt {
 	width: 100%;
-	/*text-align: center;*/
+	text-align: center;
 	position: absolute;
 	bottom: 0;
 	float: left;
