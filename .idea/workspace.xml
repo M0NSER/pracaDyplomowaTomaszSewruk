@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_schema.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/db_schema.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_schema.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/db_schema.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../itstuff" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -168,6 +164,7 @@
       <workItem from="1605981206874" duration="1765000" />
       <workItem from="1606049292481" duration="2791000" />
       <workItem from="1606114910596" duration="92000" />
+      <workItem from="1607892728462" duration="362000" />
     </task>
     <servers />
   </component>
@@ -188,6 +185,10 @@
     </state>
     <state x="740" y="307" key="FileChooserDialogImpl/-1920.357.1536.832/0.0.1920.1160/1920.0.1920.1160@0.0.1920.1160" timestamp="1606115000826" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556888021" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607892748341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1607892748341" />
     <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605565505337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
