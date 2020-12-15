@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Users
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @var int
@@ -43,7 +44,7 @@ class Users
     private $email;
 
     /**
-     * @var string
+     * @var string The hashed password
      *
      * @ORM\Column(name="password", type="string", length=32, nullable=false)
      */
@@ -122,4 +123,23 @@ class Users
     }
 
 
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }
