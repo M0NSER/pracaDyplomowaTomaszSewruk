@@ -22,7 +22,7 @@ class Vote
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private int $idVote;
+    private int $id;
 
     /**
      * @var bool
@@ -85,17 +85,17 @@ class Vote
     /**
      * @return int
      */
-    public function getIdVote(): int
+    public function getId(): int
     {
-        return $this->idVote;
+        return $this->id;
     }
 
     /**
-     * @param int $idVote
+     * @param int $id
      */
-    public function setIdVote(int $idVote): void
+    public function setId(int $id): void
     {
-        $this->idVote = $idVote;
+        $this->id = $id;
     }
 
     /**
