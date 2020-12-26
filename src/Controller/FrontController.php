@@ -17,6 +17,5 @@ class FrontController extends AbstractController
         return $this->render('base.html.twig', [
             'controller_name' => 'FrontController',
         ]);
-
     }
 }
