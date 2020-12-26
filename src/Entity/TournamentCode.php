@@ -22,7 +22,7 @@ class TournamentCode
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private int $idTournamentCode;
+    private int $id;
 
     /**
      * @var string
@@ -65,17 +65,17 @@ class TournamentCode
     /**
      * @return int
      */
-    public function getIdTournamentCode(): int
+    public function getId(): int
     {
-        return $this->idTournamentCode;
+        return $this->id;
     }
 
     /**
-     * @param int $idTournamentCode
+     * @param int $id
      */
-    public function setIdTournamentCode(int $idTournamentCode): void
+    public function setId(int $id): void
     {
-        $this->idTournamentCode = $idTournamentCode;
+        $this->id = $id;
     }
 
     /**

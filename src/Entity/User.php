@@ -23,7 +23,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private int $idUser;
+    private int $id;
 
     /**
      * @var string
@@ -77,17 +77,17 @@ class User implements UserInterface
     /**
      * @return int
      */
-    public function getIdUser(): int
+    public function getId(): int
     {
-        return $this->idUser;
+        return $this->id;
     }
 
     /**
-     * @param int $idUser
+     * @param int $id
      */
-    public function setIdUser(int $idUser): void
+    public function setId(int $id): void
     {
-        $this->idUser = $idUser;
+        $this->id = $id;
     }
 
     /**
