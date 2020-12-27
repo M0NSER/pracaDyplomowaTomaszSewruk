@@ -47,11 +47,10 @@
 
 <div class="bg_load" style="background-color: white">
     <img class="loader_animation" src="{{ asset('assets/images/loaders/uwm_logo.png') }}" alt="#"/>
-
 </div>
 <!-- end loader -->
 <!-- header -->
-<header id="default_header" class="header_style_1">
+<div id="default_header" class="header_style_1">
     {% block headertop %}
         <!-- header top -->
         <div class="header_top">
@@ -64,7 +63,6 @@
                                     <li><span class="topbar-label"><i class="fa  fa-home"></i></span> <span
                                                 class="topbar-hightlight">Uniwersytet Warmińsko-Mazurski w Olsztynie</span>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -75,13 +73,12 @@
                                 <ul class="list-inline">
                                     <li>
                                         {% if app.user %}
-                                        <a class="revicon-logout" href="{{ path('app_logout') }}">{{ app.user }}</a>
+                                            <a class="revicon-logout" href="{{ path('app_logout') }}">{{ app.user }}</a>
                                         {% endif %}
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -135,7 +132,7 @@
         </div>
         <!-- header bottom end -->
     {% endblock %}
-</header>
+</div>
 <!-- end header -->
 
 
@@ -177,12 +174,11 @@
 {% block footer %}
     <!-- Footer -->
     <footer class="page-footer font-small blue">
-
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© it.Sewruk
+        <div class="footer-copyright text-center py-3">
+            © it.Sewruk
         </div>
         <!-- Copyright -->
-
     </footer>
     <!-- Footer -->
 {% endblock %}
