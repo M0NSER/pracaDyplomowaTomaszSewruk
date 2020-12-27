@@ -31,16 +31,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/nieposegregowane/choosen_option.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/nieposegregowane/create-competition.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/nieposegregowane/my_tournaments.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/nieposegregowane/options.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ResetPasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ResetPasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +210,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -236,12 +229,6 @@
       <recent name="D:\Repos\Dyplo\templates" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -255,6 +242,7 @@
       <workItem from="1605981206874" duration="1765000" />
       <workItem from="1606049292481" duration="2791000" />
       <workItem from="1606114910596" duration="92000" />
+      <workItem from="1609109626095" duration="2834000" />
     </task>
     <servers />
   </component>
@@ -278,10 +266,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="292" key="#Composer/0.0.1536.824@0.0.1536.824" timestamp="1605553628816" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609018649715">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609110877441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609018649715" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609110877441" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609006567584">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
