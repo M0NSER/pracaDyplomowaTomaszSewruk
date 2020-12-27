@@ -6,19 +6,27 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
- *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->firstName.' '.$this->lastName.' ('.$this->email.')';
+    }
+
+    /**
      * @var int
-     *
      * @ORM\Column(name="id_user", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -27,52 +35,50 @@ class User implements UserInterface
 
     /**
      * @var string
-     *
      * @ORM\Column(name="first_name", type="string", length=45, nullable=false)
      */
     private string $firstName;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="last_name", type="string", length=63, nullable=false)
      */
     private string $lastName;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private string $email;
 
     /**
      * @var array
-     *
      * @ORM\Column(name="roles", type="json", nullable=false)
      */
-    private array $roles;
+    private array $roles = ['ROLE_USER'];
 
     /**
      * @var string
-     *
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private string $password;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private ?DateTime $createAt = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
-    private ?DateTime $updateAt;
+    private ?DateTime $updateAt = null;
+
+    /**
+     * @ORM\Column(name="is_verified", type="boolean", nullable=false)
+     */
+    private bool $isVerified = false;
 
     /**
      * @return int
@@ -139,7 +145,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getRoles(): array
     {
@@ -206,9 +212,8 @@ class User implements UserInterface
         $this->updateAt = $updateAt;
     }
 
-
     /**
-     * @return string|null
+     *
      */
     public function getSalt()
     {
@@ -229,5 +234,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }
