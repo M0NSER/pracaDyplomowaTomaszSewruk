@@ -51,7 +51,7 @@ class OptionInTournament
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private ?DateTime $createAt = null;
 
     /**
      * @var DateTime|null

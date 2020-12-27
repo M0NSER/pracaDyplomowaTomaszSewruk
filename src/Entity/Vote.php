@@ -29,21 +29,21 @@ class Vote
      *
      * @ORM\Column(name="is_selected_by_promoter", type="boolean", nullable=false)
      */
-    private $isSelectedByPromoter = '0';
+    private bool $isSelectedByPromoter = false;
 
     /**
      * @var int
      *
      * @ORM\Column(name="priority", type="integer", nullable=false)
      */
-    private $priority = '0';
+    private int $priority = 0;
 
     /**
      * @var DateTime|null
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private ?DateTime $createAt = null;
 
     /**
      * @var DateTime|null

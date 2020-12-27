@@ -47,11 +47,10 @@
 
 <div class="bg_load" style="background-color: white">
     <img class="loader_animation" src="{{ asset('assets/images/loaders/uwm_logo.png') }}" alt="#"/>
-
 </div>
 <!-- end loader -->
 <!-- header -->
-<header id="default_header" class="header_style_1">
+<div id="default_header" class="header_style_1">
     {% block headertop %}
         <!-- header top -->
         <div class="header_top">
@@ -64,7 +63,6 @@
                                     <li><span class="topbar-label"><i class="fa  fa-home"></i></span> <span
                                                 class="topbar-hightlight">Uniwersytet Warmińsko-Mazurski w Olsztynie</span>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -74,25 +72,13 @@
                             <div class="social_icon">
                                 <ul class="list-inline">
                                     <li>
-                                        <a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a>
-                                    </li>
-                                    <li>
-                                        <a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a>
-                                    </li>
-                                    <li>
-                                        <a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a>
-                                    </li>
-                                    <li>
-                                        <a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a>
+                                        {% if app.user %}
+                                            <a class="revicon-logout" href="{{ path('app_logout') }}">{{ app.user }}</a>
+                                        {% endif %}
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -117,6 +103,10 @@
                         <div class="menu_side">
                             <div id="navbar_menu">
                                 <ul class="first-ul">
+                                    <li><a class="" href="{{ path('app_login') }}">Login</a>
+                                    </li>
+                                    <li><a class="" href="{{ path('app_register') }}">Register</a>
+                                    </li>
                                     <li><a class="active" href="it_home.html">Stwórz konkurs</a>
                                     </li>
                                     <li><a class="active" href="it_about.html">Moje konkursy</a></li>
@@ -142,7 +132,7 @@
         </div>
         <!-- header bottom end -->
     {% endblock %}
-</header>
+</div>
 <!-- end header -->
 
 
@@ -184,12 +174,11 @@
 {% block footer %}
     <!-- Footer -->
     <footer class="page-footer font-small blue">
-
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© it.Sewruk
+        <div class="footer-copyright text-center py-3">
+            © it.Sewruk
         </div>
         <!-- Copyright -->
-
     </footer>
     <!-- Footer -->
 {% endblock %}

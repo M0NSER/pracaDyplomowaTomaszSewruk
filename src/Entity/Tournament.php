@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Tournament
- *
  * @ORM\Table(name="tournament")
  * @ORM\Entity(repositoryClass="App\Repository\TournamentRepository")
  */
@@ -17,7 +16,6 @@ class Tournament
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id_tournament", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -26,52 +24,45 @@ class Tournament
 
     /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
     private string $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="description", type="text", length=65535, nullable=false)
      */
     private string $description;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="vote_to_datetime", type="datetime", nullable=true)
      */
-    private ?DateTime $voteToDatetime;
+    private ?DateTime $voteToDatetime = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="select_to_datetime", type="datetime", nullable=true)
      */
-    private ?DateTime $selectToDatetime;
+    private ?DateTime $selectToDatetime = null;
 
     /**
      * @var bool
-     *
      * @ORM\Column(name="is_public", type="boolean", nullable=false)
      */
-    private $isPublic = '0';
+    private bool $isPublic = false;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private ?DateTime $createAt = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
-    private ?DateTime $updateAt;
+    private ?DateTime $updateAt = null;
 
     /**
      * @return int

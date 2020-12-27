@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TournamentUser
- *
  * @ORM\Table(name="tournament_user", indexes={@ORM\Index(name="fk_tournament_owners_tournaments1_idx", columns={"id_tournament"}), @ORM\Index(name="fk_tournament_owners_users1_idx", columns={"id_user"})})
  * @ORM\Entity(repositoryClass="App\Repository\TournamentUserRepository")
  */
@@ -17,7 +16,6 @@ class TournamentUser
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id_tournament_user", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -26,28 +24,24 @@ class TournamentUser
 
     /**
      * @var string
-     *
      * @ORM\Column(name="tournament_user_type", type="string", nullable=false)
      */
     private string $tournamentUserType;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private ?DateTime $createAt = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
-    private ?DateTime $updateAt;
+    private ?DateTime $updateAt = null;
 
     /**
      * @var Tournament
-     *
      * @ORM\ManyToOne(targetEntity="Tournament")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament")
@@ -57,7 +51,6 @@ class TournamentUser
 
     /**
      * @var User
-     *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
