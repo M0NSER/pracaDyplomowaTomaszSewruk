@@ -13,7 +13,7 @@ class FrontController extends AbstractController
      */
     public function index(): Response
     {
-        $this->addFlash('danger', 'Works good');
+        $this->addFlash('primary', 'Works good');
 
         return $this->render('nieposegregowane/options.html.twig', [
             'controller_name' => 'FrontController',
