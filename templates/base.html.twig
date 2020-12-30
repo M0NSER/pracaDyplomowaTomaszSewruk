@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/revolution/css/layers.css') }}?hash={{ date().timestamp }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/revolution/css/navigation.css') }}?hash={{ date().timestamp }}"/>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}?hash={{ date().timestamp }}"/>
+
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}?hash={{ date().timestamp }}"/>
     <!--[if lt IE 9]>
@@ -41,6 +43,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    {% set currentPath = app.request.attributes.get('_route') %}
 </head>
 <body id="default_theme" class="it_service">
 <!-- loader -->
@@ -103,15 +106,21 @@
                         <div class="menu_side">
                             <div id="navbar_menu">
                                 <ul class="first-ul">
-                                    <li><a class="" href="{{ path('app_login') }}">Login</a>
-                                    </li>
-                                    <li><a class="" href="{{ path('app_register') }}">Register</a>
-                                    </li>
-                                    <li><a class="active" href="it_home.html">Stwórz konkurs</a>
-                                    </li>
-                                    <li><a class="active" href="it_about.html">Moje konkursy</a></li>
-                                    <li><a href="it_service.html">Zagłosuj</a>
-                                    </li>
+                                    {% if(not is_granted('ROLE_USER')) %}
+                                        <li>
+                                            <a class="{{ currentPath == 'app_login' ? 'active' }}" href="{{ path('app_login') }}">Login</a>
+                                        </li>
+                                        <li>
+                                            <a class="{{ currentPath == 'app_register' ? 'active' }}" href="{{ path('app_register') }}">Register</a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a class="{{ currentPath == 'tournament-new' ? 'active' }}" href="{{ path('tournament-new') }}">New tournament</a>
+                                        </li>
+                                        <li>
+                                            <a class="{{ currentPath == 'tournament' ? 'active' }}" href="{{ path('tournament') }}">My tournaments</a>
+                                        </li>
+                                    {% endif %}
                                     <li><a href="#" data-toggle="modal" data-target="#search_bar">Wpisz kod</a>
                                     </li>
                                 </ul>
@@ -135,13 +144,13 @@
 </div>
 <!-- end header -->
 <div class="container">
-{% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div class="center alert alert-{{ label }}">
-            {{ message }}
-        </div>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="center alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
     {% endfor %}
-{% endfor %}
 </div>
 
 <!-- section -->
@@ -213,6 +222,13 @@
 <script src="{{ asset('assets/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
 <script src="{{ asset('assets/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
 <script src="{{ asset('assets/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/locales/bootstrap-datetimepicker.pl.js') }}"></script>
+
+{% block customjs %}
+
+{% endblock %}
+
 
 </body>
 </html>

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_center">
+                            <h2>Add new tournament</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 contant_form">
+                    <div class="form_section">
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                {{ form_row(form.name) }}
+                            </div>
+                            <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                {{ form_row(form.description) }}
+                            </div>
+                            <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                {{ form_row(form.voteToDatetime) }}
+                            </div>
+                            <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                {{ form_row(form.selectToDatetime) }}
+                            </div>
+                            <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                {{ form_errors(form.isPublic) }}
+                                <div class="row">
+                                    <div class="col center" style="margin: auto">
+                                        <span class="make_it_public_label">{{ form_label(form.isPublic) }}</span>
+                                    </div>
+                                    <div class="col left">
+                                        {{ form_widget(form.isPublic) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="center">
+                                <button type="submit" class="btn main_bt">Save</button>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

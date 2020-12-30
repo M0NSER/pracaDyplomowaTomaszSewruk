@@ -20,6 +20,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
+            $this->addFlash('warning', 'You are already logged in');
             return $this->redirectToRoute('main');
         }
 

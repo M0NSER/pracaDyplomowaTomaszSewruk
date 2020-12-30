@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -14,6 +15,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
  */
 class User implements UserInterface
 {
@@ -22,7 +25,7 @@ class User implements UserInterface
      */
     public function __toString()
     {
-        return $this->firstName.' '.$this->lastName.' ('.$this->email.')';
+        return $this->firstName . ' ' . $this->lastName . ' (' . $this->email . ')';
     }
 
     /**
@@ -76,9 +79,20 @@ class User implements UserInterface
     private ?DateTime $updateAt = null;
 
     /**
+     * @var DateTime|null
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private ?DateTime $deletedAt;
+
+    /**
      * @ORM\Column(name="is_verified", type="boolean", nullable=false)
      */
     private bool $isVerified = false;
+
+    /**
+     * @ORM\Column(name="photo_url", type="string", length=255, nullable=true)
+     */
+    private ?string $photoUrl = null;
 
     /**
      * @return int
@@ -189,11 +203,11 @@ class User implements UserInterface
     }
 
     /**
-     * @param DateTime|null $createAt
+     * @ORM\PrePersist()
      */
-    public function setCreateAt(?DateTime $createAt): void
+    public function setCreateAt(): void
     {
-        $this->createAt = $createAt;
+        $this->createAt = new DateTime();
     }
 
     /**
@@ -210,6 +224,22 @@ class User implements UserInterface
     public function setUpdateAt(?DateTime $updateAt): void
     {
         $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 
     /**
@@ -255,4 +285,21 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getPhotoUrl(): ?string
+    {
+        return $this->photoUrl;
+    }
+
+    /**
+     * @param string|null $photoUrl
+     */
+    public function setPhotoUrl(?string $photoUrl): void
+    {
+        $this->photoUrl = $photoUrl;
+    }
+
 }

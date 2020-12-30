@@ -15,7 +15,7 @@ class FrontController extends AbstractController
     {
         $this->addFlash('primary', 'Works good');
 
-        return $this->render('nieposegregowane/options.html.twig', [
+        return $this->render('base.html.twig', [
             'controller_name' => 'FrontController',
         ]);
     }
