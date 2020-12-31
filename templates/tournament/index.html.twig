@@ -36,7 +36,7 @@
                 {% for item in pagination %}
                     {% set tournament = item.tournamentUser.idTournament %}
                     {% set uType = item.tournamentUser.tournamentUserType %}
-                    <div class="col-lg-4 custom-card">
+                    <div class="col-lg-4 col-md-6 custom-card">
                         <div class="card">
                             <div class="card-body custom-card-body">
                                 <h3 class="card-title">
@@ -47,16 +47,37 @@
                                 </p>
                                 <span>
                                     <i class="fa fa-user"></i>
-                                    {% if uType == T_ADMIN %}Admin
-                                    {% elseif uType == T_MODDER %}Promoter
-                                    {% elseif uType == T_VOTER %}Student
-                                    {% elseif uType == T_DELETED %}Deleted
+                                    {% if uType == T_ADMIN %}{{ raw_T_ADMIN }}
+                                    {% elseif uType == T_MODDER %}{{ raw_T_MODDER }}
+                                    {% elseif uType == T_VOTER %}{{ raw_T_VOTER }}
+                                    {% elseif uType == T_DELETED %}{{ raw_T_DELETED }}
+                                    {% else %} -
                                     {% endif %}
                                 </span>
                                 <span><i class="fa fa-book"></i>{{ item.options }}</span>
                                 <span><i class="fa fa-calendar"></i> {{ tournament.createAt ? tournament.createAt.format('d M Y') }}</span>
-                                <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary center">Select</a>
-                                <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-success center">Edit</a>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="center">
+                                            <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-group-lg btn-primary">
+                                                Select
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="center">
+                                            <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-success">
+                                                Edit
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="center">
+                                    <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-success">
+                                        Add
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

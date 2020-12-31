@@ -85,7 +85,7 @@ class TournamentRepository extends ServiceEntityRepository
 
     }
 
-    function findAllOptionsInTournament(Tournament $tournament)
+    public function findAllOptionsInTournament(Tournament $tournament)
     {
         return $this->optionInTournamentRepository->getBasicQuery()
             ->andWhere('oit.idTournament = :idTournament')

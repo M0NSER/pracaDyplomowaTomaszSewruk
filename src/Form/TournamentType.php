@@ -35,7 +35,7 @@ class TournamentType extends AbstractType
             ->add('voteToDatetime', DateTimeType::class, [
                 'required' => false,
                 'input_format' => 'yyyy-MM-dd HH:mm:ss',
-                'label' => 'Can vote to: ',
+                'label' => 'Students can vote to: ',
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'field_custom datetimepicker',
@@ -44,7 +44,7 @@ class TournamentType extends AbstractType
             ->add('selectToDatetime', DateTimeType::class, [
                 'required' => false,
                 'input_format' => 'yyyy-MM-dd HH:mm:ss',
-                'label' => 'Can select to: ',
+                'label' => 'Promoters can select to: ',
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'field_custom datetimepicker',

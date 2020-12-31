@@ -3,7 +3,9 @@
 namespace App\Util\Mapper;
 
 
+use App\Dto\OptionInTournamentDto;
 use App\Dto\TournamentDto;
+use App\Entity\OptionInTournament;
 use App\Entity\Tournament;
 use AutoMapperPlus\Configuration\AutoMapperConfig;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,6 +42,7 @@ class MapperConfig implements MapperConfigInterface
     {
         return $this
             ->buildTournamentMapping()
+            ->buildOptionInTournamentMapping()
             ->config;
     }
 
@@ -52,6 +55,20 @@ class MapperConfig implements MapperConfigInterface
     {
         $this->config
             ->registerMapping(TournamentDto::class, Tournament::class)
+            ->reverseMap();
+
+        return $this;
+    }
+
+    /**
+     * Map OptionInTournamentDto => OptionInTournament
+     * Map OptionInTournament => OptionInTournamentDto
+     * @return MapperConfig
+     */
+    protected function buildOptionInTournamentMapping(): MapperConfig
+    {
+        $this->config
+            ->registerMapping(OptionInTournamentDto::class, OptionInTournament::class)
             ->reverseMap();
 
         return $this;

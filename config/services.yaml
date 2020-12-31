@@ -5,9 +5,13 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     T_ADMIN: 'T_ADMIN'
-    T_MODDER: 'T_PROMOTER'
+    T_MODDER: 'T_MODDER'
     T_VOTER: 'T_PROMOTER'
     T_DELETED: 'T_DELETED'
+    raw_T_ADMIN: 'Admin'
+    raw_T_MODDER: 'Promoter'
+    raw_T_VOTER: 'Student'
+    raw_T_DELETED: 'Deleted'
 
 twig:
     globals:
@@ -15,6 +19,10 @@ twig:
         T_MODDER: '%T_MODDER%'
         T_VOTER: '%T_VOTER%'
         T_DELETED: '%T_DELETED%'
+        raw_T_ADMIN: '%raw_T_ADMIN%'
+        raw_T_MODDER: '%raw_T_MODDER%'
+        raw_T_VOTER: '%raw_T_VOTER%'
+        raw_T_DELETED: '%raw_T_DELETED%'
 
 services:
     # default configuration for services in *this* file

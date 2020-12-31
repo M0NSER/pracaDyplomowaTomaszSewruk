@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="section padding_layout_1 product_detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="product_detail_feature_img hizoom hi2" style="width: 400px; height: 400px;">
+                            <div class="hizoom hi2" style="width: 400px; height: 400px;">
+                                <div class="small" style="width: 400px; height: 400px;">
+                                    <div class="magnifier"></div>
+                                    <img src="{{ optionInTournament.photoUrl }}" alt="#" style="width: 400px; height: 400px;">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
+                        <div class="product-heading">
+                            <h2 style="color: white">{{ optionInTournament.title }}</h2>
+                        </div>
+                        <div class="detail-contant">
+                            <form class="cart" method="post" action="{{ path('main') }}">
+                                <div class="quantity">
+                                    <input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" type="number">
+                                </div>
+                                <button type="submit" class="btn sqaure_bt">Vote</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <div class="tab_bar_section">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab">Description</a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div id="description" class="tab-pane active">
+                                        <div class="product_desc">
+                                            <p>
+                                                {{ optionInTournament.description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="side_bar">
+                    <div class="side_bar_blog">
+                        <div class="side_bar_blog">
+                            <h4>OTHER OPTIONS</h4>
+                            <div class="categary">
+                                <ul>
+                                    {% for item in optionInTournament.idTournament.optionsInThisTournament %}
+                                        {% if item.id != optionInTournament.id %}
+                                            <li>
+                                                <a href="{{ path('option-in-tournament-show', {'id':item.id}) }}"><i class="fa fa-angle-right"></i>
+                                                    {{ item.title|length > 40 ? item.title|slice(0, 40)~'...' : item.title }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

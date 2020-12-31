@@ -38,8 +38,9 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @return Query
      */
-    function findAllQuery(): Query
+    public function findAllQuery(): Query
     {
         return $this->getBasicQuery()->getQuery();
     }
+
 }

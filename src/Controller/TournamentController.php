@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class TournamentController
  * @package App\Controller
- * @Route("tournament")
+ * @Route("/tournament/")
  */
 class TournamentController extends AbstractController
 {
@@ -53,7 +53,7 @@ class TournamentController extends AbstractController
     }
 
     /**
-     * @Route("/", name="tournament")
+     * @Route("", name="tournament")
      * @param Request $request
      *
      * @return Response
@@ -77,7 +77,7 @@ class TournamentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tournament-show")
+     * @Route("{id}", name="tournament-show", requirements={"id"="\d+"})
      * @param Tournament $tournament
      * @param Request    $request
      *
@@ -104,7 +104,7 @@ class TournamentController extends AbstractController
 
 
     /**
-     * @Route("-new", name="tournament-new")
+     * @Route("new", name="tournament-new")
      * @param Request $request
      *
      * @return Response
@@ -135,7 +135,6 @@ class TournamentController extends AbstractController
 
                 return $this->redirectToRoute('tournament');
             } catch (Exception $ex) {
-                $this->addFlash('danger', $ex->getMessage());
                 $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_NEW_FAILURE'));
             }
 
@@ -149,7 +148,7 @@ class TournamentController extends AbstractController
 
 
     /**
-     * @Route("-edit/{id}", name="tournament-edit")
+     * @Route("edit/{id}", name="tournament-edit", requirements={"id"="\d+"})
      * @param Request    $request
      * @param Tournament $tournament
      *
@@ -189,7 +188,7 @@ class TournamentController extends AbstractController
     }
 
     /**
-     * @Route("-delete/{id}", name="tournament-delete")
+     * @Route("/delete/{id}", name="tournament-delete")
      * @param Tournament $tournament
      *
      * @return RedirectResponse

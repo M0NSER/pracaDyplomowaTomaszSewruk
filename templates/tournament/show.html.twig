@@ -18,7 +18,7 @@
                 {% for item in pagination %}
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                         <div class="product_list">
-                            <a href="#">
+                            <a href="{{ path('option-in-tournament-show',{'id':item.id}) }}">
                             <div class="product_img">
                                 {% if item.photoUrl %}
                                     <img class="img-responsive" src="{{ item.photoUrl }}" alt="Can not load photo">

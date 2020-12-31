@@ -31,43 +31,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/paginator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-datetimepicker.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/locales/bootstrap-datetimepicker.pl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dto/TournamentDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util/FlashBag/MessageFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util/Mapper/Mapper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util/Mapper/MapperConfigInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/nieposegregowane/my_tournaments2.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/tournament/form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/tournament/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/translations/KnpPaginatorBundle.en.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/option_in_tournament/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/tournament/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/stof_doctrine_extensions.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/stof_doctrine_extensions.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/validator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Tournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tournament.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TournamentCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TournamentCode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TournamentUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TournamentUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Vote.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Vote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TournamentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/OptionInTournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OptionInTournamentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/VoteRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VoteRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/nieposegregowane/my_tournaments.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/nieposegregowane/options.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nieposegregowane/options.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +75,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -232,26 +218,26 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/packages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../itstuff" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repos\Dyplo\public\assets\js\test" />
+      <recent name="D:\Repos\Dyplo\public\assets\js" />
+      <recent name="D:\Repos\Dyplo\public\assets\images" />
+      <recent name="D:\Repos\Dyplo\config\packages" />
+      <recent name="D:\Repos\Dyplo\public\assets\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Repos\Dyplo\public\assets\js" />
       <recent name="D:\Repos\Dyplo\public\assets\js\locales" />
       <recent name="D:\Repos\Dyplo\src\Dto" />
       <recent name="D:\Repos\Dyplo\public\assets\images\loaders" />
       <recent name="D:\Repos\Dyplo\public" />
-      <recent name="D:\Repos\Dyplo\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Repos\Dyplo\config\packages" />
-      <recent name="D:\Repos\Dyplo\public\assets\css" />
-      <recent name="D:\Repos\Dyplo\public\assets\js" />
-      <recent name="D:\Repos\Dyplo\src\Util" />
-      <recent name="D:\Repos\Dyplo\src\Util\Mapper" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -270,6 +256,7 @@
       <workItem from="1609109626095" duration="10941000" />
       <workItem from="1609178616637" duration="29377000" />
       <workItem from="1609264441421" duration="29076000" />
+      <workItem from="1609364516315" duration="13801000" />
     </task>
     <servers />
   </component>
@@ -297,17 +284,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609178942699" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609285074075">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609379086387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609379086387" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609285074075" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609006567584">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609006567584" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609271842443">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609378380246">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609378380246" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609271842443" />
     <state x="718" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605556931592">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -317,14 +306,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" key="DiffContextDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609013758299" />
-    <state x="740" y="307" key="FileChooserDialogImpl" timestamp="1606115000826">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state x="740" y="307" key="FileChooserDialogImpl/-1920.357.1536.832/0.0.1920.1160/1920.0.1920.1160@0.0.1920.1160" timestamp="1606115000826" />
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556888021" />
-    <state x="790" y="243" key="NewPhpClassDialog" timestamp="1609269876131">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1609371883554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609371883554" />
+    <state x="740" y="307" key="FileChooserDialogImpl/-1920.357.1536.832/0.0.1920.1160/1920.0.1920.1160@0.0.1920.1160" timestamp="1606115000826" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556888021" />
+    <state x="790" y="243" key="NewPhpClassDialog" timestamp="1609378004325">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="790" y="243" key="NewPhpClassDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609378004325" />
     <state x="790" y="243" key="NewPhpClassDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609269876131" />
     <state x="830" y="222" key="RollbackChangesDialog" timestamp="1609013760237">
       <screen x="0" y="0" width="1920" height="1040" />
