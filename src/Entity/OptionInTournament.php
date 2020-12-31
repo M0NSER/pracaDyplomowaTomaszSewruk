@@ -6,13 +6,15 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OptionInTournament
  *
  * @ORM\Table(name="option_in_tournament", indexes={@ORM\Index(name="fk_options_in_tournaments_tournament_users1_idx", columns={"id_tournament_user"}), @ORM\Index(name="fk_options_in_tournaments_tournaments1_idx", columns={"id_tournament"})})
  * @ORM\Entity(repositoryClass="App\Repository\OptionInTournamentRepository")
- *
+ * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
  */
 class OptionInTournament
 {
@@ -28,7 +30,7 @@ class OptionInTournament
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
      */
     private string $title;
 
@@ -47,6 +49,13 @@ class OptionInTournament
     private ?int $numberOfSlots;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="photo_url", type="string", length=255, nullable=true)
+     */
+    private ?string $photoUrl=null;
+
+    /**
      * @var DateTime|null
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
@@ -58,7 +67,14 @@ class OptionInTournament
      *
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
-    private ?DateTime $updateAt;
+    private ?DateTime $updateAt=null;
+
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private ?DateTime $deletedAt;
 
     /**
      * @var TournamentUser
@@ -73,7 +89,7 @@ class OptionInTournament
     /**
      * @var Tournament
      *
-     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\ManyToOne(targetEntity="Tournament", inversedBy="optionsInThisTournament")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament")
      * })
@@ -145,6 +161,22 @@ class OptionInTournament
     }
 
     /**
+     * @return string|null
+     */
+    public function getPhotoUrl(): ?string
+    {
+        return $this->photoUrl;
+    }
+
+    /**
+     * @param string|null $photoUrl
+     */
+    public function setPhotoUrl(?string $photoUrl): void
+    {
+        $this->photoUrl = $photoUrl;
+    }
+
+    /**
      * @return DateTime|null
      */
     public function getCreateAt(): ?DateTime
@@ -153,11 +185,11 @@ class OptionInTournament
     }
 
     /**
-     * @param DateTime|null $createAt
+     * @ORM\PrePersist()
      */
-    public function setCreateAt(?DateTime $createAt): void
+    public function setCreateAt(): void
     {
-        $this->createAt = $createAt;
+        $this->createAt = new DateTime();
     }
 
     /**
@@ -174,6 +206,22 @@ class OptionInTournament
     public function setUpdateAt(?DateTime $updateAt): void
     {
         $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 
     /**

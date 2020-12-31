@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_center">
+                            <h2>Select tournament</h2>
+                            <p class="large">Which tournament, you want to see possible choices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="card-columns">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Card title that wraps to a new line</h4>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+
+                    <div class="card card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for item in pagination %}
+                    {% set tournament = item.tournamentUser.idTournament %}
+                    {% set uType = item.tournamentUser.tournamentUserType %}
+                    <div class="col-lg-4 custom-card">
+                        <div class="card">
+                            <div class="card-body custom-card-body">
+                                <h3 class="card-title">
+                                    {{ tournament.id }}: {{ tournament.name|length > 50 ? tournament.name|slice(0,50)~'...' : tournament.name }}
+                                </h3>
+                                <p class="card-text">
+                                    {{ tournament.description|slice(0,150) }}
+                                </p>
+                                <span>
+                                    <i class="fa fa-user"></i>
+                                    {% if uType == T_ADMIN %}Admin
+                                    {% elseif uType == T_MODDER %}Promoter
+                                    {% elseif uType == T_VOTER %}Student
+                                    {% elseif uType == T_DELETED %}Deleted
+                                    {% endif %}
+                                </span>
+                                <span><i class="fa fa-book"></i>{{ item.options }}</span>
+                                <span><i class="fa fa-calendar"></i> {{ tournament.createAt ? tournament.createAt.format('d M Y') }}</span>
+                                <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary center">Select</a>
+                                <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-success center">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                {% else %}
+                    <div class="col-md-12 center">
+                        <span>No data</span>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

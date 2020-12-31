@@ -6,12 +6,15 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Vote
  *
  * @ORM\Table(name="vote", indexes={@ORM\Index(name="fk_votes_tournament_users1_idx", columns={"id_tournament_user"}), @ORM\Index(name="fk_votes_options_in_tournaments1_idx", columns={"id_option_in_tournament"}), @ORM\Index(name="fk_votes_tournaments1_idx", columns={"id_tournament"})})
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
  */
 class Vote
 {
@@ -51,6 +54,12 @@ class Vote
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
     private ?DateTime $updateAt;
+
+    /**
+     * @var DateTime|null
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private ?DateTime $deletedAt;
 
     /**
      * @var OptionInTournament
@@ -139,11 +148,11 @@ class Vote
     }
 
     /**
-     * @param DateTime|null $createAt
+     * @ORM\PrePersist()
      */
-    public function setCreateAt(?DateTime $createAt): void
+    public function setCreateAt(): void
     {
-        $this->createAt = $createAt;
+        $this->createAt = new DateTime();
     }
 
     /**
@@ -160,6 +169,22 @@ class Vote
     public function setUpdateAt(?DateTime $updateAt): void
     {
         $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 
     /**

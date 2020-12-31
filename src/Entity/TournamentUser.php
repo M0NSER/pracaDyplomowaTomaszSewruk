@@ -6,11 +6,14 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * TournamentUser
  * @ORM\Table(name="tournament_user", indexes={@ORM\Index(name="fk_tournament_owners_tournaments1_idx", columns={"id_tournament"}), @ORM\Index(name="fk_tournament_owners_users1_idx", columns={"id_user"})})
  * @ORM\Entity(repositoryClass="App\Repository\TournamentUserRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
  */
 class TournamentUser
 {
@@ -39,6 +42,13 @@ class TournamentUser
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
     private ?DateTime $updateAt = null;
+
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private ?DateTime $deletedAt;
 
     /**
      * @var Tournament
@@ -99,11 +109,11 @@ class TournamentUser
     }
 
     /**
-     * @param DateTime|null $createAt
+     * @ORM\PrePersist()
      */
-    public function setCreateAt(?DateTime $createAt): void
+    public function setCreateAt(): void
     {
-        $this->createAt = $createAt;
+        $this->createAt = new DateTime();
     }
 
     /**
@@ -120,6 +130,22 @@ class TournamentUser
     public function setUpdateAt(?DateTime $updateAt): void
     {
         $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getDeletedAt(): ?DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param DateTime|null $deletedAt
+     */
+    public function setDeletedAt(?DateTime $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 
     /**

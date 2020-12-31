@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_center">
+                            <h2>Wybierz opcję</h2>
+                            <p class="large font-weight-bold">{{ tournament.name }}</p>
+                            <p>{{ tournament.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for item in pagination %}
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                        <div class="product_list">
+                            <a href="#">
+                            <div class="product_img">
+                                {% if item.photoUrl %}
+                                    <img class="img-responsive" src="{{ item.photoUrl }}" alt="Can not load photo">
+                                {% else %}
+                                    <img class="img-responsive" src="{{ asset('assets/images/custom/option-no-photo-icon.png')}}" alt="Can not load photo">
+                                {% endif %}
+                            </div>
+                            <div class="product_detail_btm">
+                                <div class="center">
+                                    <h4><a href="{{ path('main') }}">{{ item.title|length > 40 ? item.title|slice(0, 40)~'...' : item.title }}</a></h4>
+                                </div>
+                                <div class="starratin">
+                                    <div class="center option_description_in_tournament">
+                                        {{ item.description|slice(0,100) }}
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-sm-12 center">No data</div>
+                {% endfor %}
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
