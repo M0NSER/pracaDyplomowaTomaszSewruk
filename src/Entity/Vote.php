@@ -203,21 +203,21 @@ class Vote
         $this->idOptionInTournament = $idOptionInTournament;
     }
 
-//    /**
-//     * @return TournamentUser
-//     */
-//    public function getIdTournamentUser(): TournamentUser
-//    {
-//        return $this->idTournamentUser;
-//    }
-//
-//    /**
-//     * @param TournamentUser $idTournamentUser
-//     */
-//    public function setIdTournamentUser(TournamentUser $idTournamentUser): void
-//    {
-//        $this->idTournamentUser = $idTournamentUser;
-//    }
+    /**
+     * @return User
+     */
+    public function getIdUser(): User
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param User $idUser
+     */
+    public function setIdUser(User $idUser): void
+    {
+        $this->idUser = $idUser;
+    }
 
     /**
      * @return Tournament

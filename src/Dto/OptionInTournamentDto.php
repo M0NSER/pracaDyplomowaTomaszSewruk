@@ -4,9 +4,6 @@
 namespace App\Dto;
 
 
-use App\Entity\Tournament;
-use App\Entity\TournamentUser;
-
 /**
  * Class OptionInTournamentDto
  * @package App\Dto
@@ -36,7 +33,7 @@ class OptionInTournamentDto
     /**
      * @var int|null
      */
-    private ?int $idTournamentUser=null;
+    private ?int $idUser=null;
 
     /**
      * @var int|null
@@ -110,17 +107,17 @@ class OptionInTournamentDto
     /**
      * @return int
      */
-    public function getIdTournamentUser(): int
+    public function getIdUser(): int
     {
-        return $this->idTournamentUser;
+        return $this->idUser;
     }
 
     /**
-     * @param TournamentUser|null $idTournamentUser
+     * @param int|null $idUser
      */
-    public function setIdTournamentUser(?TournamentUser $idTournamentUser): void
+    public function setIdUser(?int $idUser): void
     {
-        $this->idTournamentUser = $idTournamentUser;
+        $this->idUser = $idUser;
     }
 
     /**
@@ -132,9 +129,9 @@ class OptionInTournamentDto
     }
 
     /**
-     * @param Tournament|null $idTournament
+     * @param int|null $idTournament
      */
-    public function setIdTournament(?Tournament $idTournament): void
+    public function setIdTournament(?int $idTournament): void
     {
         $this->idTournament = $idTournament;
     }

@@ -62,13 +62,6 @@ class OptionInTournamentController extends AbstractController
      */
     public function new(Request $request, Tournament $tournament)
     {
-        $zz =  $this->getDoctrine()->getRepository(TournamentUser::class)->findOneBy([
-            'idUser' => $this->getUser()->getId(),
-            'idTournament' => $tournament,
-            'tournamentUserType' => $this->getParameter('T_ADMIN'),
-        ]);
-//        dd($zz);
-
         $optionInTournamentDto = new OptionInTournamentDto();
 
         $form = $this->createForm(OptionInTournamentType::class, $optionInTournamentDto);
@@ -76,16 +69,12 @@ class OptionInTournamentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var OptionInTournament $optionInTournament */
+            $optionInTournamentDto->setIdUser($this->getUser()->getId());
+            $optionInTournamentDto->setIdTournament($tournament->getId());
+            dump($optionInTournamentDto);
             $optionInTournament = $this->mapper->map($optionInTournamentDto, OptionInTournament::class);
+            dump($optionInTournament);
             try {
-                $optionInTournament->setIdTournament($tournament);
-                $optionInTournament->setIdTournamentUser(
-                    $this->getDoctrine()->getRepository(TournamentUser::class)->findOneBy([
-                        'idUser' => $this->getUser()->getId(),
-                        'idTournament' => $tournament,
-                        'tournamentUserType' => $this->getParameter('T_ADMIN'),
-                    ])
-                );
 
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($optionInTournament);
