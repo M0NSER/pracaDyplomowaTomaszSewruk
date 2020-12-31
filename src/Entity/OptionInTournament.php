@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * OptionInTournament
  *
- * @ORM\Table(name="option_in_tournament", indexes={@ORM\Index(name="fk_options_in_tournaments_tournament_users1_idx", columns={"id_tournament_user"}), @ORM\Index(name="fk_options_in_tournaments_tournaments1_idx", columns={"id_tournament"})})
+ * @ORM\Table(name="option_in_tournament", indexes={@ORM\Index(name="fk_options_in_tournaments_tournament_users1_idx", columns={"id_user"}), @ORM\Index(name="fk_options_in_tournaments_tournaments1_idx", columns={"id_tournament"})})
  * @ORM\Entity(repositoryClass="App\Repository\OptionInTournamentRepository")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
@@ -77,14 +77,14 @@ class OptionInTournament
     private ?DateTime $deletedAt;
 
     /**
-     * @var TournamentUser
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="TournamentUser")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tournament_user", referencedColumnName="id_tournament_user")
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
      * })
      */
-    private TournamentUser $idTournamentUser;
+    private User $idUser;
 
     /**
      * @var Tournament
@@ -225,19 +225,19 @@ class OptionInTournament
     }
 
     /**
-     * @return TournamentUser
+     * @return User
      */
-    public function getIdTournamentUser(): TournamentUser
+    public function getIdUser(): User
     {
-        return $this->idTournamentUser;
+        return $this->idUser;
     }
 
     /**
-     * @param TournamentUser $idTournamentUser
+     * @param User $idUser
      */
-    public function setIdTournamentUser(TournamentUser $idTournamentUser): void
+    public function setIdUser(User $idUser): void
     {
-        $this->idTournamentUser = $idTournamentUser;
+        $this->idUser = $idUser;
     }
 
     /**

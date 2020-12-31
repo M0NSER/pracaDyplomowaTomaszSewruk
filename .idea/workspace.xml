@@ -8,11 +8,6 @@
       </path>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
@@ -31,26 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/js/popper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/option_in_tournament/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/tournament/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TournamentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/OptionInTournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OptionInTournamentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VoteRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VoteRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Vote.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Vote.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="release" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -205,6 +183,19 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-client" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kNureYvrBznzUUd2c1PdleZE4O" />
@@ -225,19 +216,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Repos\Dyplo\public\assets\js\test" />
-      <recent name="D:\Repos\Dyplo\public\assets\js" />
-      <recent name="D:\Repos\Dyplo\public\assets\images" />
-      <recent name="D:\Repos\Dyplo\config\packages" />
-      <recent name="D:\Repos\Dyplo\public\assets\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Repos\Dyplo\public\assets\js" />
       <recent name="D:\Repos\Dyplo\public\assets\js\locales" />
       <recent name="D:\Repos\Dyplo\src\Dto" />
       <recent name="D:\Repos\Dyplo\public\assets\images\loaders" />
       <recent name="D:\Repos\Dyplo\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repos\Dyplo\public\assets\js\test" />
+      <recent name="D:\Repos\Dyplo\public\assets\js" />
+      <recent name="D:\Repos\Dyplo\public\assets\images" />
+      <recent name="D:\Repos\Dyplo\config\packages" />
+      <recent name="D:\Repos\Dyplo\public\assets\css" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -284,10 +275,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609178942699" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609379086387">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609383296738">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609379086387" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609383296738" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609285074075" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609006567584">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -329,9 +320,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="328" key="com.jetbrains.php.test.PhpNewTestDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609181712596" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1609291017866">
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1609383163400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="667" y="119" width="585" height="801" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609383163400" />
     <state x="667" y="119" width="585" height="801" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609291017866" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1609185564115">
       <screen x="0" y="0" width="1920" height="1040" />

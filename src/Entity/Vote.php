@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Vote
  *
- * @ORM\Table(name="vote", indexes={@ORM\Index(name="fk_votes_tournament_users1_idx", columns={"id_tournament_user"}), @ORM\Index(name="fk_votes_options_in_tournaments1_idx", columns={"id_option_in_tournament"}), @ORM\Index(name="fk_votes_tournaments1_idx", columns={"id_tournament"})})
+ * @ORM\Table(name="vote", indexes={@ORM\Index(name="fk_votes_users1_idx", columns={"id_user"}), @ORM\Index(name="fk_votes_options_in_tournaments1_idx", columns={"id_option_in_tournament"}), @ORM\Index(name="fk_votes_tournaments1_idx", columns={"id_tournament"})})
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
@@ -72,14 +72,14 @@ class Vote
     private OptionInTournament $idOptionInTournament;
 
     /**
-     * @var TournamentUser
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="TournamentUser")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tournament_user", referencedColumnName="id_tournament_user")
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
      * })
      */
-    private TournamentUser $idTournamentUser;
+    private User $idUser;
 
     /**
      * @var Tournament
@@ -203,21 +203,21 @@ class Vote
         $this->idOptionInTournament = $idOptionInTournament;
     }
 
-    /**
-     * @return TournamentUser
-     */
-    public function getIdTournamentUser(): TournamentUser
-    {
-        return $this->idTournamentUser;
-    }
-
-    /**
-     * @param TournamentUser $idTournamentUser
-     */
-    public function setIdTournamentUser(TournamentUser $idTournamentUser): void
-    {
-        $this->idTournamentUser = $idTournamentUser;
-    }
+//    /**
+//     * @return TournamentUser
+//     */
+//    public function getIdTournamentUser(): TournamentUser
+//    {
+//        return $this->idTournamentUser;
+//    }
+//
+//    /**
+//     * @param TournamentUser $idTournamentUser
+//     */
+//    public function setIdTournamentUser(TournamentUser $idTournamentUser): void
+//    {
+//        $this->idTournamentUser = $idTournamentUser;
+//    }
 
     /**
      * @return Tournament
