@@ -53,7 +53,7 @@ class OptionInTournamentController extends AbstractController
     }
 
     /**
-     * @Route("new-option/{tournament}", name="option-in-tournament-new", requirements={"tournament"="\d+"})
+     * @Route("tournament/{tournament}/new-option", name="option-in-tournament-new", requirements={"tournament"="\d+"})
      * @param Request    $request
      * @param Tournament $tournament
      *
@@ -71,11 +71,9 @@ class OptionInTournamentController extends AbstractController
             /** @var OptionInTournament $optionInTournament */
             $optionInTournamentDto->setIdUser($this->getUser()->getId());
             $optionInTournamentDto->setIdTournament($tournament->getId());
-            dump($optionInTournamentDto);
             $optionInTournament = $this->mapper->map($optionInTournamentDto, OptionInTournament::class);
-            dump($optionInTournament);
-            try {
 
+            try {
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($optionInTournament);
                 $entityManager->flush();
@@ -94,4 +92,40 @@ class OptionInTournamentController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("edit-option/{id}", name="option-in-tournament-edit", requirements={"tournament"="\d+"})
+     * @param Request            $request
+     * @param OptionInTournament $optionInTournament
+     *
+     * @return RedirectResponse|Response
+     * @throws UnregisteredMappingException
+     */
+    public function edit(Request $request, OptionInTournament $optionInTournament)
+    {
+        /** @var OptionInTournamentDto $optionInTournamentDto */
+        $optionInTournamentDto = $this->mapper->map($optionInTournament, OptionInTournamentDto::class);
+
+        $form = $this->createForm(OptionInTournamentType::class, $optionInTournamentDto);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($optionInTournament);
+                $entityManager->flush();
+
+                $this->addFlash('success', MessageFactory::getMessage('MESSAGE_EDIT_SUCCESS'));
+            } catch (Exception $ex) {
+                $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_EDIT_FAILURE'));
+            }
+
+            return $this->redirectToRoute('option-in-tournament-show', ['id' => $optionInTournament->getId()]);
+        }
+
+        return $this->render('option_in_tournament/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

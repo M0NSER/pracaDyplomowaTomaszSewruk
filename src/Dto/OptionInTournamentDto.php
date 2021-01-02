@@ -4,6 +4,8 @@
 namespace App\Dto;
 
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Class OptionInTournamentDto
  * @package App\Dto
@@ -11,34 +13,42 @@ namespace App\Dto;
 class OptionInTournamentDto
 {
     /**
+     * @Assert\NotNull()
+     * @Assert\Length(min=5)
+     * @Assert\Type("string")
      * @var string|null
      */
-    private ?string $title=null;
+    private ?string $title = null;
 
     /**
+     * @Assert\Type("string")
      * @var string|null
      */
-    private ?string $description=null;
+    private ?string $description = null;
 
     /**
+     * @Assert\Type("int")
      * @var int|null
      */
-    private ?int $numberOfSlots=null;
+    private ?int $numberOfSlots = null;
 
     /**
+     * @Assert\Url()
      * @var string|null
      */
-    private ?string $photoUrl=null;
+    private ?string $photoUrl = null;
 
     /**
+     * @Assert\Type("int")
      * @var int|null
      */
-    private ?int $idUser=null;
+    private ?int $idUser = null;
 
     /**
+     * @Assert\Type("int")
      * @var int|null
      */
-    private ?int $idTournament=null;
+    private ?int $idTournament = null;
 
     /**
      * @return string|null

@@ -99,6 +99,9 @@
     "egulias/email-validator": {
         "version": "2.1.24"
     },
+    "ezyang/htmlpurifier": {
+        "version": "v4.13.0"
+    },
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },

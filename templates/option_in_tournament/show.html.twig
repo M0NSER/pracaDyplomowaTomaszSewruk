@@ -11,7 +11,10 @@
                             <div class="hizoom hi2" style="width: 400px; height: 400px;">
                                 <div class="small" style="width: 400px; height: 400px;">
                                     <div class="magnifier"></div>
-                                    <img src="{{ optionInTournament.photoUrl }}" alt="#" style="width: 400px; height: 400px;">
+                                    <img src="{{ optionInTournament.photoUrl }}"
+                                         onerror="this.onerror=null;this.src='{{ asset('assets/images/custom/option-no-photo-icon.png') }}';"
+                                         alt="Can not load photo"
+                                         style="width: 400px; height: 400px;">
                                 </div>
 
                             </div>
@@ -28,6 +31,7 @@
                                     <input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" type="number">
                                 </div>
                                 <button type="submit" class="btn sqaure_bt">Vote</button>
+                                <a class="btn btn-warning" href="{{ path('option-in-tournament-edit', {'id':optionInTournament.id}) }}">Edit</a>
                             </form>
                         </div>
 
@@ -64,7 +68,7 @@
                             <h4>OTHER OPTIONS</h4>
                             <div class="categary">
                                 <ul>
-                                    {% for item in optionInTournament.idTournament.optionsInThisTournament %}
+                                    {% for item in optionInTournament.idTournament.optionsInThisTournament|slice(0,5) %}
                                         {% if item.id != optionInTournament.id %}
                                             <li>
                                                 <a href="{{ path('option-in-tournament-show', {'id':item.id}) }}"><i class="fa fa-angle-right"></i>

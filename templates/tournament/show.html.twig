@@ -20,11 +20,10 @@
                         <div class="product_list">
                             <a href="{{ path('option-in-tournament-show',{'id':item.id}) }}">
                             <div class="product_img">
-                                {% if item.photoUrl %}
-                                    <img class="img-responsive" src="{{ item.photoUrl }}" alt="Can not load photo">
-                                {% else %}
-                                    <img class="img-responsive" src="{{ asset('assets/images/custom/option-no-photo-icon.png')}}" alt="Can not load photo">
-                                {% endif %}
+                                    <img class="img-responsive"
+                                         src="{{ item.photoUrl }}"
+                                         onerror="this.onerror=null;this.src='{{ asset('assets/images/custom/option-no-photo-icon.png') }}';"
+                                         alt="Can not load photo">
                             </div>
                             <div class="product_detail_btm">
                                 <div class="center">
