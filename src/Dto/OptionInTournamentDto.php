@@ -4,8 +4,7 @@
 namespace App\Dto;
 
 
-use App\Entity\Tournament;
-use App\Entity\TournamentUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class OptionInTournamentDto
@@ -14,34 +13,42 @@ use App\Entity\TournamentUser;
 class OptionInTournamentDto
 {
     /**
+     * @Assert\NotNull()
+     * @Assert\Length(min=5)
+     * @Assert\Type("string")
      * @var string|null
      */
-    private ?string $title=null;
+    private ?string $title = null;
 
     /**
+     * @Assert\Type("string")
      * @var string|null
      */
-    private ?string $description=null;
+    private ?string $description = null;
 
     /**
+     * @Assert\Type("int")
      * @var int|null
      */
-    private ?int $numberOfSlots=null;
+    private ?int $numberOfSlots = null;
 
     /**
+     * @Assert\Url()
      * @var string|null
      */
-    private ?string $photoUrl=null;
+    private ?string $photoUrl = null;
 
     /**
+     * @Assert\Type("int")
      * @var int|null
      */
-    private ?int $idTournamentUser=null;
+    private ?int $idUser = null;
 
     /**
+     * @Assert\Type("int")
      * @var int|null
      */
-    private ?int $idTournament=null;
+    private ?int $idTournament = null;
 
     /**
      * @return string|null
@@ -110,17 +117,17 @@ class OptionInTournamentDto
     /**
      * @return int
      */
-    public function getIdTournamentUser(): int
+    public function getIdUser(): int
     {
-        return $this->idTournamentUser;
+        return $this->idUser;
     }
 
     /**
-     * @param TournamentUser|null $idTournamentUser
+     * @param int|null $idUser
      */
-    public function setIdTournamentUser(?TournamentUser $idTournamentUser): void
+    public function setIdUser(?int $idUser): void
     {
-        $this->idTournamentUser = $idTournamentUser;
+        $this->idUser = $idUser;
     }
 
     /**
@@ -132,9 +139,9 @@ class OptionInTournamentDto
     }
 
     /**
-     * @param Tournament|null $idTournament
+     * @param int|null $idTournament
      */
-    public function setIdTournament(?Tournament $idTournament): void
+    public function setIdTournament(?int $idTournament): void
     {
         $this->idTournament = $idTournament;
     }
