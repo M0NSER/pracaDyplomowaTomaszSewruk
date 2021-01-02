@@ -25,24 +25,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/option_in_tournament/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/option_in_tournament/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Dyplo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dyplo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OptionInTournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OptionInTournamentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -250,7 +233,7 @@
       <workItem from="1609264441421" duration="29076000" />
       <workItem from="1609364516315" duration="13801000" />
       <workItem from="1609528597627" duration="872000" />
-      <workItem from="1609596773737" duration="8024000" />
+      <workItem from="1609596773737" duration="8357000" />
     </task>
     <servers />
   </component>
