@@ -10,14 +10,11 @@ class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="main")
+     * @return Response
      */
     public function index(): Response
     {
-        $this->addFlash('primary', 'Works good');
-
-        return $this->render('base.html.twig', [
-            'controller_name' => 'FrontController',
-        ]);
+        return $this->redirectToRoute('tournament');
     }
 
 }

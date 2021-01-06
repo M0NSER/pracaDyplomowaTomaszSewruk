@@ -1,92 +1,73 @@
 {% extends 'base.html.twig' %}
 
+{% block content_header %}
+    <h2>Select tournament</h2>
+{% endblock %}
+
 {% block body %}
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="main_heading textournament_privilege.t_align_center">
-                            <h2>Select tournament</h2>
-                            <p class="large">Which tournament, you want to see possible choices</p>
+
+
+
+    <div class="row">
+        {% for item in pagination %}
+            {% set tournament = item.tournamentUser.idTournament %}
+            {% set uType = item.tournamentUser.tournamentUserType %}
+
+
+            <div class="col-lg-4 col-md-6 custom-card">
+
+                <div class="card
+                            {% if uType == tournament_privilege.T_ADMIN %}
+                                card-danger
+                            {% elseif uType == tournament_privilege.T_MODDER %}
+                                card-warning
+                                {% else %}
+                                card-gray-dark
+                            {% endif %}
+">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            {{ tournament.id }}: {{ tournament.name|length > 50 ? tournament.name|slice(0,50)~'...' : tournament.name }}
+                        </h3>
+
+                        <div class="card-tools">
+                            <span class="badge">
+                                ({{ item.options }})
+                            </span>
                         </div>
                     </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{ tournament.description|length > 150 ? tournament.description|slice(0,150)~'...' : tournament.description }}
+                        </p>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary">Select</a>
+                        <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-info">Add</a>
+                        <a href="{{ path('tournament-user', {'tournament':tournament.id}) }}" class="btn btn-secondary">Show users</a>
+                    </div>
+                    <!-- /.card-footer -->
                 </div>
             </div>
 
 
 
-            <div class="row">
-                {% for item in pagination %}
-                    {% set tournament = item.tournamentUser.idTournament %}
-                    {% set uType = item.tournamentUser.tournamentUserType %}
-                    <div class="col-lg-4 col-md-6 custom-card">
-                        <div class="card">
-                            <div class="card-body custom-card-body">
-                                <h3 class="card-title">
-                                    {{ tournament.id }}: {{ tournament.name|length > 50 ? tournament.name|slice(0,50)~'...' : tournament.name }}
-                                </h3>
-                                <p class="card-text">
-                                    {{ tournament.description|slice(0,150) }}
-                                </p>
-                                <span>
-                                    <i class="fa fa-user"></i>
-                                    {% if uType == tournament_privilege.T_ADMIN %}{{ raw_tournament_privilege.T_ADMIN }}
-                                    {% elseif uType == tournament_privilege.T_MODDER %}{{ raw_tournament_privilege.T_MODDER }}
-                                    {% elseif uType == tournament_privilege.T_VOTER %}{{ raw_tournament_privilege.T_VOTER }}
-                                    {% elseif uType == tournament_privilege.T_DELETED %}{{ raw_tournament_privilege.T_DELETED }}
-                                    {% else %} -
-                                    {% endif %}
-                                </span>
-                                <span><i class="fa fa-book"></i>{{ item.options }}</span>
-                                <span><i class="fa fa-calendar"></i> {{ tournament.createAt ? tournament.createAt.format('d M Y') }}</span>
-                                {% if uType != tournament_privilege.T_DELETED %}
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="center">
-                                                <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-group-lg btn-primary">
-                                                    Select
-                                                </a>
-                                            </div>
-                                        </div>
-                                        {% if uType == tournament_privilege.T_ADMIN %}
-                                            <div class="col-sm-6">
-                                                <div class="center">
-                                                    <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-success">
-                                                        Edit
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    {% if uType == tournament_privilege.T_ADMIN or uType == tournament_privilege.T_MODDER %}
-                                        <div class="center">
-                                            <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-success">
-                                                Add
-                                            </a>
-                                        </div>
-                                    {% endif %}
-                                    <a class="btn btn-warning" href="{{ path('tournament-user', {'tournament':tournament.id}) }}">Show users</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                {% else %}
-                    <div class="col-md-12 center">
-                        <span>No data</span>
-                    </div>
-                {% endfor %}
-
+        {% else %}
+            <div class="col-md-12">
+                <span>No data</span>
             </div>
+        {% endfor %}
 
-            <div class="row">
-                <div class="col-md-12 center">
-                    {{ knp_pagination_render(pagination) }}
-                </div>
-            </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 {% endblock %}
