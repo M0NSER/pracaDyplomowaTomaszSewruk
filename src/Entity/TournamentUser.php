@@ -45,7 +45,6 @@ class TournamentUser
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
     private ?DateTime $deletedAt;
@@ -61,7 +60,7 @@ class TournamentUser
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User",fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
      * })

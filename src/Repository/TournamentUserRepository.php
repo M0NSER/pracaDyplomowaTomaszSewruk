@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Tournament;
 use App\Entity\TournamentUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -41,5 +42,19 @@ class TournamentUserRepository extends ServiceEntityRepository
     public function findAllQuery(): Query
     {
         return $this->getBasicQuery()->getQuery();
+    }
+
+    /**
+     * @param Tournament $tournament
+     *
+     * @return Query
+     */
+    public function findAllUserInTournament(Tournament $tournament): Query
+    {
+        return $this->getBasicQuery()
+            ->select('tu')
+            ->andWhere('tu.idTournament = :tournamentId')
+            ->setParameter('tournamentId', $tournament->getId())
+            ->getQuery();
     }
 }
