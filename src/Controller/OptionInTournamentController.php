@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Dto\OptionInTournamentDto;
 use App\Entity\OptionInTournament;
 use App\Entity\Tournament;
-use App\Entity\TournamentUser;
 use App\Form\OptionInTournamentType;
 use App\Util\FlashBag\MessageFactory;
 use App\Util\Mapper\Mapper;

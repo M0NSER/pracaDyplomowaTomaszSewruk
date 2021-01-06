@@ -43,4 +43,62 @@ class UserRepository extends ServiceEntityRepository
         return $this->getBasicQuery()->getQuery();
     }
 
+    /**
+     * @param int         $page
+     * @param int         $pageLimit
+     * @param string|null $query
+     *
+     * @return array
+     */
+    public function filterByQuery(int $page, int $pageLimit, string $query = null)
+    {
+        $queryBuilder = $this->getBasicQuery()
+            ->select('partial u.{id, firstName, lastName, email}')
+            ->setMaxResults($pageLimit)
+            ->setFirstResult(($page - 1) * $pageLimit);
+
+        $queryResult = $queryBuilder
+            ->orWhere($queryBuilder->expr()->like('u.email', ':email'))
+            ->setParameter('email', '%' . $query . '%')
+            ->orWhere($queryBuilder->expr()->like('u.firstName', ':firstName'))
+            ->setParameter('firstName', '%' . $query . '%')
+            ->orWhere($queryBuilder->expr()->like('u.lastName', ':lastName'))
+            ->setParameter('lastName', '%' . $query . '%')
+            ->getQuery()
+            ->getResult();
+
+        $result = [];
+        foreach ($queryResult as $user) {
+            /** @var $user User */
+
+            $result[] = [
+                'id' => $user->getId(),
+                'text' => (string)$user,
+            ];
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param string $question
+     *
+     * @return Query
+     */
+    public function findUserByQuestion(string $question)
+    {
+        $likeQuestion = '%' . $question . '%';
+
+        return $this->getBasicQuery()
+            ->select('u')
+            ->orWhere($this->getBasicQuery()->expr()->like('u.firstName', ':firstName'))
+            ->orWhere($this->getBasicQuery()->expr()->like('u.lastName', ':lastName'))
+            ->orWhere($this->getBasicQuery()->expr()->like('u.email', ':email'))
+            ->setParameters([
+                'firstName' => $likeQuestion,
+                'lastName' => $likeQuestion,
+                'email' => $likeQuestion,
+            ])
+            ->getQuery();
+    }
 }

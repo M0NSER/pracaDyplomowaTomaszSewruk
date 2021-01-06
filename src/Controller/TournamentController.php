@@ -65,7 +65,8 @@ class TournamentController extends AbstractController
         $pagination = $this->paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            6, [
+            6,
+            [
                 PaginatorInterface::DEFAULT_SORT_FIELD_NAME => 't.createAt',
                 PaginatorInterface::DEFAULT_SORT_DIRECTION => 'desc',
             ]
@@ -203,7 +204,6 @@ class TournamentController extends AbstractController
                 return $this->redirectToRoute('tournament');
 
         } catch (Exception $ex) {
-            $this->addFlash('danger', $ex->getMessage());
             $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_DELETE_FAILURE'));
         }
 

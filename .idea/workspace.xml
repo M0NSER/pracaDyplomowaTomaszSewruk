@@ -25,7 +25,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="" />
+    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Api/ApiAddUserToTournament.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dto/AddUserToTournamentDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AddUserToTournamentType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/tournament_user/search-for-new-tournament-user.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/UserDto.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TournamentUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TournamentUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,6 +214,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -233,7 +251,11 @@
       <workItem from="1609264441421" duration="29076000" />
       <workItem from="1609364516315" duration="13801000" />
       <workItem from="1609528597627" duration="872000" />
-      <workItem from="1609596773737" duration="8357000" />
+      <workItem from="1609596773737" duration="15784000" />
+      <workItem from="1609686485172" duration="16719000" />
+      <workItem from="1609796019270" duration="2626000" />
+      <workItem from="1609883776847" duration="1882000" />
+      <workItem from="1609885885341" duration="7549000" />
     </task>
     <servers />
   </component>
@@ -257,24 +279,29 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="292" key="#Composer/0.0.1536.824@0.0.1536.824" timestamp="1605553628816" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609178942699">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609890528661">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609890528661" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609178942699" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609384192380">
+    <state x="691" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609702538380">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609384192380" />
+    <state x="691" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609702538380" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609886705324">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609886705324" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609285074075" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609384491067">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609699238356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609384491067" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609699238356" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609006567584" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609378380246">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609887753993">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609378380246" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609887753993" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609271842443" />
     <state x="718" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605556931592">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -290,15 +317,19 @@
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609371883554" />
     <state x="740" y="307" key="FileChooserDialogImpl/-1920.357.1536.832/0.0.1920.1160/1920.0.1920.1160@0.0.1920.1160" timestamp="1606115000826" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556888021" />
-    <state x="790" y="243" key="NewPhpClassDialog" timestamp="1609378004325">
+    <state x="790" y="243" key="NewPhpClassDialog" timestamp="1609888661356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="790" y="243" key="NewPhpClassDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609378004325" />
+    <state x="790" y="243" key="NewPhpClassDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609888661356" />
     <state x="790" y="243" key="NewPhpClassDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609269876131" />
     <state x="830" y="222" key="RollbackChangesDialog" timestamp="1609013760237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="830" y="222" key="RollbackChangesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609013760237" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1609611327162">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609611327162" />
     <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1609270007340">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -307,19 +338,24 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="328" key="com.jetbrains.php.test.PhpNewTestDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609181712596" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1609609872838">
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1609894116781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="119" width="585" height="801" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609609872838" />
+    <state x="667" y="119" width="585" height="801" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609894116781" />
     <state x="667" y="119" width="585" height="801" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609291017866" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1609185564115">
+    <state x="677" y="291" key="refactoring.ChangeSignatureDialog" timestamp="1609705276957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="677" y="291" key="refactoring.ChangeSignatureDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609705276957" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1609691162037">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609691162037" />
     <state x="616" y="240" key="run.anything.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609185564115" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1609385187237">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1609696482532">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609385187237" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609696482532" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609199271745" />
   </component>
 </project>

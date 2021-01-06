@@ -12,17 +12,22 @@ parameters:
     raw_T_MODDER: 'Promoter'
     raw_T_VOTER: 'Student'
     raw_T_DELETED: 'Deleted'
+    tournament_privilege:
+        T_ADMIN: 'T_ADMIN'
+        T_MODDER: 'T_MODDER'
+        T_VOTER: 'T_VOTER'
+        T_DELETED: 'T_DELETED'
+
+    raw_tournament_privilege:
+        T_ADMIN: 'Admin'
+        T_MODDER: 'Promoter'
+        T_VOTER: 'Student'
+        T_DELETED: 'Deleted'
 
 twig:
     globals:
-        T_ADMIN: '%T_ADMIN%'
-        T_MODDER: '%T_MODDER%'
-        T_VOTER: '%T_VOTER%'
-        T_DELETED: '%T_DELETED%'
-        raw_T_ADMIN: '%raw_T_ADMIN%'
-        raw_T_MODDER: '%raw_T_MODDER%'
-        raw_T_VOTER: '%raw_T_VOTER%'
-        raw_T_DELETED: '%raw_T_DELETED%'
+        tournament_privilege: '%tournament_privilege%'
+        raw_tournament_privilege: '%raw_tournament_privilege%'
 
 services:
     # default configuration for services in *this* file

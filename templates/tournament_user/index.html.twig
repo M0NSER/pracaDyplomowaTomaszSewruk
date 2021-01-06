@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_start(addUserForm) }}
+                {{ form_widget(addUserForm) }}
+                <button type="submit">ELo</button>
+                {{ form_end(addUserForm) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table>
+                    {% for tournamenUser in pagination %}
+                        <tr style="border: 1px solid red">
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <p class="price_table">{{ tournamenUser.idUser.email }} {{ tournamenUser.idUser == app.user ? '<span class="badge badge-secondary">Me</span></h1>' }}</p>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <p class="price_table">{{ tournamenUser.idUser.firstName }}</p></td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <p class="price_table">{{ tournamenUser.idUser.lastName }}</p></td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <p class="price_table">{{ tournamenUser.tournamentUserType }}</p></td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <p class="price_table">{{ tournamenUser.idUser.updateAt.format("d m Y h:i:s") }}</p>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <a class="btn btn-primary" href="{{ path('tournament-user-delete', {'id':tournamenUser.id}) }}">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

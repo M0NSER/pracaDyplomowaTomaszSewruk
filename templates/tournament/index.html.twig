@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="full">
-                        <div class="main_heading text_align_center">
+                        <div class="main_heading textournament_privilege.t_align_center">
                             <h2>Select tournament</h2>
                             <p class="large">Which tournament, you want to see possible choices</p>
                         </div>
@@ -31,16 +31,16 @@
                                 </p>
                                 <span>
                                     <i class="fa fa-user"></i>
-                                    {% if uType == T_ADMIN %}{{ raw_T_ADMIN }}
-                                    {% elseif uType == T_MODDER %}{{ raw_T_MODDER }}
-                                    {% elseif uType == T_VOTER %}{{ raw_T_VOTER }}
-                                    {% elseif uType == T_DELETED %}{{ raw_T_DELETED }}
+                                    {% if uType == tournament_privilege.T_ADMIN %}{{ raw_tournament_privilege.T_ADMIN }}
+                                    {% elseif uType == tournament_privilege.T_MODDER %}{{ raw_tournament_privilege.T_MODDER }}
+                                    {% elseif uType == tournament_privilege.T_VOTER %}{{ raw_tournament_privilege.T_VOTER }}
+                                    {% elseif uType == tournament_privilege.T_DELETED %}{{ raw_tournament_privilege.T_DELETED }}
                                     {% else %} -
                                     {% endif %}
                                 </span>
                                 <span><i class="fa fa-book"></i>{{ item.options }}</span>
                                 <span><i class="fa fa-calendar"></i> {{ tournament.createAt ? tournament.createAt.format('d M Y') }}</span>
-                                {% if uType != T_DELETED %}
+                                {% if uType != tournament_privilege.T_DELETED %}
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="center">
@@ -49,7 +49,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        {% if uType == T_ADMIN %}
+                                        {% if uType == tournament_privilege.T_ADMIN %}
                                             <div class="col-sm-6">
                                                 <div class="center">
                                                     <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-success">
@@ -59,13 +59,14 @@
                                             </div>
                                         {% endif %}
                                     </div>
-                                    {% if uType == T_ADMIN or uType == T_MODDER %}
+                                    {% if uType == tournament_privilege.T_ADMIN or uType == tournament_privilege.T_MODDER %}
                                         <div class="center">
                                             <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-success">
                                                 Add
                                             </a>
                                         </div>
                                     {% endif %}
+                                    <a class="btn btn-warning" href="{{ path('tournament-user', {'tournament':tournament.id}) }}">Show users</a>
                                 {% endif %}
                             </div>
                         </div>
