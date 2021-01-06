@@ -1,241 +1,166 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <!-- basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
-    <title>{% block title %}It.Next - IT Service Responsive Html Theme{% endblock %}</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- site icons -->
-    <link rel="icon" href="{{ asset('assets/images/fevicon/fevicon.png') }}?hash={{ date().timestamp }}" type="image/gif"/>
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}?hash={{ date().timestamp }}"/>
-    <!-- Site css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?hash={{ date().timestamp }}"/>
-    <!-- responsive css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}?hash={{ date().timestamp }}"/>
-    <!-- colors css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/colors1_dark.css') }}?hash={{ date().timestamp }}"/>
-    <!-- wow Animation css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}?hash={{ date().timestamp }}"/>
-    <!-- revolution slider css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/revolution/css/settings.css') }}?hash={{ date().timestamp }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/revolution/css/layers.css') }}?hash={{ date().timestamp }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/revolution/css/navigation.css') }}?hash={{ date().timestamp }}"/>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}?hash={{ date().timestamp }}"/>
+<html lang="en">
 
-    <!-- custom css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}?hash={{ date().timestamp }}"/>
-    <!--[if lt IE 9]>
+{% include 'base_component/head.html.twig' %}
 
-    {% block customstylesheets %}
+{% set currentPath = app.request.attributes.get('_route') %}
 
-    {% endblock %}
-
-
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    {% set currentPath = app.request.attributes.get('_route') %}
-</head>
-<body id="default_theme" class="it_service">
-<!-- loader -->
-
-<div class="bg_load" style="background-color: white">
-    <img class="loader_animation" src="{{ asset('assets/images/loaders/uwm_logo.png') }}" alt="#"/>
-</div>
-<!-- end loader -->
-<!-- header -->
-<div id="default_header" class="header_style_1">
-    {% block headertop %}
-        <!-- header top -->
-        <div class="header_top">
+<body class="hold-transition layout-top-nav dark-mode layout-navbar-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    {% block navbar %}
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark navbar-navy">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="full">
-                            <div class="topbar-left">
-                                <ul class="list-inline">
-                                    <li><span class="topbar-label"><i class="fa  fa-home"></i></span> <span
-                                                class="topbar-hightlight">Uniwersytet Warmińsko-Mazurski w Olsztynie</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 right_section_header_top">
-                        <div class="float-right">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li>
-                                        {% if app.user %}
-                                            <a class="revicon-logout" href="{{ path('app_logout') }}">{{ app.user }}</a>
-                                        {% endif %}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end header top -->
-    {% endblock %}
+                <a href="{{ path('main') }}" class="navbar-brand">
+                    <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+                    <span class="brand-text font-weight-light">Promoter!</span>
+                </a>
 
-    {% block headerbottom %}
-        <!-- header bottom -->
-        <div class="header_bottom">
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        {% if(is_granted('ROLE_USER')) %}
+                            <li class="nav-item">
+                                <a href="{{ path('tournament-new') }}" class="nav-link {{ currentPath == 'tournament-new' ? 'active' }}">New tournament</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('tournament') }}" class="nav-link {{ currentPath == 'tournament' ? 'active' }}">My tournaments</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{{ path('app_login') }}" class="nav-link {{ currentPath == 'app_login' ? 'active' }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('app_register') }}" class="nav-link {{ currentPath == 'app_register' ? 'active' }}">Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    <!-- SEARCH FORM -->
+                    <form class="form-inline ml-0 ml-md-3">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search" placeholder="wpisz kod" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right navbar links -->
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                    {% if app.user %}
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <i class="fa fa-sign-out-alt"></i>
+                                {{ app.user.firstName~' '~app.user.lastName }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right " style="left: inherit; right: 0px;">
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-users mr-2"></i> Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ path('app_logout') }}" class="dropdown-item">
+                                    <i class="fas fa-file mr-2"></i> Logout
+                                </a>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                        <!-- logo start -->
-                        <div class="logo"><a href="{{ path('main') }}"><img
-                                        src="{{ asset('assets/images/logos/it_logo_white.png') }}"
-                                        alt="logo"/></a></div>
-                        <!-- logo end -->
-                    </div>
-                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                        <!-- menu start -->
-                        <div class="menu_side">
-                            <div id="navbar_menu">
-                                <ul class="first-ul">
-                                    {% if(not is_granted('ROLE_USER')) %}
-                                        <li>
-                                            <a class="{{ currentPath == 'app_login' ? 'active' }}" href="{{ path('app_login') }}">Login</a>
-                                        </li>
-                                        <li>
-                                            <a class="{{ currentPath == 'app_register' ? 'active' }}" href="{{ path('app_register') }}">Register</a>
-                                        </li>
-                                    {% else %}
-                                        <li>
-                                            <a class="{{ currentPath == 'tournament-new' ? 'active' }}" href="{{ path('tournament-new') }}">New tournament</a>
-                                        </li>
-                                        <li>
-                                            <a class="{{ currentPath == 'tournament' ? 'active' }}" href="{{ path('tournament') }}">My tournaments</a>
-                                        </li>
-                                    {% endif %}
-                                    <li><a href="#" data-toggle="modal" data-target="#search_bar">Wpisz kod</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="search_icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="modal" data-target="#search_bar"><i
-                                                    class="fa fa-user-plus"
-                                                    aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
                         </div>
-                        <!-- menu end -->
-                    </div>
-                </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="container">
+                {% block content_header %}
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                                <li class="breadcrumb-item active">Top Navigation</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                {% endblock %}
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container">
+                {% block body %}
+
+                {% endblock %}
             </div>
         </div>
-        <!-- header bottom end -->
-    {% endblock %}
-</div>
-<!-- end header -->
-<div class="container">
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="center alert alert-{{ label }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-</div>
-
-<!-- section -->
-{% block body %}
-
-{% endblock %}
-<!-- end section -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="search_bar" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-8 col-md-8 col-sm-8 offset-lg-2 offset-md-2 offset-sm-2 col-xs-10 col-xs-offset-1">
-                        <div class="navbar-search">
-                            <form action="#" method="get" id="search-global-form" class="search-global">
-                                <input type="text" placeholder="Wpisz kod" autocomplete="off" name="s" id="search"
-                                       value="" class="search-global__input">
-                                <button class="search-global__btn"><i class="fa fa-user-plus">Dodaj</i></button>
-                                <div class="search-global__note">Poprawny kod odblokuje Ci możliwość głosowania na
-                                    promotora
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- /.content -->
     </div>
-</div>
-<!-- End Model search bar -->
-{% block footer %}
-    <!-- Footer -->
-    <footer class="page-footer font-small blue">
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">
-            © it.Sewruk
+    <!-- /.content-wrapper -->
+
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
         </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    {% block footer %}
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="container">
+                <div class="float-right d-none d-sm-inline">
+                    Anything you want
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2014-2020
+                    <a href="{{ path('main') }}">Admin LTE3</a>.</strong> All rights reserved.
+            </div>
+        </footer>
+    {% endblock %}
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+{% block js %}
+    {% include 'base_component/js_files.html.twig' %}
 {% endblock %}
 
-
-<!-- js section -->
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<!-- menu js -->
-<script src="{{ asset('assets/js/menumaker.js') }}"></script>
-<!-- wow animation -->
-<script src="{{ asset('assets/js/wow.js') }}"></script>
-<!-- custom js -->
-<script src="{{ asset('assets/js/custom.js') }}"></script>
-<!-- revolution js files -->
-<script src="{{ asset('assets/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-<script src="{{ asset('assets/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
-
-<script src="{{ asset('assets/js/locales/bootstrap-datetimepicker.pl.js') }}"></script>
-
-<script src="{{ asset('bundles/tetranzselect2entity/js/select2entity.js') }}"></script>
-
-
-
-
-
-
-{% block customjs %}
-
-{% endblock %}
-
+{% block customjs %}{% endblock %}
 
 </body>
 </html>

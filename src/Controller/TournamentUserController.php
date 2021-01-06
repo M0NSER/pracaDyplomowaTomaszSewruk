@@ -64,7 +64,7 @@ class TournamentUserController extends AbstractController
      *
      * @return Response
      */
-    public function index(Request $request, Tournament $tournament, ParameterBagInterface $parameterBag): Response
+    public function index(Request $request, Tournament $tournament): Response
     {
         // TODO: co jeśli użytkownik już jest w konkursie
 

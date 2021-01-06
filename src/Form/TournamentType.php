@@ -66,6 +66,7 @@ class TournamentType extends AbstractType
             'attr' => [
                 'class' => 'form_contant',
             ],
+            'csrf_protection'=>true,
         ]);
     }
 }
