@@ -171,13 +171,13 @@ class TournamentController extends AbstractController
                 $entityManager->persist($tournament);
                 $entityManager->flush();
 
-                $this->addFlash('success', MessageFactory::getMessage('MESSAGE_EDIT_SUCCESS'));
+                $this->addFlash('success', MessageFactory::getMessage('MESSAGE_EDIT_SUCCESS', $tournament->getId()));
 
                 return $this->redirectToRoute('tournament-show', [
                     'id' => $tournament->getId(),
                 ]);
             } catch (Exception $ex) {
-                $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_EDIT_FAILURE'));
+                $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_EDIT_FAILURE', $tournament->getId()));
             }
 
             return $this->redirectToRoute('tournament');

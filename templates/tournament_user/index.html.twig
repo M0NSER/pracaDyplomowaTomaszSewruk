@@ -26,7 +26,8 @@
                             <td class="col-sm-1 col-md-1 text-center">
                                 <p class="price_table">{{ tournamenUser.tournamentUserType }}</p></td>
                             <td class="col-sm-1 col-md-1 text-center">
-                                <p class="price_table">{{ tournamenUser.idUser.updateAt.format("d m Y h:i:s") }}</p>
+                                <p class="price_table">{{  tournamenUser.idUser.updateAt ? tournamenUser.idUser.updateAt.format("d m Y h:i:s") }}
+                                </p>
                             </td>
                             <td class="col-sm-1 col-md-1 text-center">
                                 <a class="btn btn-primary" href="{{ path('tournament-user-delete', {'id':tournamenUser.id}) }}">

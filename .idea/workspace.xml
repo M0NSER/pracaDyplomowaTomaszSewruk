@@ -25,7 +25,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="" />
+    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201227233255.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201228211516.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201228213653.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201229013412.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201229020435.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201229180309.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201229201436.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201229233805.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201230002821.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201230002916.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201231025825.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201231030153.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,8 +216,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -247,6 +266,10 @@
       <workItem from="1609885885341" duration="16674000" />
       <workItem from="1609941718291" duration="609000" />
       <workItem from="1609966357423" duration="9965000" />
+      <workItem from="1610056101515" duration="179000" />
+      <workItem from="1610056363395" duration="1196000" />
+      <workItem from="1610057638227" duration="2298000" />
+      <workItem from="1610099980571" duration="444000" />
     </task>
     <servers />
   </component>
@@ -264,89 +287,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="578" y="292" key="#Composer" timestamp="1605553628816">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="578" y="292" key="#Composer/0.0.1536.824@0.0.1536.824" timestamp="1605553628816" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609890528661">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609890528661" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609178942699" />
-    <state x="691" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609974208186">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="691" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609974208186" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1609886705324">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609886705324" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609285074075" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609699238356">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609699238356" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609006567584" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609887753993">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609887753993" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609271842443" />
-    <state x="718" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1605556931592">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="718" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556931592" />
-    <state x="184" y="86" key="DiffContextDialog" timestamp="1609013758299">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609013758299" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1609895319235">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609895319235" />
-    <state x="740" y="307" key="FileChooserDialogImpl/-1920.357.1536.832/0.0.1920.1160/1920.0.1920.1160@0.0.1920.1160" timestamp="1606115000826" />
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556888021" />
-    <state x="790" y="243" key="NewPhpClassDialog" timestamp="1609888661356">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="790" y="243" key="NewPhpClassDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609888661356" />
-    <state x="790" y="243" key="NewPhpClassDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609269876131" />
-    <state x="830" y="222" key="RollbackChangesDialog" timestamp="1609013760237">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="830" y="222" key="RollbackChangesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609013760237" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1609895322602">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="165" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609895322602" />
-    <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1609270007340">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609270007340" />
-    <state x="729" y="328" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1609181712596">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="729" y="328" key="com.jetbrains.php.test.PhpNewTestDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609181712596" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1609894256970">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="667" y="119" width="585" height="801" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609894256970" />
-    <state x="667" y="119" width="585" height="801" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609291017866" />
-    <state x="677" y="291" key="refactoring.ChangeSignatureDialog" timestamp="1609705276957">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="677" y="291" key="refactoring.ChangeSignatureDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609705276957" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1609691162037">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609691162037" />
-    <state x="616" y="240" key="run.anything.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609185564115" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1609901588524">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609901588524" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609199271745" />
   </component>
 </project>
