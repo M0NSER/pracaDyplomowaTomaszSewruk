@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/option-in-tournament/")
+ * @Route("")
  * Class OptionInTournamentController
  * @package App\Controller
  */
@@ -39,7 +39,7 @@ class OptionInTournamentController extends AbstractController
     }
 
     /**
-     * @Route("show/{id}", name="option-in-tournament-show", requirements={"id"="\d+"})
+     * @Route("option-in-tournament/show/{id}", name="option-in-tournament-show", requirements={"id"="\d+"})
      * @param OptionInTournament $optionInTournament
      *
      * @return Response
@@ -93,7 +93,7 @@ class OptionInTournamentController extends AbstractController
     }
 
     /**
-     * @Route("edit-option/{id}", name="option-in-tournament-edit", requirements={"tournament"="\d+"})
+     * @Route("option-in-tournament/edit/{id}", name="option-in-tournament-edit", requirements={"tournament"="\d+"})
      * @param Request            $request
      * @param OptionInTournament $optionInTournament
      *
