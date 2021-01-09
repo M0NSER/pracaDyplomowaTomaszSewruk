@@ -26,23 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Dto/VotePriorityDto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201227233255.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201228211516.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201228213653.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201229013412.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201229020435.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201229180309.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201229201436.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201229233805.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201230002821.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201230002916.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201231025825.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201231030153.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +211,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -270,6 +259,9 @@
       <workItem from="1610056363395" duration="1196000" />
       <workItem from="1610057638227" duration="2298000" />
       <workItem from="1610099980571" duration="444000" />
+      <workItem from="1610143572800" duration="3210000" />
+      <workItem from="1610154285320" duration="3469000" />
+      <workItem from="1610213198382" duration="2295000" />
     </task>
     <servers />
   </component>
