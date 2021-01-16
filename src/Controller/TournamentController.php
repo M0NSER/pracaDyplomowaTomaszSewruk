@@ -16,6 +16,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -68,7 +70,7 @@ class TournamentController extends AbstractController
             6,
             [
                 PaginatorInterface::DEFAULT_SORT_FIELD_NAME => 't.createAt',
-                PaginatorInterface::DEFAULT_SORT_DIRECTION => 'desc',
+                PaginatorInterface::DEFAULT_SORT_DIRECTION  => 'desc',
             ]
         );
 
@@ -84,7 +86,7 @@ class TournamentController extends AbstractController
      *
      * @return Response
      */
-    public function show(Tournament $tournament, Request $request)
+    public function show(Tournament $tournament, Request $request): Response
     {
         $query = $this->tournamentRepository->findAllOptionsInTournament($tournament);
 
@@ -93,7 +95,7 @@ class TournamentController extends AbstractController
             $request->query->getInt('page', 1)/*page number*/,
             12, [
                 PaginatorInterface::DEFAULT_SORT_FIELD_NAME => 'oit.id',
-                PaginatorInterface::DEFAULT_SORT_DIRECTION => 'asc',
+                PaginatorInterface::DEFAULT_SORT_DIRECTION  => 'asc',
             ]
         );
 
@@ -111,7 +113,7 @@ class TournamentController extends AbstractController
      * @return Response
      * @throws UnregisteredMappingException
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $tournamentDto = new TournamentDto();
 
@@ -119,6 +121,7 @@ class TournamentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->get("security.csrf.token_manager")->refreshToken("form_intention");
             /** @var Tournament $tournament */
             $tournament = $this->mapper->map($tournamentDto, Tournament::class);
             try {
@@ -149,7 +152,7 @@ class TournamentController extends AbstractController
 
 
     /**
-     * @Route("edit/{id}", name="tournament-edit", requirements={"id"="\d+"})
+     * @Route("{id}/edit", name="tournament-edit", requirements={"id"="\d+"})
      * @param Request    $request
      * @param Tournament $tournament
      *
@@ -164,11 +167,13 @@ class TournamentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Tournament $tournament */
-            $tournament = $this->mapper->map($tournamentDto, Tournament::class);
+            $this->get("security.csrf.token_manager")->refreshToken("form_intention");
+
+            /** @var Tournament $tournamentValid */
+            $tournamentValid = $this->mapper->mapToObject($tournamentDto, $tournament);
             try {
                 $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($tournament);
+                $entityManager->persist($tournamentValid);
                 $entityManager->flush();
 
                 $this->addFlash('success', MessageFactory::getMessage('MESSAGE_EDIT_SUCCESS', $tournament->getId()));
@@ -189,19 +194,20 @@ class TournamentController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="tournament-delete")
+     * @Route("{id}/delete", name="tournament-delete")
      * @param Tournament $tournament
      *
      * @return RedirectResponse
      */
-    public function delete(Tournament $tournament){
+    public function delete(Tournament $tournament): RedirectResponse
+    {
         try {
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->remove($tournament);
-                $entityManager->flush();
-                $this->addFlash('success', MessageFactory::getMessage('MESSAGE_DELETE_SUCCESS'));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($tournament);
+            $entityManager->flush();
+            $this->addFlash('success', MessageFactory::getMessage('MESSAGE_DELETE_SUCCESS'));
 
-                return $this->redirectToRoute('tournament');
+            return $this->redirectToRoute('tournament');
 
         } catch (Exception $ex) {
             $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_DELETE_FAILURE'));

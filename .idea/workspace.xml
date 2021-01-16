@@ -26,12 +26,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Dto/VotePriorityDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dto/VoteDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/TournamentUserSecurity/TournamentUserTypeFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/VoteService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210107220135.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/TournamentDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/TournamentDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/VotePriorityDto.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tournament.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TournamentUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TournamentUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Vote.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Vote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AddUserToTournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AddUserToTournamentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/OptionInTournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OptionInTournamentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TournamentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/VoteRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VoteRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +76,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -207,11 +235,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -223,11 +252,11 @@
       <recent name="D:\Repos\Dyplo\public\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\pracaDyplomowaTomaszSewruk\src\Security\TournamentUserSecurity" />
+      <recent name="F:\pracaDyplomowaTomaszSewruk\src\Security" />
       <recent name="D:\Repos\Dyplo\public\assets\js" />
       <recent name="D:\Repos\Dyplo\public\assets\js\locales" />
       <recent name="D:\Repos\Dyplo\src\Dto" />
-      <recent name="D:\Repos\Dyplo\public\assets\images\loaders" />
-      <recent name="D:\Repos\Dyplo\public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -262,6 +291,10 @@
       <workItem from="1610143572800" duration="3210000" />
       <workItem from="1610154285320" duration="3469000" />
       <workItem from="1610213198382" duration="2295000" />
+      <workItem from="1610227027189" duration="29655000" />
+      <workItem from="1610392271463" duration="2194000" />
+      <workItem from="1610661746520" duration="1258000" />
+      <workItem from="1610814488005" duration="13327000" />
     </task>
     <servers />
   </component>
@@ -279,5 +312,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

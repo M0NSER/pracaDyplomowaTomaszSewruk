@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Annotations\Annotation\Enum;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -53,7 +54,7 @@ class TournamentUser
      * @var Tournament
      * @ORM\ManyToOne(targetEntity="Tournament")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament")
+     *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament", nullable=false)
      * })
      */
     private Tournament $idTournament;
@@ -62,7 +63,7 @@ class TournamentUser
      * @var User
      * @ORM\ManyToOne(targetEntity="User",fetch="EAGER")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user", nullable=false)
      * })
      */
     private User $idUser;
