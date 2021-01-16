@@ -9,11 +9,9 @@ use App\Form\AddUserToTournamentType;
 use App\Repository\TournamentUserRepository;
 use App\Repository\UserRepository;
 use App\Util\FlashBag\MessageFactory;
-use Doctrine\ORM\EntityManager;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -105,12 +103,12 @@ class TournamentUserController extends AbstractController
     }
 
     /**
-     * @Route("/tournament-user/delete/{id}", name="tournament-user-delete", requirements={"id"="\d+"})
+     * @Route("/tournament-user/{id}/delete", name="tournament-user-delete", requirements={"id"="\d+"})
      * @param TournamentUser $tournamentUser
      *
      * @return RedirectResponse
      */
-    public function delete(TournamentUser $tournamentUser)
+    public function delete(TournamentUser $tournamentUser): RedirectResponse
     {
         try {
             $entityManager = $this->getDoctrine()->getManager();

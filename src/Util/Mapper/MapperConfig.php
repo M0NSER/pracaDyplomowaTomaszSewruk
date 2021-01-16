@@ -5,9 +5,11 @@ namespace App\Util\Mapper;
 
 use App\Dto\OptionInTournamentDto;
 use App\Dto\TournamentDto;
+use App\Dto\VoteDto;
 use App\Entity\OptionInTournament;
 use App\Entity\Tournament;
 use App\Entity\User;
+use App\Entity\Vote;
 use AutoMapperPlus\Configuration\AutoMapperConfig;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -44,6 +46,7 @@ class MapperConfig implements MapperConfigInterface
         return $this
             ->buildTournamentMapping()
             ->buildOptionInTournamentMapping()
+            ->buildVoteMapping()
             ->config;
     }
 
@@ -85,6 +88,20 @@ class MapperConfig implements MapperConfigInterface
             ->forMember('idTournament', function (OptionInTournament $optionInTournament) {
                 return $optionInTournament->getIdTournament()->getId();
             });
+
+        return $this;
+    }
+
+    /**
+     * Map VoteDto => Vote
+     * Map Vote => VoteDto
+     * @return MapperConfig
+     */
+    protected function buildVoteMapping(): MapperConfig
+    {
+        $this->config
+            ->registerMapping(VoteDto::class, Vote::class)
+            ->reverseMap();
 
         return $this;
     }

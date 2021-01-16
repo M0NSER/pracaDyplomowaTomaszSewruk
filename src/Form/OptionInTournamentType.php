@@ -39,6 +39,7 @@ class OptionInTournamentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => OptionInTournamentDto::class,
+            'csrf_token_id'=>'form_intention',
         ]);
     }
 }

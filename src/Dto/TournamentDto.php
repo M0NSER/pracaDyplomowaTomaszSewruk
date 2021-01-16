@@ -48,6 +48,13 @@ class TournamentDto
     private ?DateTime $selectToDatetime = null;
 
     /**
+     * @var int|null
+     * @Assert\GreaterThan(0)
+     * @Assert\NotNull
+     */
+    private ?int $votesQuantity = null;
+
+    /**
      * @var bool|null
      * @Assert\Type("boolean")
      */
@@ -131,6 +138,26 @@ class TournamentDto
     public function setSelectToDatetime(?DateTime $selectToDatetime): void
     {
         $this->selectToDatetime = $selectToDatetime;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getVotesQuantity(): ?int
+    {
+        return $this->votesQuantity;
+    }
+
+    /**
+     * @param int|null $votesQuantity
+     *
+     * @return $this
+     */
+    public function setVotesQuantity(?int $votesQuantity): self
+    {
+        $this->votesQuantity = $votesQuantity;
+
+        return $this;
     }
 
     /**

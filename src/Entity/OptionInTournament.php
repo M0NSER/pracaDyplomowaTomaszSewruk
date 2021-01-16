@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OptionInTournament
- *
  * @ORM\Table(name="option_in_tournament", indexes={@ORM\Index(name="fk_options_in_tournaments_tournament_users1_idx", columns={"id_user"}), @ORM\Index(name="fk_options_in_tournaments_tournaments1_idx", columns={"id_tournament"})})
  * @ORM\Entity(repositoryClass="App\Repository\OptionInTournamentRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -20,7 +20,6 @@ class OptionInTournament
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id_options_in_tournaments", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -29,56 +28,48 @@ class OptionInTournament
 
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=100, nullable=false)
      */
     private string $title;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="description", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="description", type="text", length=10000, nullable=true)
      */
     private ?string $description;
 
     /**
      * @var int|null
-     *
      * @ORM\Column(name="number_of_slots", type="integer", nullable=true)
      */
     private ?int $numberOfSlots;
 
     /**
      * @var string|null
-     *
      * @ORM\Column(name="photo_url", type="string", length=255, nullable=true)
      */
-    private ?string $photoUrl=null;
+    private ?string $photoUrl = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="create_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
     private ?DateTime $createAt = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
-    private ?DateTime $updateAt=null;
+    private ?DateTime $updateAt = null;
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
     private ?DateTime $deletedAt;
 
     /**
      * @var User
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
@@ -88,13 +79,18 @@ class OptionInTournament
 
     /**
      * @var Tournament
-     *
      * @ORM\ManyToOne(targetEntity="Tournament", inversedBy="optionsInThisTournament")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament")
      * })
      */
     private Tournament $idTournament;
+
+    /**
+     * @return Collection
+     * @ORM\OneToMany(targetEntity=Vote::class, mappedBy="idOptionInTournament")
+     */
+    private Collection $votes;
 
     /**
      * @return int
@@ -250,11 +246,21 @@ class OptionInTournament
 
     /**
      * @param Tournament $idTournament
+     *
+     * @return $this
      */
-    public function setIdTournament(Tournament $idTournament): void
+    public function setIdTournament(Tournament $idTournament): self
     {
         $this->idTournament = $idTournament;
+
+        return $this;
     }
 
-
+    /**
+     * @return Collection
+     */
+    public function getVotes(): Collection
+    {
+        return $this->votes;
+    }
 }

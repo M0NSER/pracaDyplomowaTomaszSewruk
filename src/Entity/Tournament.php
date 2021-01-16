@@ -43,7 +43,7 @@ class Tournament
 
     /**
      * @var string|null
-     * @ORM\Column(name="description", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="description", type="text", length=10000, nullable=true)
      */
     private ?string $description;
 
@@ -66,6 +66,12 @@ class Tournament
     private ?DateTime $selectToDatetime = null;
 
     /**
+     * @var int
+     * @ORM\Column(name="votes_quantity", type="integer", nullable=false)
+     */
+    private int $votesQuantity;
+
+    /**
      * @var bool
      * @ORM\Column(name="is_public", type="boolean", nullable=false)
      */
@@ -85,7 +91,6 @@ class Tournament
 
     /**
      * @var DateTime|null
-     *
      * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
     private ?DateTime $deletedAt;
@@ -190,6 +195,26 @@ class Tournament
     public function setSelectToDatetime(?DateTime $selectToDatetime): void
     {
         $this->selectToDatetime = $selectToDatetime;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getVotesQuantity(): int
+    {
+        return $this->votesQuantity;
+    }
+
+    /**
+     * @param int $votesQuantity
+     *
+     * @return $this
+     */
+    public function setVotesQuantity(int $votesQuantity): self
+    {
+        $this->votesQuantity = $votesQuantity;
+
+        return $this;
     }
 
     /**

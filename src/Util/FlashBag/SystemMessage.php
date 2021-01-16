@@ -29,5 +29,10 @@ class SystemMessage
     const MESSAGE_CAN_NOT_GENERATE_REPORT = "Błąd przy generowaniu raportu";
     const MESSAGE_CAN_NOT_GENERATE_REPORT_WITH_FORMAT = "Nie można utworzyć raportu w formacie .%s";
 
+    const MESSAGE_SUCCESSFULLY_VOTED = "Successfully voted";
+    const MESSAGE_VOTE_SUCCESSFULLY_DELETED = "Vote successfully deleted";
+    const MESSAGE_IT_WAS_NOT_POSSIBLE_TO_VOTE = "It was not possible to vote";
+    const MESSAGE_CAN_NOT_DELETE_VOTE = "Can not delete this vote";
+
     const LOGIN_FIRST = "Please login first";
 }

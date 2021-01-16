@@ -26,7 +26,7 @@
                     <ul class="navbar-nav">
                         {% if(is_granted('ROLE_USER')) %}
                             <li class="nav-item">
-                                <a href="{{ path('tournament-new') }}" class="nav-link {{ currentPath == 'tournament-new' ? 'active' }}">New tournament</a>
+                                <a href="{{ path('tournament-new') }}" class="nav-link {{ currentPath == 'tournament-new' ? 'active' }}"><i class="fa fa-plus-square"></i> New tournament</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ path('tournament') }}" class="nav-link {{ currentPath == 'tournament' ? 'active' }}">My tournaments</a>

@@ -43,7 +43,8 @@ class AddUserToTournamentType extends AbstractType
                 'choices' => [$this->userRepository->findAll()],
                 'choice_value'=>'id',
                 'choice_label'=>'email',
-//                'multiple'=>true,
+                'multiple'=>true,
+//                'expanded'=>true,
                 'placeholder'=>'-'
             ]);
 
@@ -56,6 +57,7 @@ class AddUserToTournamentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => AddUserToTournamentDto::class,
+            'csrf_token_id'=>'form_intention',
         ]);
     }
 }

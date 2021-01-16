@@ -2,11 +2,15 @@
 
 namespace App\Repository;
 
+use App\Entity\OptionInTournament;
+use App\Entity\Tournament;
+use App\Entity\User;
 use App\Entity\Vote;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Vote|null find($id, $lockMode = null, $lockVersion = null)
@@ -41,5 +45,24 @@ class VoteRepository extends ServiceEntityRepository
     public function findAllQuery(): Query
     {
         return $this->getBasicQuery()->getQuery();
+    }
+
+    /**
+     * @param User               $user
+     * @param OptionInTournament $optionInTournament
+     *
+     * @return Query
+     */
+    public function getVotePriority(User $user, OptionInTournament $optionInTournament): Query
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('vs')
+            ->from(Vote::class, 'vs')
+            ->andWhere('vs.idUser = :user')
+            ->setParameter('user', $user->getId())
+            ->andWhere('vs.idOptionInTournament = :idOptionInTournament')
+            ->setParameter('idOptionInTournament', $optionInTournament->getId())
+            ->setMaxResults(1)
+            ->getQuery();
     }
 }

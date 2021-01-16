@@ -6,6 +6,7 @@ use App\Dto\TournamentDto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,42 +19,46 @@ class TournamentType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
-                'label' => false,
-                'attr' => [
-                    'class' => 'field_custom',
+                'label'    => false,
+                'attr'     => [
+                    'class'       => 'field_custom',
                     'placeholder' => 'Name',
                 ],
             ])
             ->add('description', TextareaType::class, [
                 'required' => false,
-                'label' => false,
-                'attr' => [
-                    'class' => 'field_custom',
+                'label'    => false,
+                'attr'     => [
+                    'class'       => 'field_custom',
                     'placeholder' => 'Description',
                 ],
             ])
             ->add('voteToDatetime', DateTimeType::class, [
-                'required' => false,
+                'required'     => false,
                 'input_format' => 'yyyy-MM-dd HH:mm:ss',
-                'label' => 'Students can vote to: ',
-                'widget' => 'single_text',
-                'attr' => [
+                'label'        => 'Students can vote to: ',
+                'widget'       => 'single_text',
+                'attr'         => [
                     'class' => 'field_custom datetimepicker',
                 ],
             ])
             ->add('selectToDatetime', DateTimeType::class, [
-                'required' => false,
+                'required'     => false,
                 'input_format' => 'yyyy-MM-dd HH:mm:ss',
-                'label' => 'Promoters can select to: ',
-                'widget' => 'single_text',
-                'attr' => [
+                'label'        => 'Promoters can select to: ',
+                'widget'       => 'single_text',
+                'attr'         => [
                     'class' => 'field_custom datetimepicker',
                 ],
             ])
+            ->add('votesQuantity', NumberType::class, [
+                'required' => true,
+                'label'    => 'Quantity of votes',
+            ])
             ->add('isPublic', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Make it public?',
-                'attr' => [
+                'label'    => 'Make it public?',
+                'attr'     => [
                     'class' => 'field_custom',
                 ],
             ]);
@@ -62,11 +67,12 @@ class TournamentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TournamentDto::class,
-            'attr' => [
+            'data_class'      => TournamentDto::class,
+            'attr'            => [
                 'class' => 'form_contant',
             ],
-            'csrf_protection'=>true,
+            'csrf_protection' => true,
+            'csrf_token_id'   => 'form_intention',
         ]);
     }
 }
