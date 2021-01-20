@@ -32,7 +32,7 @@ class ApiAddUserToTournament
     public function index(Request $request)
     {
         $query = $request->query->get('q');
-        $pageLimit = $request->query->getInt('page_limit', 10);
+        $pageLimit = $request->query->getInt('page_limit', 5);
         $page = $request->query->getInt('page', 1);
 
         $result = $this->userRepository->filterByQuery($page, $pageLimit, $query);

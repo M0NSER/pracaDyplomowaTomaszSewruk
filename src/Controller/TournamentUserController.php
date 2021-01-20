@@ -8,7 +8,7 @@ use App\Entity\TournamentUser;
 use App\Form\AddUserToTournamentType;
 use App\Repository\TournamentUserRepository;
 use App\Repository\UserRepository;
-use App\Util\FlashBag\MessageFactory;
+use App\Service\TournamentUserService;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,20 +39,28 @@ class TournamentUserController extends AbstractController
     private UserRepository $userRepository;
 
     /**
+     * @var TournamentUserService
+     */
+    private TournamentUserService $tournamentUserService;
+
+    /**
      * TournamentUserController constructor.
      *
      * @param PaginatorInterface       $paginator
      * @param TournamentUserRepository $tournamentUserRepository
      * @param UserRepository           $userRepository
+     * @param TournamentUserService    $tournamentUserService
      */
     public function __construct(
         PaginatorInterface $paginator,
         TournamentUserRepository $tournamentUserRepository,
-        UserRepository $userRepository)
+        UserRepository $userRepository,
+        TournamentUserService $tournamentUserService)
     {
         $this->paginator = $paginator;
         $this->tournamentUserRepository = $tournamentUserRepository;
         $this->userRepository = $userRepository;
+        $this->tournamentUserService = $tournamentUserService;
     }
 
     /**
@@ -61,27 +69,22 @@ class TournamentUserController extends AbstractController
      * @param Tournament $tournament
      *
      * @return Response
+     * @throws Exception
      */
     public function index(Request $request, Tournament $tournament): Response
     {
         // TODO: co jeśli użytkownik już jest w konkursie
 
         $userDto = new AddUserToTournamentDto();
+
         $addUserForm = $this->createForm(AddUserToTournamentType::class, $userDto);
         $addUserForm->handleRequest($request);
 
         $foundUsers = null;
         if ($addUserForm->isSubmitted() && $addUserForm->isValid()) {
-            $newTournamentUser = new TournamentUser();
-            $newTournamentUser->setIdUser($addUserForm->get('userFindField')->getData());
-            $newTournamentUser->setIdTournament($tournament);
-            $newTournamentUser->setTournamentUserType($this->getParameter('T_VOTER'));
+            $this->tournamentUserService->addUsers($addUserForm->get('usersToAdd')->getData(), $tournament);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($newTournamentUser);
-            $entityManager->flush();
-
-            $this->redirectToRoute('tournament-user', ['tournament' => $tournament->getId()]);
+            return $this->redirectToRoute('tournament-user', ['tournament' => $tournament->getId()]);
         }
 
         $query = $this->tournamentUserRepository->findAllUserInTournament($tournament);
@@ -92,12 +95,13 @@ class TournamentUserController extends AbstractController
             10,
             [
                 PaginatorInterface::DEFAULT_SORT_FIELD_NAME => 'tu.createAt',
-                PaginatorInterface::DEFAULT_SORT_DIRECTION => 'desc',
+                PaginatorInterface::DEFAULT_SORT_DIRECTION  => 'desc',
             ]
         );
 
         return $this->render('tournament_user/index.html.twig', [
-            'pagination' => $pagination,
+            'tournament'=>$tournament,
+            'pagination'  => $pagination,
             'addUserForm' => $addUserForm->createView(),
         ]);
     }
@@ -110,20 +114,28 @@ class TournamentUserController extends AbstractController
      */
     public function delete(TournamentUser $tournamentUser): RedirectResponse
     {
-        try {
-            $entityManager = $this->getDoctrine()->getManager();
-            $tournamentUser->setTournamentUserType($this->getParameter('T_DELETED'));
-            $entityManager->persist($tournamentUser);
-            $entityManager->flush();
-            $entityManager->remove($tournamentUser);
-            $entityManager->flush();
-            $this->addFlash('success', MessageFactory::getMessage('MESSAGE_DELETE_SUCCESS'));
-        } catch (Exception $ex) {
-            $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_DELETE_FAILURE'));
-        }
+        $this->tournamentUserService->delete($tournamentUser);
 
-        return $this->redirectToRoute('tournament-user', ['tournament' => $tournamentUser->getIdTournament()->getId()]);
+        return $this->redirectToRoute('tournament-user', [
+            'tournament' => $tournamentUser->getIdTournament()->getId(),
+        ]);
+    }
 
+    /**
+     * @Route("/tournament-user/{id}/set-privilege/{privilege}", name="tournament-user-set-privilege", requirements={"id"="\d+", "privilege"="T_VOTER|T_MODDER|T_ADMIN"})
+     * @param Request        $request
+     * @param TournamentUser $tournamentUser
+     * @param string         $privilege
+     *
+     * @return RedirectResponse
+     */
+    public function setPrivilege(Request $request, TournamentUser $tournamentUser, string $privilege)
+    {
+        $this->tournamentUserService->setPrivilege($tournamentUser, $privilege);
+
+        return $this->redirectToRoute('tournament-user', [
+            'tournament' => $tournamentUser->getIdTournament()->getId(),
+        ]);
     }
 
 

@@ -1,0 +1,21 @@
+{% if userType is defined %}
+    {% if userType == tournament_privilege.T_ADMIN %}
+        <span class="btn btn-danger btn-sm">
+        {{ raw_tournament_privilege.T_ADMIN }}
+        </span>
+    {% elseif userType == tournament_privilege.T_MODDER %}
+        <span class="btn btn-warning btn-sm">
+        {{ raw_tournament_privilege.T_MODDER }}
+        </span>
+    {% elseif userType == tournament_privilege.T_VOTER %}
+        <span>
+            {{ raw_tournament_privilege.T_VOTER }}
+        </span>
+    {% elseif userType == tournament_privilege.T_DELETED %}
+        <del>
+            {{ raw_tournament_privilege.T_DELETED }}
+        </del>
+    {% else %}
+        {{ userType }}
+    {% endif %}
+{% endif %}

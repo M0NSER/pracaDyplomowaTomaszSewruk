@@ -8,13 +8,19 @@ use DateTime;
 use Doctrine\Common\Annotations\Annotation\Enum;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping\UniqueConstraint;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * TournamentUser
- * @ORM\Table(name="tournament_user", indexes={@ORM\Index(name="fk_tournament_owners_tournaments1_idx", columns={"id_tournament"}), @ORM\Index(name="fk_tournament_owners_users1_idx", columns={"id_user"})})
+ * @ORM\Table(name="tournament_user", indexes={@ORM\Index(name="fk_tournament_owners_tournaments1_idx",
+ *     columns={"id_tournament"}), @ORM\Index(name="fk_tournament_owners_users1_idx", columns={"id_user"})},
+ *     uniqueConstraints={@ORM\UniqueConstraint(columns={"id_user", "id_tournament"})}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\TournamentUserRepository")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", hardDelete=false)
+ * @UniqueEntity(fields={"idUser", "idTournament"}, message="This user already exists")
  */
 class TournamentUser
 {
@@ -78,10 +84,14 @@ class TournamentUser
 
     /**
      * @param int $id
+     *
+     * @return $this
      */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -94,10 +104,14 @@ class TournamentUser
 
     /**
      * @param string $tournamentUserType
+     *
+     * @return $this
      */
-    public function setTournamentUserType(string $tournamentUserType): void
+    public function setTournamentUserType(string $tournamentUserType): self
     {
         $this->tournamentUserType = $tournamentUserType;
+
+        return $this;
     }
 
     /**
@@ -110,10 +124,13 @@ class TournamentUser
 
     /**
      * @ORM\PrePersist()
+     * @return $this
      */
-    public function setCreateAt(): void
+    public function setCreateAt(): self
     {
         $this->createAt = new DateTime();
+
+        return $this;
     }
 
     /**
@@ -125,11 +142,14 @@ class TournamentUser
     }
 
     /**
-     * @param DateTime|null $updateAt
+     * @ORM\PreUpdate()
+     * @return $this
      */
-    public function setUpdateAt(?DateTime $updateAt): void
+    public function setUpdateAt(): self
     {
-        $this->updateAt = $updateAt;
+        $this->updateAt = new DateTime();
+
+        return $this;
     }
 
     /**
@@ -142,10 +162,14 @@ class TournamentUser
 
     /**
      * @param DateTime|null $deletedAt
+     *
+     * @return $this
      */
-    public function setDeletedAt(?DateTime $deletedAt): void
+    public function setDeletedAt(?DateTime $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
     }
 
     /**
@@ -158,10 +182,14 @@ class TournamentUser
 
     /**
      * @param Tournament $idTournament
+     *
+     * @return $this
      */
-    public function setIdTournament(Tournament $idTournament): void
+    public function setIdTournament(Tournament $idTournament): self
     {
         $this->idTournament = $idTournament;
+
+        return $this;
     }
 
     /**
@@ -174,11 +202,13 @@ class TournamentUser
 
     /**
      * @param User $idUser
+     *
+     * @return $this
      */
-    public function setIdUser(User $idUser): void
+    public function setIdUser(User $idUser): self
     {
         $this->idUser = $idUser;
+
+        return $this;
     }
-
-
 }

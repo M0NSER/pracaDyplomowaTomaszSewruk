@@ -56,6 +56,13 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@security.token_storage'
 
+    App\Service\TournamentUserService:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '%tournament_privilege%'
+            - '%raw_tournament_privilege%'
+            - '@App\Repository\TournamentUserRepository'
+            - '@session.flash_bag'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -34,5 +34,14 @@ class SystemMessage
     const MESSAGE_IT_WAS_NOT_POSSIBLE_TO_VOTE = "It was not possible to vote";
     const MESSAGE_CAN_NOT_DELETE_VOTE = "Can not delete this vote";
 
+    const MESSAGE_USER_SUCCESSFULLY_ADDED = "%s user/s successfully added";
+    const MESSAGE_CAN_NOT_ADD_USER_TO_TOURNAMENT = "Something went wrong during saving users to tournament";
+
+    const MESSAGE_ALL_USER_ALREADY_EXISTS = "All users already exists";
+    const MESSAGE_SOME_USERS_ALREADY_EXISTS = "Some users already exists";
+
+    const MESSAGE_PRIVILEGE_HAS_BEEN_CHANGER_FOR_USER = "Privilege \"%s\" has been added for %s";
+    const MESSAGE_PRIVILEGE_CAN_NOT_BE_CHANGED_FOR = "Privilege can not be change for %s";
+
     const LOGIN_FIRST = "Please login first";
 }

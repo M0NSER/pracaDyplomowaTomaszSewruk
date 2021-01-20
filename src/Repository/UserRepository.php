@@ -50,7 +50,7 @@ class UserRepository extends ServiceEntityRepository
      *
      * @return array
      */
-    public function filterByQuery(int $page, int $pageLimit, string $query = null)
+    public function filterByQuery(int $page, int $pageLimit, string $query = null): array
     {
         $queryBuilder = $this->getBasicQuery()
             ->select('partial u.{id, firstName, lastName, email}')
@@ -85,7 +85,7 @@ class UserRepository extends ServiceEntityRepository
      *
      * @return Query
      */
-    public function findUserByQuestion(string $question)
+    public function findUserByQuestion(string $question): Query
     {
         $likeQuestion = '%' . $question . '%';
 

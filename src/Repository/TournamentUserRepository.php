@@ -55,6 +55,8 @@ class TournamentUserRepository extends ServiceEntityRepository
             ->select('tu')
             ->andWhere('tu.idTournament = :tournamentId')
             ->setParameter('tournamentId', $tournament->getId())
+            ->orderBy('tu.createAt', 'DESC')
+            ->addOrderBy('tu.updateAt', 'DESC')
             ->getQuery();
     }
 }
