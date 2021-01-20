@@ -13,25 +13,29 @@ use Symfony\Component\Validator\Constraints as Assert;
 class AddUserToTournamentDto
 {
     /**
-     * @Assert\Type("string")
+     * @Assert\Type("array")
      * @Assert\Length(min="3")
-     * @var string
+     * @var array
      */
-    private string $userFindField;
+    private array $usersToAdd;
 
     /**
-     * @return string
+     * @return array
      */
-    public function getUserFindField(): string
+    public function getUsersToAdd(): array
     {
-        return $this->userFindField;
+        return $this->usersToAdd;
     }
 
     /**
-     * @param string $userFindField
+     * @param array $usersToAdd
+     *
+     * @return $this
      */
-    public function setUserFindField(string $userFindField): void
+    public function setUsersToAdd(array $usersToAdd): self
     {
-        $this->userFindField = $userFindField;
+        $this->usersToAdd = $usersToAdd;
+
+        return $this;
     }
 }
