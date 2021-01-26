@@ -45,7 +45,7 @@ class TournamentUserService
     {
         $this->entityManager = $entityManager;
         $this->tournamentPrivilege = $tournamentPrivilege;
-        $this->rawTournamentPrivilege  = $rawTournamentPrivilege;
+        $this->rawTournamentPrivilege = $rawTournamentPrivilege;
         $this->flashBag = $flashBag;
         $this->tournamentUserRepository = $tournamentUserRepository;
     }
@@ -123,6 +123,16 @@ class TournamentUserService
      */
     public function setPrivilege(TournamentUser $tournamentUser, string $privilege)
     {
+        $lastAdmin = $this->entityManager->getRepository(TournamentUser::class)->findBy([
+            'idTournament'       => $tournamentUser->getIdTournament(),
+            'tournamentUserType' => $this->tournamentPrivilege['T_ADMIN'],
+        ]);
+        if (!(sizeof($lastAdmin) > 1)) {
+            $this->flashBag->add('warning', MessageFactory::getMessage('MESSAGE_TOURNAMENT_MUST_HAVE_AT_LEAST_ONE_ADMIN'));
+
+            return;
+        }
+
         try {
             switch ($privilege) {
                 case $this->tournamentPrivilege['T_ADMIN']:
@@ -148,5 +158,24 @@ class TournamentUserService
                 $tournamentUser->getIdUser()->getEmail(),
             ));
         }
+    }
+
+    /**
+     * @param TournamentUser $tournamentUser
+     */
+    public function canChangeTournamentUserType(TournamentUser $tournamentUser)
+    {
+        $admins = $this->entityManager->getRepository(TournamentUser::class)->findBy([
+            'idTournament'       => $tournamentUser->getIdTournament(),
+            'tournamentUserType' => $this->tournamentPrivilege['T_ADMIN'],
+        ]);
+dump($admins);die;
+        if (!(sizeof($admins) > 1)) {
+            $this->flashBag->add('warning', MessageFactory::getMessage('MESSAGE_TOURNAMENT_MUST_HAVE_AT_LEAST_ONE_ADMIN'));
+
+            return false;
+        }
+
+        return true;
     }
 }

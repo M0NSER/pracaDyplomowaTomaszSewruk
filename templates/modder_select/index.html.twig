@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}
+    <h2>
+        Choose people which You want to have in Your team
+    </h2>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        {{ optionInTournament.title }}
+                        ({{ optionInTournament.idTournament.name }})
+                    </h3>
+                </div>
+                <div class="card-body">
+                    {{ optionInTournament.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-plus"></i>
+                        List of people to select
+                    </h3>
+                    <div class="card-tools">
+                        <span class="badge badge-warning">
+                            {{ countNotSelectedVotes }}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if countNotSelectedVotes > 0 %}
+                        {{ form_start(notSelectedVotesForm) }}
+                        {{ form_widget(notSelectedVotesForm) }}
+                        <button class="btn btn-sm btn-success" type="submit">Add people</button>
+                        {{ form_end(notSelectedVotesForm) }}
+                    {% else %}
+                        <h6>
+                            No people to select
+                        </h6>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-minus"></i>
+                        Selected people
+                    </h3>
+                    <div class="card-tools">
+                        <span class="badge {{ countSelectedVotes >= optionInTournament.numberOfSlots ? 'badge-danger' : 'badge-warning' }}">
+                            {{ countSelectedVotes }}/{{ optionInTournament.numberOfSlots }}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if countSelectedVotes > 0 %}
+                        {{ form_start(selectedVotesForm) }}
+                        {{ form_widget(selectedVotesForm) }}
+                        <button class="btn btn-sm btn-danger" type="submit">Delete people</button>
+                        {{ form_end(selectedVotesForm) }}
+                    {% else %}
+                        <h6>
+                            No people to unselect
+                        </h6>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
