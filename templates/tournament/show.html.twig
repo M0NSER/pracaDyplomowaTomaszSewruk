@@ -43,13 +43,14 @@
 
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFtYIhJRQ7xvg/profile-displayphoto-shrink_800_800/0/1516291647405?e=1615420800&v=beta&t=6V-jvtptiI1HNg3JaC3BhubSqyTM8vhfqWGVMXmorF0"
+                                            <img src="{{ asset('dist/img/no-photo.jpg') }}"
                                                  alt="user-avatar" class="img-circle img-fluid">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
+                                        <a href="{{ path('modder-select', {'id':item.id}) }}" class="btn btn-danger btn-sm">Select voters</a>
                                         <a href="{{ path('option-in-tournament-show',{'id':item.id}) }}"
                                            class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> Show

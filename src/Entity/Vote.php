@@ -16,6 +16,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Vote
 {
+    public function __toString()
+    {
+        return $this->idUser->getFirstName().' '.$this->idUser->getLastName().'('.$this->idUser->getEmail().')';
+    }
+
     /**
      * @var int
      * @ORM\Column(name="id_vote", type="integer", nullable=false)
@@ -65,7 +70,7 @@ class Vote
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user", nullable=false)
      * })

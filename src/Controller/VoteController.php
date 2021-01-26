@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\OptionInTournament;
 use App\Entity\Vote;
 use App\Util\FlashBag\MessageFactory;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\ORMException;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -37,7 +34,7 @@ class VoteController extends AbstractController
     }
 
     /**
-     * @Route("vote/{id}/delete", name="vote-delete")
+     * @Route("vote/{id}/delete", name="vote-delete", requirements={"id"="\d+"})
      * @param Vote $vote
      *
      * @return RedirectResponse

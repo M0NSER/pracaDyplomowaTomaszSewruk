@@ -13,7 +13,6 @@
             {% set tournament = item.tournamentUser.idTournament %}
             {% set uType = item.tournamentUser.tournamentUserType %}
 
-
             <div class="col-lg-4 col-md-6 custom-card">
 
                 <div class="card
@@ -21,10 +20,10 @@
                                 card-danger
                             {% elseif uType == tournament_privilege.T_MODDER %}
                                 card-warning
-                                {% else %}
+                            {% else %}
                                 card-gray-dark
                             {% endif %}
-">
+                            ">
                     <div class="card-header">
                         <h3 class="card-title">
                             {{ tournament.id }}: {{ tournament.name|length > 50 ? tournament.name|slice(0,50)~'...' : tournament.name }}
@@ -45,7 +44,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary">Select</a>
+                        <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary">Show</a>
                         <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning">Edit</a>
                         <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-info">Add</a>
                         <a href="{{ path('tournament-user', {'tournament':tournament.id}) }}" class="btn btn-secondary">Show users</a>

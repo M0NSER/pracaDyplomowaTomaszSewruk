@@ -43,5 +43,15 @@ class SystemMessage
     const MESSAGE_PRIVILEGE_HAS_BEEN_CHANGER_FOR_USER = "Privilege \"%s\" has been added for %s";
     const MESSAGE_PRIVILEGE_CAN_NOT_BE_CHANGED_FOR = "Privilege can not be change for %s";
 
+    const MESSAGE_TOURNAMENT_MUST_HAVE_AT_LEAST_ONE_ADMIN = "Tournament must have at least one admin";
+
+    const MESSAGE_SUCCESSFULLY_SELECTED_PEOPLE = "People has been selected successfully";
+    const MESSAGE_CAN_NOT_SELECT_SOME_PEOPLE = "Can not select some people, contact with admin";
+
+    const MESSAGE_SUCCESSFULLY_UNSELECT_PEOPLE = "People has been unselected successfully";
+    const MESSAGE_PEOPLE_CAN_NOT_BE_UNSELECTED = "People can not be unselected, contact with admin";
+
+    const MESSAGE_YOU_HAVE_SELECTED_TOO_MUCH_PEOPLE = "You have selected too much people, there is no free slots";
+
     const LOGIN_FIRST = "Please login first";
 }

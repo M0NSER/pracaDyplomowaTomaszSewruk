@@ -3,14 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\OptionInTournament;
-use App\Entity\Tournament;
 use App\Entity\User;
 use App\Entity\Vote;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Vote|null find($id, $lockMode = null, $lockVersion = null)
@@ -63,6 +61,53 @@ class VoteRepository extends ServiceEntityRepository
             ->andWhere('vs.idOptionInTournament = :idOptionInTournament')
             ->setParameter('idOptionInTournament', $optionInTournament->getId())
             ->setMaxResults(1)
+            ->getQuery();
+    }
+
+    /**
+     * @param OptionInTournament $optionInTournament
+     *
+     * @return Query
+     */
+    public function getNotSelectedVotesInOptionInTournament(OptionInTournament $optionInTournament): Query
+    {
+        return $this->getBasicQuery()
+            ->andWhere('v.idOptionInTournament = :oit')
+            ->setParameter('oit', $optionInTournament->getId())
+            ->andWhere('v.isSelectedByPromoter = :isSelectedByPromoter')
+            ->setParameter('isSelectedByPromoter', false)
+            ->getQuery();
+    }
+
+    /**
+     * @param OptionInTournament $optionInTournament
+     *
+     * @return Query
+     */
+    public function getSelectedVotesInOptionInTournament(OptionInTournament $optionInTournament): Query
+    {
+        return $this->getBasicQuery()
+            ->andWhere('v.idOptionInTournament = :oit')
+            ->setParameter('oit', $optionInTournament->getId())
+            ->andWhere('v.isSelectedByPromoter = :isSelectedByPromoter')
+            ->setParameter('isSelectedByPromoter', true)
+            ->getQuery();
+    }
+
+    /**
+     * @param OptionInTournament $optionInTournament
+     *
+     * @return Query
+     */
+    public function getCountSelectedVotesInOptionInTournament(OptionInTournament $optionInTournament): Query
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('COUNT(v.id)')
+            ->from(Vote::class, 'v')
+            ->andWhere('v.idOptionInTournament = :oit')
+            ->setParameter('oit', $optionInTournament->getId())
+            ->andWhere('v.isSelectedByPromoter = :isSelectedByPromoter')
+            ->setParameter('isSelectedByPromoter', true)
             ->getQuery();
     }
 }
