@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use DateTime;
-use Doctrine\Common\Annotations\Annotation\Enum;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping\UniqueConstraint;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**

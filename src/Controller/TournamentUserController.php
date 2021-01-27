@@ -64,7 +64,7 @@ class TournamentUserController extends AbstractController
     }
 
     /**
-     * @Route("/tournament/{tournament}/tournament-user", name="tournament-user", requirements={"tournament"="\d+"})
+     * @Route("/tournament/{tournament}/tournament-user/", name="tournament-user", requirements={"tournament"="\d+"})
      * @param Request    $request
      * @param Tournament $tournament
      *
@@ -87,7 +87,12 @@ class TournamentUserController extends AbstractController
             return $this->redirectToRoute('tournament-user', ['tournament' => $tournament->getId()]);
         }
 
-        $query = $this->tournamentUserRepository->findAllUserInTournament($tournament);
+        if ($request->query->getBoolean('showDeleted') == false) {
+            $query = $this->tournamentUserRepository->findAllUserInTournament($tournament);
+        }
+        else{
+            $query = $this->tournamentUserRepository->findAllDeletedUserInTournament($tournament);
+        }
 
         $pagination = $this->paginator->paginate(
             $query,
@@ -100,7 +105,7 @@ class TournamentUserController extends AbstractController
         );
 
         return $this->render('tournament_user/index.html.twig', [
-            'tournament'=>$tournament,
+            'tournament'  => $tournament,
             'pagination'  => $pagination,
             'addUserForm' => $addUserForm->createView(),
         ]);
@@ -122,14 +127,13 @@ class TournamentUserController extends AbstractController
     }
 
     /**
-     * @Route("/tournament-user/{id}/set-privilege/{privilege}", name="tournament-user-set-privilege", requirements={"id"="\d+", "privilege"="T_VOTER|T_MODDER|T_ADMIN"})
-     * @param Request        $request
+     * @Route("/tournament-user/{id}/set-privilege/{privilege}", name="tournament-user-set-privilege", requirements={"id"="\d+", "privilege"="T_VOTER|T_MODDER|T_ADMIN|T_DELETED"})
      * @param TournamentUser $tournamentUser
      * @param string         $privilege
      *
      * @return RedirectResponse
      */
-    public function setPrivilege(Request $request, TournamentUser $tournamentUser, string $privilege)
+    public function setPrivilege(TournamentUser $tournamentUser, string $privilege): RedirectResponse
     {
         $this->tournamentUserService->setPrivilege($tournamentUser, $privilege);
 

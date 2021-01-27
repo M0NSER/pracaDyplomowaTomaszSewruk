@@ -42,9 +42,9 @@
                     </ul>
 
                     <!-- SEARCH FORM -->
-                    <form class="form-inline ml-0 ml-md-3">
+                    <form action="{{ path('add-user-by-code') }}" class="form-inline ml-0 ml-md-3" method="get">
                         <div class="input-group input-group-sm">
-                            <input class="form-control" type="search" placeholder="wpisz kod" aria-label="Search">
+                            <input type="text" placeholder="insert code" autocomplete="off" name="tournament_code" class="form-control" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-navbar" type="submit">
                                     <i class="fas fa-plus"></i>
@@ -98,18 +98,18 @@
             </div>
             <div class="container">
                 {% block content_header %}
-{#                    <div class="row mb-2">#}
-{#                        <div class="col-sm-6">#}
-{#                            <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1>#}
-{#                        </div><!-- /.col -->#}
-{#                        <div class="col-sm-6">#}
-{#                            <ol class="breadcrumb float-sm-right">#}
-{#                                <li class="breadcrumb-item"><a href="#">Home</a></li>#}
-{#                                <li class="breadcrumb-item"><a href="#">Layout</a></li>#}
-{#                                <li class="breadcrumb-item active">Top Navigation</li>#}
-{#                            </ol>#}
-{#                        </div><!-- /.col -->#}
-{#                    </div><!-- /.row -->#}
+                    {# <div class="row mb-2"> #}
+                    {# <div class="col-sm-6"> #}
+                    {# <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1> #}
+                    {# </div><!-- /.col --> #}
+                    {# <div class="col-sm-6"> #}
+                    {# <ol class="breadcrumb float-sm-right"> #}
+                    {# <li class="breadcrumb-item"><a href="#">Home</a></li> #}
+                    {# <li class="breadcrumb-item"><a href="#">Layout</a></li> #}
+                    {# <li class="breadcrumb-item active">Top Navigation</li> #}
+                    {# </ol> #}
+                    {# </div><!-- /.col --> #}
+                    {# </div><!-- /.row --> #}
                 {% endblock %}
             </div><!-- /.container-fluid -->
         </div>

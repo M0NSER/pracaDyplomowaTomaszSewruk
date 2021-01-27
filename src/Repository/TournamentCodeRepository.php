@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Tournament;
 use App\Entity\TournamentCode;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -41,5 +42,41 @@ class TournamentCodeRepository extends ServiceEntityRepository
     public function findAllQuery(): Query
     {
         return $this->getBasicQuery()->getQuery();
+    }
+
+    /**
+     * @param Tournament $tournament
+     *
+     * @return Query
+     */
+    public function getCodeForTournament(Tournament $tournament): Query
+    {
+        return $this->getBasicQuery()
+            ->select('tc')
+            ->andWhere('tc.idTournament = :idTournament')
+            ->setParameter('idTournament', $tournament->getId())
+            ->andWhere($this->getBasicQuery()->expr()->orX(
+                $this->getBasicQuery()->expr()->gt('tc.expireAt', 'CURRENT_TIMESTAMP()'),
+                $this->getBasicQuery()->expr()->isNull('tc.expireAt')
+            ))
+            ->getQuery();
+    }
+
+    /**
+     * @param string $queryCode
+     *
+     * @return Query
+     */
+    public function getCodeByQuery(string $queryCode): Query
+    {
+        return $this->getBasicQuery()
+            ->select('tc')
+            ->andWhere('tc.generatedCode = :queryCode')
+            ->setParameter('queryCode', $queryCode)
+            ->andWhere($this->getBasicQuery()->expr()->orX(
+                $this->getBasicQuery()->expr()->gt('tc.expireAt', 'CURRENT_TIMESTAMP()'),
+                $this->getBasicQuery()->expr()->isNull('tc.expireAt')
+            ))
+            ->getQuery();
     }
 }

@@ -59,7 +59,7 @@ class TournamentCode
      * @var Tournament
      * @ORM\ManyToOne(targetEntity="Tournament")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament")
+     *   @ORM\JoinColumn(name="id_tournament", referencedColumnName="id_tournament", nullable=false)
      * })
      */
     private Tournament $idTournament;
@@ -74,10 +74,14 @@ class TournamentCode
 
     /**
      * @param int $id
+     *
+     * @return $this
      */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -90,10 +94,14 @@ class TournamentCode
 
     /**
      * @param string $generatedCode
+     *
+     * @return $this
      */
-    public function setGeneratedCode(string $generatedCode): void
+    public function setGeneratedCode(string $generatedCode): self
     {
         $this->generatedCode = $generatedCode;
+
+        return $this;
     }
 
     /**
@@ -106,10 +114,14 @@ class TournamentCode
 
     /**
      * @param DateTime|null $expireAt
+     *
+     * @return $this
      */
-    public function setExpireAt(?DateTime $expireAt): void
+    public function setExpireAt(?DateTime $expireAt): self
     {
         $this->expireAt = $expireAt;
+
+        return $this;
     }
 
     /**
@@ -121,11 +133,14 @@ class TournamentCode
     }
 
     /**
-     * @ORM\PrePersist()
+     * @ORM\PrePersist
+     * @return $this
      */
-    public function setCreateAt(): void
+    public function setCreateAt(): self
     {
         $this->createAt = new DateTime();
+
+        return $this;
     }
 
     /**
@@ -138,10 +153,14 @@ class TournamentCode
 
     /**
      * @param DateTime|null $updateAt
+     *
+     * @return $this
      */
-    public function setUpdateAt(?DateTime $updateAt): void
+    public function setUpdateAt(?DateTime $updateAt): self
     {
         $this->updateAt = $updateAt;
+
+        return $this;
     }
 
     /**
@@ -154,10 +173,14 @@ class TournamentCode
 
     /**
      * @param DateTime|null $deletedAt
+     *
+     * @return $this
      */
-    public function setDeletedAt(?DateTime $deletedAt): void
+    public function setDeletedAt(?DateTime $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
     }
 
     /**
@@ -170,11 +193,13 @@ class TournamentCode
 
     /**
      * @param Tournament $idTournament
+     *
+     * @return $this
      */
-    public function setIdTournament(Tournament $idTournament): void
+    public function setIdTournament(Tournament $idTournament): self
     {
         $this->idTournament = $idTournament;
+
+        return $this;
     }
-
-
 }

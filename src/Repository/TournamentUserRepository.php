@@ -55,6 +55,26 @@ class TournamentUserRepository extends ServiceEntityRepository
             ->select('tu')
             ->andWhere('tu.idTournament = :tournamentId')
             ->setParameter('tournamentId', $tournament->getId())
+            ->andWhere('tu.tournamentUserType != :userType')
+            ->setParameter('userType', 'T_DELETED')
+            ->orderBy('tu.createAt', 'DESC')
+            ->addOrderBy('tu.updateAt', 'DESC')
+            ->getQuery();
+    }
+
+    /**
+     * @param Tournament $tournament
+     *
+     * @return Query
+     */
+    public function findAllDeletedUserInTournament(Tournament $tournament): Query
+    {
+        return $this->getBasicQuery()
+            ->select('tu')
+            ->andWhere('tu.idTournament = :tournamentId')
+            ->setParameter('tournamentId', $tournament->getId())
+            ->andWhere('tu.tournamentUserType = :userType')
+            ->setParameter('userType', 'T_DELETED')
             ->orderBy('tu.createAt', 'DESC')
             ->addOrderBy('tu.updateAt', 'DESC')
             ->getQuery();
