@@ -53,5 +53,11 @@ class SystemMessage
 
     const MESSAGE_YOU_HAVE_SELECTED_TOO_MUCH_PEOPLE = "You have selected too much people, there is no free slots";
 
+    const MESSAGE_YOUR_CODE_IS = "Your code: %s";
+
+    const MESSAGE_THIS_CODE_DOES_NOT_EXIST_OR_IS_EXPIRED = "This code does not exist or is expired";
+    const MESSAGE_SUCCESSFULLY_ADDED_TO_TOURNAMENT = "You have been successfully added to tournament";
+    const MESSAGE_YOU_ARE_ALREADY_IN_THIS_TOURNAMENT_OR_YOU_HAVE_BEEN_DELETED = "You are already in this tournament, or you have been deleted";
+
     const LOGIN_FIRST = "Please login first";
 }

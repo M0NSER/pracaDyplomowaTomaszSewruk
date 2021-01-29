@@ -147,6 +147,16 @@ class TournamentUserService
                     $tournamentUser
                         ->setTournamentUserType($this->tournamentPrivilege['T_VOTER']);
                     break;
+                case $this->tournamentPrivilege['T_DELETED']:
+                    $tournamentUser
+                        ->setTournamentUserType($this->tournamentPrivilege['T_DELETED']);
+                    break;
+                default:
+                    $this->flashBag->add('danger', MessageFactory::getMessage('MESSAGE_PRIVILEGE_CAN_NOT_BE_CHANGED_FOR',
+                        $tournamentUser->getIdUser()->getEmail(),
+                    ));
+
+                    return;
             }
             $this->entityManager->persist($tournamentUser);
             $this->entityManager->flush();
@@ -162,14 +172,17 @@ class TournamentUserService
 
     /**
      * @param TournamentUser $tournamentUser
+     *
+     * @return bool
      */
-    public function canChangeTournamentUserType(TournamentUser $tournamentUser)
+    public function canChangeTournamentUserType(TournamentUser $tournamentUser): bool
     {
         $admins = $this->entityManager->getRepository(TournamentUser::class)->findBy([
             'idTournament'       => $tournamentUser->getIdTournament(),
             'tournamentUserType' => $this->tournamentPrivilege['T_ADMIN'],
         ]);
-dump($admins);die;
+
+
         if (!(sizeof($admins) > 1)) {
             $this->flashBag->add('warning', MessageFactory::getMessage('MESSAGE_TOURNAMENT_MUST_HAVE_AT_LEAST_ONE_ADMIN'));
 

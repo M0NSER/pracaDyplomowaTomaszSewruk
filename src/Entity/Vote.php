@@ -10,7 +10,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Vote
- * @ORM\Table(name="vote", indexes={@ORM\Index(name="fk_votes_users1_idx", columns={"id_user"}), @ORM\Index(name="fk_votes_options_in_tournaments1_idx", columns={"id_option_in_tournament"})})
+ * @ORM\Table(name="vote", indexes={@ORM\Index(name="fk_votes_users1_idx",
+ *     columns={"id_user"}), @ORM\Index(name="fk_votes_options_in_tournaments1_idx", columns={"id_option_in_tournament"})},
+ *     uniqueConstraints={@ORM\UniqueConstraint(columns={"id_user", "id_option_in_tournament"})}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -18,7 +21,7 @@ class Vote
 {
     public function __toString()
     {
-        return $this->idUser->getFirstName().' '.$this->idUser->getLastName().'('.$this->idUser->getEmail().')';
+        return $this->idUser->getFirstName() . ' ' . $this->idUser->getLastName() . '(' . $this->idUser->getEmail() . ')';
     }
 
     /**

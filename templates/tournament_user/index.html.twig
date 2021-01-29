@@ -16,11 +16,32 @@
             <div class="col-md-12">
                 {{ form_start(addUserForm) }}
                 {{ form_widget(addUserForm) }}
-                <button class="btn btn-primary" type="submit">Add users</button>
+                <button class="btn btn-primary btn-sm" type="submit">Add users</button>
                 {{ form_end(addUserForm) }}
             </div>
         </div>
         <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        {% if not app.request.get('showDeleted') %}
+                            <a class="btn btn-primary btn-sm" href="{{ path('tournament-user', {'tournament':tournament.id, 'showDeleted':true}) }}">
+                                Show deleted users
+                            </a>
+                        {% else %}
+                            <a class="btn btn-success btn-sm" href="{{ path('tournament-user', {'tournament':tournament.id}) }}">
+                                Show actual users
+                            </a>
+                        {% endif %}
+
+                        <a class="btn btn-warning btn-sm" href="{{ path('generate-code', {'id':tournament.id}) }}">
+                            Generate CODE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -55,11 +76,11 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a type="button" class="btn btn-secondary btn-sm" href="{{ path('tournament-user-delete', {'id':tournamenUser.id}) }}">Delete</a>
+                                            <a type="button" class="btn btn-secondary btn-sm" href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_DELETED}) }}">Delete</a>
                                             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(98px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <div class="dropdown-menu" x-placement="bottom-start">
                                                 <a class="dropdown-item"
                                                    href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_VOTER}) }}">
                                                     Set as {{ raw_tournament_privilege.T_VOTER }}
@@ -74,6 +95,12 @@
                                                 </a>
                                             </div>
                                         </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="100%">
+                                        No users here
                                     </td>
                                 </tr>
                             {% endfor %}
