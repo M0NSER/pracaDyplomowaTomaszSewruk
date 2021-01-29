@@ -82,6 +82,7 @@ class TournamentUserController extends AbstractController
 
         $foundUsers = null;
         if ($addUserForm->isSubmitted() && $addUserForm->isValid()) {
+            $this->get("security.csrf.token_manager")->refreshToken("form_intention");
             $this->tournamentUserService->addUsers($addUserForm->get('usersToAdd')->getData(), $tournament);
 
             return $this->redirectToRoute('tournament-user', ['tournament' => $tournament->getId()]);
@@ -133,7 +134,7 @@ class TournamentUserController extends AbstractController
      *
      * @return RedirectResponse
      */
-    public function setPrivilege(TournamentUser $tournamentUser, string $privilege): RedirectResponse
+    public function     setPrivilege(TournamentUser $tournamentUser, string $privilege): RedirectResponse
     {
         $this->tournamentUserService->setPrivilege($tournamentUser, $privilege);
 

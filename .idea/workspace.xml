@@ -26,23 +26,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Dyplo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dyplo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CodeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CodeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TournamentCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TournamentCode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TournamentUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TournamentUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Vote.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Vote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TournamentUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TournamentUserService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -296,6 +283,8 @@
       <workItem from="1611613676041" duration="11007000" />
       <workItem from="1611692573867" duration="38000" />
       <workItem from="1611693548433" duration="1741000" />
+      <workItem from="1611776343341" duration="2169000" />
+      <workItem from="1611937842065" duration="2599000" />
     </task>
     <servers />
   </component>

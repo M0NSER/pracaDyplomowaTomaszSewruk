@@ -6,6 +6,7 @@ use App\Entity\Tournament;
 use App\Entity\TournamentCode;
 use App\Entity\TournamentUser;
 use App\Repository\TournamentCodeRepository;
+use App\Repository\TournamentUserRepository;
 use App\Util\FlashBag\MessageFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
@@ -35,15 +36,21 @@ class CodeController extends AbstractController
     private TournamentCodeRepository $tournamentCodeRepository;
 
     /**
+     * @var TournamentUserRepository
+     */
+    private TournamentUserRepository $tournamentUserRepository;
+
+    /**
      * CodeController constructor.
      *
      * @param EntityManagerInterface   $entityManager
      * @param TournamentCodeRepository $tournamentCodeRepository
      */
-    public function __construct(EntityManagerInterface $entityManager, TournamentCodeRepository $tournamentCodeRepository)
+    public function __construct(EntityManagerInterface $entityManager, TournamentCodeRepository $tournamentCodeRepository, TournamentUserRepository $tournamentUserRepository)
     {
         $this->entityManager = $entityManager;
         $this->tournamentCodeRepository = $tournamentCodeRepository;
+        $this->tournamentUserRepository = $tournamentUserRepository;
     }
 
     /**
@@ -59,11 +66,22 @@ class CodeController extends AbstractController
 
         /** @var TournamentCode $code */
         $code = $this->tournamentCodeRepository->getCodeByQuery($queryCode)->getOneOrNullResult();
-//        dd($queryCode, $code);
+
         if (!$code) {
             $this->addFlash('warning', MessageFactory::getMessage('MESSAGE_THIS_CODE_DOES_NOT_EXIST_OR_IS_EXPIRED'));
 
             return $this->redirectToRoute('main');
+        }
+
+        if ($this->tournamentUserRepository->findOneBy([
+            'idTournament' => $code->getIdTournament(),
+            'idUser'       => $this->getUser(),
+        ])) {
+            $this->addFlash('warning', MessageFactory::getMessage('MESSAGE_YOU_ARE_ALREADY_IN_THIS_TOURNAMENT_OR_YOU_HAVE_BEEN_DELETED'));
+
+            return $this->redirectToRoute('tournament-show', [
+                'id' => $code->getIdTournament()->getId(),
+            ]);
         }
 
         $tournamentUser = new TournamentUser();
@@ -100,7 +118,7 @@ class CodeController extends AbstractController
 
         if ($existingCode) {
             foreach ($existingCode as $code) {
-                $this->addFlash('primary', MessageFactory::getMessage('MESSAGE_YOUR_CODE_IS', $code->getGeneratedCode()));
+                $this->addFlash('secondary',MessageFactory::getMessage('MESSAGE_YOUR_CODE_IS', $code->getGeneratedCode()));
             }
 
             return $this->redirectToRoute('tournament-user', [
@@ -119,7 +137,7 @@ class CodeController extends AbstractController
         $this->entityManager->persist($newCode);
         $this->entityManager->flush();
 
-        $this->addFlash('primary', MessageFactory::getMessage('MESSAGE_YOUR_CODE_IS', $generatedCode));
+        $this->addFlash('secondary', MessageFactory::getMessage('MESSAGE_YOUR_CODE_IS', $generatedCode));
 
         return $this->redirectToRoute('tournament-user', [
             'tournament' => $tournament->getId(),
