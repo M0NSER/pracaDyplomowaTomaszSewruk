@@ -63,12 +63,14 @@ services:
             - '%raw_tournament_privilege%'
             - '@App\Repository\TournamentUserRepository'
             - '@session.flash_bag'
+            - '@security.token_storage'
 
     App\Service\ModderSelectService:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@session.flash_bag'
             - '@App\Repository\VoteRepository'
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
