@@ -27,10 +27,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CodeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CodeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/TournamentUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TournamentUserService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +284,7 @@
       <workItem from="1611692573867" duration="38000" />
       <workItem from="1611693548433" duration="1741000" />
       <workItem from="1611776343341" duration="2169000" />
-      <workItem from="1611937842065" duration="2599000" />
+      <workItem from="1611937842065" duration="9641000" />
     </task>
     <servers />
   </component>

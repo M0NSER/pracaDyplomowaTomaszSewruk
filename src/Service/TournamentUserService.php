@@ -12,6 +12,8 @@ use App\Util\FlashBag\MessageFactory;
 use Doctrine\ORM\EntityManager;
 use Exception;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 class TournamentUserService
@@ -41,13 +43,23 @@ class TournamentUserService
      */
     private TournamentUserRepository $tournamentUserRepository;
 
-    public function __construct(EntityManager $entityManager, array $tournamentPrivilege, array $rawTournamentPrivilege, TournamentUserRepository $tournamentUserRepository, FlashBag $flashBag)
+    /**
+     * @var UserInterface|null
+     */
+    private ?UserInterface $loggedInUser;
+
+    public function __construct(EntityManager $entityManager, array $tournamentPrivilege, array $rawTournamentPrivilege, TournamentUserRepository $tournamentUserRepository, FlashBag $flashBag, TokenStorageInterface $tokenStorage)
     {
         $this->entityManager = $entityManager;
         $this->tournamentPrivilege = $tournamentPrivilege;
         $this->rawTournamentPrivilege = $rawTournamentPrivilege;
         $this->flashBag = $flashBag;
         $this->tournamentUserRepository = $tournamentUserRepository;
+
+        $token = $tokenStorage->getToken();
+        if ($token && $token->getUser()) {
+            $this->loggedInUser = $token->getUser();
+        }
     }
 
     /**
@@ -105,7 +117,8 @@ class TournamentUserService
     public function delete(TournamentUser $tournamentUser)
     {
         try {
-            $tournamentUser->setTournamentUserType($this->tournamentPrivilege['T_DELETED']);
+            $tournamentUser
+                ->setTournamentUserType($this->tournamentPrivilege['T_DELETED']);
 
             $this->entityManager->persist($tournamentUser);
             $this->entityManager->flush();
@@ -127,7 +140,8 @@ class TournamentUserService
             'idTournament'       => $tournamentUser->getIdTournament(),
             'tournamentUserType' => $this->tournamentPrivilege['T_ADMIN'],
         ]);
-        if (!(sizeof($lastAdmin) > 1)) {
+
+        if ($tournamentUser->getIdUser() == $this->loggedInUser && array_search($tournamentUser, $lastAdmin)!==false && !(sizeof($lastAdmin) > 1)) {
             $this->flashBag->add('warning', MessageFactory::getMessage('MESSAGE_TOURNAMENT_MUST_HAVE_AT_LEAST_ONE_ADMIN'));
 
             return;
@@ -158,6 +172,7 @@ class TournamentUserService
 
                     return;
             }
+
             $this->entityManager->persist($tournamentUser);
             $this->entityManager->flush();
             $this->flashBag->add('success', MessageFactory::getMessage('MESSAGE_PRIVILEGE_HAS_BEEN_CHANGER_FOR_USER',
@@ -167,6 +182,8 @@ class TournamentUserService
             $this->flashBag->add('danger', MessageFactory::getMessage('MESSAGE_PRIVILEGE_CAN_NOT_BE_CHANGED_FOR',
                 $tournamentUser->getIdUser()->getEmail(),
             ));
+
+            return;
         }
     }
 
@@ -181,7 +198,6 @@ class TournamentUserService
             'idTournament'       => $tournamentUser->getIdTournament(),
             'tournamentUserType' => $this->tournamentPrivilege['T_ADMIN'],
         ]);
-
 
         if (!(sizeof($admins) > 1)) {
             $this->flashBag->add('warning', MessageFactory::getMessage('MESSAGE_TOURNAMENT_MUST_HAVE_AT_LEAST_ONE_ADMIN'));

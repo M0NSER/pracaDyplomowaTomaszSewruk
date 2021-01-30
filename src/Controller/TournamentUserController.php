@@ -90,8 +90,7 @@ class TournamentUserController extends AbstractController
 
         if ($request->query->getBoolean('showDeleted') == false) {
             $query = $this->tournamentUserRepository->findAllUserInTournament($tournament);
-        }
-        else{
+        } else {
             $query = $this->tournamentUserRepository->findAllDeletedUserInTournament($tournament);
         }
 
@@ -134,7 +133,7 @@ class TournamentUserController extends AbstractController
      *
      * @return RedirectResponse
      */
-    public function     setPrivilege(TournamentUser $tournamentUser, string $privilege): RedirectResponse
+    public function setPrivilege(TournamentUser $tournamentUser, string $privilege): RedirectResponse
     {
         $this->tournamentUserService->setPrivilege($tournamentUser, $privilege);
 
