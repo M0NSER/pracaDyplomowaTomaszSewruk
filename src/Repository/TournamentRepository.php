@@ -4,8 +4,8 @@ namespace App\Repository;
 
 use App\Entity\OptionInTournament;
 use App\Entity\Tournament;
-use App\Entity\TournamentUser;
 use App\Entity\User;
+use App\Entity\Vote;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -63,7 +63,7 @@ class TournamentRepository extends ServiceEntityRepository
      *
      * @return Query
      */
-    function findAllMyTournament(?UserInterface $user)
+    function findAllMyTournament(?UserInterface $user): Query
     {
         $subQueryOption = $this->_em->createQueryBuilder()
             ->select('COUNT(oit.id)')
@@ -85,11 +85,109 @@ class TournamentRepository extends ServiceEntityRepository
 
     }
 
-    public function findAllOptionsInTournament(Tournament $tournament)
+    /**
+     * @param Tournament    $tournament
+     * @param UserInterface $user
+     *
+     * @return Query
+     */
+    public function findAllOptionsInTournament(Tournament $tournament, UserInterface $user): Query
     {
-        return $this->optionInTournamentRepository->getBasicQuery()
+        $subQueryVoted = $this->_em->createQueryBuilder()
+            ->select('v.priority')
+            ->from(Vote::class, 'v')
+            ->andWhere('v.idUser = :user')
+            ->andWhere('v.idOptionInTournament = oit.id')
+            ->getQuery()
+            ->getDQL();
+
+        return $this->_em->createQueryBuilder()
+            ->select('partial oit.{id, title, description} AS oitInfo')
+            ->addSelect(sprintf('(%s) as votePriority', $subQueryVoted))
+            ->from(OptionInTournament::class, 'oit')
             ->andWhere('oit.idTournament = :idTournament')
             ->setParameter('idTournament', $tournament->getId())
+            ->setParameter('user', $user->getId())
+            ->andWhere('oit.deletedAt is NULL')
+            ->getQuery();
+    }
+
+    /**
+     * @param Tournament    $tournament
+     * @param UserInterface $user
+     *
+     * @return Query
+     */
+    public function getResultForVoter(Tournament $tournament, UserInterface $user): Query
+    {
+        return $this->_em->createQueryBuilder()
+            ->addSelect('v.priority')
+            ->addSelect('oit.title')
+            ->addSelect('oit.description')
+            ->addSelect('t.votesQuantity')
+            ->from(Vote::class, 'v')
+            ->leftJoin('v.idOptionInTournament', 'oit',)
+            ->leftJoin('oit.idTournament', 't')
+            ->andWhere('v.idUser = :user')
+            ->setParameter('user', $user->getId())
+            ->andWhere('oit.idTournament = :idTournament')
+            ->setParameter('idTournament', $tournament->getId())
+            ->andWhere('v.isSelectedByPromoter = true')
+            ->orderBy('v.priority', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery();
+
+//        $subQueryVoted = $this->_em->createQueryBuilder()
+//            ->select('v.priority')
+//            ->from(Vote::class, 'v')
+//            ->andWhere('v.idUser = :user')
+//            ->andWhere('v.idOptionInTournament = oit.id')
+//            ->andWhere('v.isSelectedByPromoter = true')
+//            ->orderBy('v.priority', 'DESC')
+//            ->getQuery()
+//            ->getDQL();
+//
+//        return $this->_em->createQueryBuilder()
+//            ->select('partial oit.{id, title, description} AS oitInfo')
+//            ->addSelect(sprintf('(%s) as votePriority', $subQueryVoted))
+//            ->from(OptionInTournament::class, 'oit')
+//            ->andWhere('oit.idTournament = :idTournament')
+//            ->setParameter('idTournament', $tournament->getId())
+//            ->setParameter('user', $user->getId())
+//            ->andWhere('oit.deletedAt is NULL')
+//            ->orderBy('votePriority is NOT NULL')
+//            ->orderBy('votePriority', 'DESC')
+//            ->setMaxResults(1)
+//            ->getQuery();
+    }
+
+    /**
+     * @param Tournament $tournament
+     *
+     * @return Query
+     */
+    public function getResultForModder(Tournament $tournament): Query
+    {
+        return $this->_em->createQueryBuilder()
+            ->addSelect('v.id')
+            ->addSelect('MAX(v.priority) maxPriority')
+            ->addSelect('u.firstName userName')
+            ->addSelect('u.lastName userLastName')
+            ->addSelect('u.email')
+            ->addSelect('t.name tournamentName')
+            ->addSelect('t.description tournamentDescription')
+            ->addSelect('oit.id optionInTournamentId')
+            ->addSelect('oit.title optionInTournamentTitle')
+            ->addSelect('oit.description optionInTournamentDescription')
+            ->from(Vote::class, 'v')
+            ->leftJoin('v.idOptionInTournament', 'oit')
+            ->leftJoin('v.idUser', 'u')
+            ->leftJoin('oit.idTournament', 't')
+            ->andWhere('oit.idTournament = :idTournament')
+            ->setParameter('idTournament', $tournament->getId())
+            ->andWhere('v.isSelectedByPromoter = true')
+            ->groupBy('u.id')
+            ->orderBy('t.id')
             ->getQuery();
     }
 }

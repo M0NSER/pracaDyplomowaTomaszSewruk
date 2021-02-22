@@ -8,6 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card card-primary card-outline">
+                {% include 'base_component/tournament_finished.html.twig' %}
                 <div class="card-header">
                     <h5 class="card-title m-0">{{ tournament.name }}</h5>
                 </div>
@@ -25,10 +26,18 @@
             <div class="card-body pb-0">
                 <div class="row d-flex align-items-stretch">
 
-                    {% for item in pagination %}
+                    {% for oit in pagination %}
+                        {% set item = oit.oitInfo %}
 
                         <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
                             <div class="card bg-light">
+                                {% if oit.votePriority %}
+                                    <div class="ribbon-wrapper ribbon-lg">
+                                        <div class="ribbon bg-success">
+                                            Voted {{ oit.votePriority }}/{{ tournament.votesQuantity }}
+                                        </div>
+                                    </div>
+                                {% endif %}
                                 <div class="card-header text-muted border-bottom-0">
                                 </div>
                                 <div class="card-body pt-0">

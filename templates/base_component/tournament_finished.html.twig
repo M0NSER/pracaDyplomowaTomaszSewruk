@@ -1,0 +1,7 @@
+{% if tournament.selectToDatetime < date('now') %}
+    <div class="ribbon-wrapper ribbon-lg">
+        <div class="ribbon bg-success">
+            Finished
+        </div>
+    </div>
+{% endif %}

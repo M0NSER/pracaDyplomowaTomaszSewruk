@@ -5,3 +5,11 @@
 .select2-selection, .select2-selection__choice__display{
     color: #000 !important;
 }
+
+.user-votes-name{
+    font-size: 1.2em;
+}
+
+.user-votes-tournament-option-description{
+    font-size: 1.0em;
+}

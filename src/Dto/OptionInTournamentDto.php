@@ -27,6 +27,8 @@ class OptionInTournamentDto
     private ?string $description = null;
 
     /**
+     * @Assert\GreaterThan(0)
+     * @Assert\NotNull
      * @Assert\Type("int")
      * @var int|null
      */

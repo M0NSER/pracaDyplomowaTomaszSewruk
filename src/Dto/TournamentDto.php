@@ -38,12 +38,14 @@ class TournamentDto
     /**
      * @var DateTime|null
      * @Assert\Type("\DateTimeInterface")
+     * @Assert\NotNull
      */
     private ?DateTime $voteToDatetime = null;
 
     /**
      * @var DateTime|null
      * @Assert\Type("\DateTimeInterface")
+     * @Assert\NotNull
      */
     private ?DateTime $selectToDatetime = null;
 

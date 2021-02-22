@@ -40,7 +40,7 @@ class OptionInTournament
 
     /**
      * @var int|null
-     * @ORM\Column(name="number_of_slots", type="integer", nullable=true)
+     * @ORM\Column(name="number_of_slots", type="integer", nullable=false)
      */
     private ?int $numberOfSlots;
 
