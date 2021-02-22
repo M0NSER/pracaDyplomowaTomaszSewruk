@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ResultController!{% endblock %}
+    {% block content_header %}
+        <h2>
+            Students votes
+        </h2>
+        <h5>
+            {{ tournamentInfo.name }}<a href="{{ path('tournament-show', {'id':tournamentInfo.id}) }}">
+                <i class="fa fa-arrow-circle-right"></i></a>
+        </h5>
+        <hr>
+        <h6>
+            {{ tournamentInfo.description|length > 10 ? tournamentInfo.description|slice(0,10)~'...' : tournamentInfo.description }}
+        </h6>
+    {% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0 ">
+                    <table class="table">
+                        {# <thead> #}
+                        {# <tr> #}
+                        {# <th style="width: 10px">#</th> #}
+                        {# <th>Username</th> #}
+                        {# <th>Option</th> #}
+                        {# </tr> #}
+                        {# </thead> #}
+                        <tbody>
+                        {% for vote in pagination %}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-1 col-md-1">
+                                            {{ vote.id }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <span class="user-votes-name">
+                                                {{ vote.userName }} {{ vote.userLastName }} ({{ vote.email }})
+                                                <span class="right badge badge-warning">
+                                                    priority: {{ vote.maxPriority }}/{{ tournamentInfo.votesQuantity }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <a href="{{ path('option-in-tournament-show', {'id':vote.optionInTournamentId}) }}">
+                                                {{ vote.optionInTournamentTitle }}
+                                            </a>
+                                            <br>
+                                            <span class="user-votes-tournament-option-description">
+                                                {{ vote.optionInTournamentDescription|length > 30 ? vote.optionInTournamentDescription|slice(0,30)~'...':vote.optionInTournamentDescription }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+{#                                <td>#}
+{#                                    {{ vote.id }}#}
+{#                                </td>#}
+{#                                <td>#}
+{#                                    <span class="user-votes-name">#}
+{#                                        {{ vote.userName }} {{ vote.userLastName }} ({{ vote.email }})#}
+{#                                        <span class="right badge badge-warning">#}
+{#                                            priority: {{ vote.maxPriority }}/{{ tournamentInfo.votesQuantity }}#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                </td>#}
+{#                                <td>#}
+{#                                    <a href="{{ path('option-in-tournament-show', {'id':vote.optionInTournamentId}) }}">#}
+{#                                        {{ vote.optionInTournamentTitle }}#}
+{#                                    </a>#}
+{#                                    <br>#}
+{#                                    <span class="user-votes-tournament-option-description">#}
+{#                                        {{ vote.optionInTournamentDescription|length > 30 ? vote.optionInTournamentDescription|slice(0,30)~'...':vote.optionInTournamentDescription }}#}
+{#                                    </span>#}
+{#                                </td>#}
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">
+                                    No results here
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

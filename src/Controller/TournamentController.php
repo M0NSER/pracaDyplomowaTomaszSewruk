@@ -16,8 +16,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -88,7 +86,7 @@ class TournamentController extends AbstractController
      */
     public function show(Tournament $tournament, Request $request): Response
     {
-        $query = $this->tournamentRepository->findAllOptionsInTournament($tournament);
+        $query = $this->tournamentRepository->findAllOptionsInTournament($tournament, $this->getUser());
 
         $pagination = $this->paginator->paginate(
             $query, /* query NOT result */

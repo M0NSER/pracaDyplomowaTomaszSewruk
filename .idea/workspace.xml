@@ -26,11 +26,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/base_component/tournament_finished.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/result/modder_index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TournamentUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TournamentUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OptionInTournamentDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/TournamentDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/TournamentDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tournament.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TournamentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +227,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/dist/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/result" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -225,11 +236,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\pracaDyplomowaTomaszSewruk\templates\result" />
       <recent name="F:\pracaDyplomowaTomaszSewruk\public\dist\img" />
       <recent name="D:\Repos\Dyplo\public" />
       <recent name="D:\Repos\Dyplo\templates" />
       <recent name="D:\Repos\Dyplo\public\assets\js\test" />
-      <recent name="D:\Repos\Dyplo\public\assets\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\pracaDyplomowaTomaszSewruk\src\Security\TournamentUserSecurity" />
@@ -284,7 +295,17 @@
       <workItem from="1611692573867" duration="38000" />
       <workItem from="1611693548433" duration="1741000" />
       <workItem from="1611776343341" duration="2169000" />
-      <workItem from="1611937842065" duration="9641000" />
+      <workItem from="1611937842065" duration="16077000" />
+      <workItem from="1612028256218" duration="3273000" />
+      <workItem from="1612194961876" duration="594000" />
+      <workItem from="1612634853356" duration="6696000" />
+      <workItem from="1612903049943" duration="6010000" />
+      <workItem from="1612999733178" duration="594000" />
+      <workItem from="1613321259012" duration="596000" />
+      <workItem from="1613417885815" duration="595000" />
+      <workItem from="1613498430127" duration="1092000" />
+      <workItem from="1613857593509" duration="9493000" />
+      <workItem from="1614027975569" duration="5194000" />
     </task>
     <servers />
   </component>

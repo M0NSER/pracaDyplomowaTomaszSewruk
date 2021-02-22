@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ResultController!{% endblock %}
+    {% block content_header %}
+        <h2>
+            {% if result %}
+                Good news! :)
+            {% else %}
+                Bad news! :(
+            {% endif %}
+        </h2>
+    {% endblock %}
+
+{% block body %}
+    {% if not result %}
+        <div class="card card-default">
+            <div class="card-body">
+                <div class="callout callout-danger">
+                    <h5>
+                        You are not the choosen one!
+                    </h5>
+                    <p>
+                        Probably noone have choosen You in this tournament.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="card card-default">
+            <div class="card-body">
+                <div class="callout callout-success">
+                    <h5>
+                        Congratulations!
+                    </h5>
+                    <p>
+                        You have been choosen in below option!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-header">
+                <h3>
+                    {{ result.title }}
+                </h3>
+                Vote priority: {{ result.priority }}/{{ result.votesQuantity }}
+            </div>
+            <div class="card-body">
+                <p>
+                    {{ result.description }}
+                </p>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

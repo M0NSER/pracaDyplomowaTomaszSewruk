@@ -55,13 +55,13 @@ class Tournament
 
     /**
      * @var DateTime|null
-     * @ORM\Column(name="vote_to_datetime", type="datetime", nullable=true)
+     * @ORM\Column(name="vote_to_datetime", type="datetime", nullable=false)
      */
     private ?DateTime $voteToDatetime = null;
 
     /**
      * @var DateTime|null
-     * @ORM\Column(name="select_to_datetime", type="datetime", nullable=true)
+     * @ORM\Column(name="select_to_datetime", type="datetime", nullable=false)
      */
     private ?DateTime $selectToDatetime = null;
 

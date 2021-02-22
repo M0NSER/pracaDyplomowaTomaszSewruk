@@ -59,5 +59,7 @@ class SystemMessage
     const MESSAGE_SUCCESSFULLY_ADDED_TO_TOURNAMENT = "You have been successfully added to tournament";
     const MESSAGE_YOU_ARE_ALREADY_IN_THIS_TOURNAMENT_OR_YOU_HAVE_BEEN_DELETED = "You are already in this tournament, or you have been deleted";
 
+    const MESSAGE_YOU_HAVE_NO_PERMISSION = 'You have no power here!';
+
     const LOGIN_FIRST = "Please login first";
 }
