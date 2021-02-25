@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Dto\AddUserToTournamentDto;
 use App\Entity\Tournament;
 use App\Entity\TournamentUser;
@@ -11,7 +12,6 @@ use App\Repository\UserRepository;
 use App\Service\TournamentUserService;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class TournamentUserController
  * @package App\Controller
  */
-class TournamentUserController extends AbstractController
+class TournamentUserController extends CustomAbstractController
 {
     /**
      * @var PaginatorInterface

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Entity\Tournament;
 use App\Repository\TournamentRepository;
 use App\Repository\TournamentUserRepository;
@@ -10,7 +11,6 @@ use App\Util\FlashBag\MessageFactory;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class ResultController
  * @package App\Controller
  */
-class ResultController extends AbstractController
+class ResultController extends CustomAbstractController
 {
     /**
      * @var VoteRepository

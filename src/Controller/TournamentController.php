@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Dto\TournamentDto;
 use App\Entity\Tournament;
 use App\Entity\TournamentUser;
@@ -12,7 +13,6 @@ use App\Util\Mapper\Mapper;
 use AutoMapperPlus\Exception\UnregisteredMappingException;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/tournament/")
  */
-class TournamentController extends AbstractController
+class TournamentController extends CustomAbstractController
 {
     /**
      * @var PaginatorInterface

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Dto\OptionInTournamentDto;
 use App\Dto\VoteDto;
 use App\Entity\OptionInTournament;
@@ -19,7 +20,6 @@ use AutoMapperPlus\Exception\UnregisteredMappingException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +30,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class OptionInTournamentController
  * @package App\Controller
  */
-class OptionInTournamentController extends AbstractController
+class OptionInTournamentController extends CustomAbstractController
 {
     /**
      * @var Mapper
