@@ -65,9 +65,11 @@ class OptionInTournamentController extends CustomAbstractController
      * @Route("option-in-tournament/{id}", name="option-in-tournament-show", requirements={"id"="\d+"})
      * @param Request            $request
      * @param OptionInTournament $optionInTournament
+     * @param VoteService        $voteService
      *
      * @return Response
-     * @throws UnregisteredMappingException|NonUniqueResultException
+     * @throws NonUniqueResultException
+     * @throws UnregisteredMappingException
      */
     public function show(Request $request, OptionInTournament $optionInTournament, VoteService $voteService): Response
     {
@@ -75,7 +77,6 @@ class OptionInTournamentController extends CustomAbstractController
         $votePriority = $this->voteRepository->getVotePriority($this->getUser(), $optionInTournament)->getOneOrNullResult();
 
         if (!empty($prioritiesList) && !$votePriority) {
-            dump('a');
 
             $voteDto = new VoteDto();
 
