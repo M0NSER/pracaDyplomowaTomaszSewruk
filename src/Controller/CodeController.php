@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Entity\Tournament;
 use App\Entity\TournamentCode;
 use App\Entity\TournamentUser;
@@ -11,7 +12,6 @@ use App\Util\FlashBag\MessageFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +23,7 @@ use Symfony\Polyfill\Uuid\Uuid;
  * Class CodeController
  * @package App\Controller
  */
-class CodeController extends AbstractController
+class CodeController extends CustomAbstractController
 {
     /**
      * @var EntityManagerInterface

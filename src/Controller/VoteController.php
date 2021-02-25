@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Entity\Vote;
 use App\Util\FlashBag\MessageFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class VoteController
  * @package App\Controller
  */
-class VoteController extends AbstractController
+class VoteController extends CustomAbstractController
 {
     /**
      * @var EntityManagerInterface

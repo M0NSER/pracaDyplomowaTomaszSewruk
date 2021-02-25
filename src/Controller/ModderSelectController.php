@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
+use App\Controller\AbstractClass\CustomAbstractController;
 use App\Dto\ModderSelectDto;
 use App\Entity\OptionInTournament;
 use App\Form\NotSelectedType;
 use App\Form\SelectedVotesType;
 use App\Repository\VoteRepository;
 use App\Service\ModderSelectService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class ModderSelectController
  * @package App\Controller
  */
-class ModderSelectController extends AbstractController
+class ModderSelectController extends CustomAbstractController
 {
     /**
      * @var VoteRepository

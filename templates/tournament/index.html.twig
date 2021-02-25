@@ -29,12 +29,6 @@
                         <h3 class="card-title">
                             {{ tournament.id }}: {{ tournament.name|length > 50 ? tournament.name|slice(0,50)~'...' : tournament.name }}
                         </h3>
-
-                        <div class="card-tools">
-                            <span class="badge">
-                                ({{ item.options }})
-                            </span>
-                        </div>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -47,6 +41,9 @@
                     <div class="card-footer">
                         <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary">
                             <i class="fas fa-indent"></i>
+                            <span class="badge badge-warning">
+                                ({{ item.options }})
+                            </span>
                         </a>
                         <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning">
                             <i class="fas fa-edit"></i>
