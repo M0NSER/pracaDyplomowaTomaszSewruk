@@ -9,6 +9,7 @@ use App\Form\NotSelectedType;
 use App\Form\SelectedVotesType;
 use App\Repository\VoteRepository;
 use App\Service\ModderSelectService;
+use App\Service\TournamentPrivilegeService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,15 +25,22 @@ class ModderSelectController extends CustomAbstractController
      * @var VoteRepository
      */
     private VoteRepository $voteRepository;
+
     /**
      * @var ModderSelectService
      */
     private ModderSelectService $modderSelectService;
 
-    public function __construct(VoteRepository $voteRepository, ModderSelectService $modderSelectService)
+    /**
+     * @var TournamentPrivilegeService
+     */
+    private TournamentPrivilegeService $tournamentPrivilegeService;
+
+    public function __construct(VoteRepository $voteRepository, ModderSelectService $modderSelectService, TournamentPrivilegeService $tournamentPrivilegeService)
     {
         $this->voteRepository = $voteRepository;
         $this->modderSelectService = $modderSelectService;
+        $this->tournamentPrivilegeService = $tournamentPrivilegeService;
     }
 
     /**
@@ -44,6 +52,11 @@ class ModderSelectController extends CustomAbstractController
      */
     public function index(Request $request, OptionInTournament $optionInTournament): Response
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($optionInTournament->getIdTournament(), [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+            $this->getTournamentPrivilege()['T_MODDER'],
+        ]);
+
         $notSelectedVotesDto = new ModderSelectDto();
         $selectedVotesDto = new ModderSelectDto();
 
@@ -67,7 +80,7 @@ class ModderSelectController extends CustomAbstractController
                 ->setAsSelectedByModder($notSelectedVotesDto->getVotesInOptionInTournament());
 
             return $this->redirectToRoute('modder-select', [
-                'id'      => $optionInTournament->getId(),
+                'id' => $optionInTournament->getId(),
             ]);
         }
 

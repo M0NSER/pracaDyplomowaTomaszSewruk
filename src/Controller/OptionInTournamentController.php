@@ -13,6 +13,7 @@ use App\Entity\Vote;
 use App\Form\OptionInTournamentType;
 use App\Form\VoteType;
 use App\Repository\VoteRepository;
+use App\Service\TournamentPrivilegeService;
 use App\Service\VoteService;
 use App\Util\FlashBag\MessageFactory;
 use App\Util\Mapper\Mapper;
@@ -48,17 +49,23 @@ class OptionInTournamentController extends CustomAbstractController
     private VoteRepository $voteRepository;
 
     /**
+     * @var TournamentPrivilegeService
+     */
+    private TournamentPrivilegeService $tournamentPrivilegeService;
+
+    /**
      * OptionInTournamentController constructor.
      *
      * @param Mapper                 $mapper
      * @param EntityManagerInterface $entityManager
      * @param VoteRepository         $voteRepository
      */
-    public function __construct(Mapper $mapper, EntityManagerInterface $entityManager, VoteRepository $voteRepository)
+    public function __construct(Mapper $mapper, EntityManagerInterface $entityManager, VoteRepository $voteRepository, TournamentPrivilegeService $tournamentPrivilegeService)
     {
         $this->mapper = $mapper;
         $this->entityManager = $entityManager;
         $this->voteRepository = $voteRepository;
+        $this->tournamentPrivilegeService = $tournamentPrivilegeService;
     }
 
     /**
@@ -73,6 +80,12 @@ class OptionInTournamentController extends CustomAbstractController
      */
     public function show(Request $request, OptionInTournament $optionInTournament, VoteService $voteService): Response
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($optionInTournament->getIdTournament(), [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+            $this->getTournamentPrivilege()['T_MODDER'],
+            $this->getTournamentPrivilege()['T_VOTER'],
+        ]);
+
         $prioritiesList = $voteService->getListOfPrioritiesToVote($optionInTournament->getIdTournament());
         $votePriority = $this->voteRepository->getVotePriority($this->getUser(), $optionInTournament)->getOneOrNullResult();
 
@@ -106,6 +119,7 @@ class OptionInTournamentController extends CustomAbstractController
                     'id' => $optionInTournament->getId(),
                 ]);
             }
+
             return $this->render('option_in_tournament/show.html.twig', [
                 'optionInTournament' => $optionInTournament,
                 'form'               => $form->createView(),
@@ -135,6 +149,11 @@ class OptionInTournamentController extends CustomAbstractController
      */
     public function new(Request $request, Tournament $tournament)
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournament, [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+            $this->getTournamentPrivilege()['T_MODDER'],
+        ]);
+
         $optionInTournamentDto = new OptionInTournamentDto();
 
         $form = $this->createForm(OptionInTournamentType::class, $optionInTournamentDto);
@@ -178,6 +197,11 @@ class OptionInTournamentController extends CustomAbstractController
      */
     public function edit(Request $request, OptionInTournament $optionInTournament)
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($optionInTournament->getIdTournament(), [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+            $this->getTournamentPrivilege()['T_MODDER'],
+        ]);
+
         /** @var OptionInTournamentDto $optionInTournamentDto */
         $optionInTournamentDto = $this->mapper->map($optionInTournament, OptionInTournamentDto::class);
 

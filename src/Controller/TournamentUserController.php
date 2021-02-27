@@ -9,6 +9,7 @@ use App\Entity\TournamentUser;
 use App\Form\AddUserToTournamentType;
 use App\Repository\TournamentUserRepository;
 use App\Repository\UserRepository;
+use App\Service\TournamentPrivilegeService;
 use App\Service\TournamentUserService;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
@@ -44,23 +45,32 @@ class TournamentUserController extends CustomAbstractController
     private TournamentUserService $tournamentUserService;
 
     /**
+     * @var TournamentPrivilegeService
+     */
+    private TournamentPrivilegeService $tournamentPrivilegeService;
+
+    /**
      * TournamentUserController constructor.
      *
-     * @param PaginatorInterface       $paginator
-     * @param TournamentUserRepository $tournamentUserRepository
-     * @param UserRepository           $userRepository
-     * @param TournamentUserService    $tournamentUserService
+     * @param PaginatorInterface         $paginator
+     * @param TournamentUserRepository   $tournamentUserRepository
+     * @param UserRepository             $userRepository
+     * @param TournamentUserService      $tournamentUserService
+     * @param TournamentPrivilegeService $tournamentPrivilegeService
      */
     public function __construct(
         PaginatorInterface $paginator,
         TournamentUserRepository $tournamentUserRepository,
         UserRepository $userRepository,
-        TournamentUserService $tournamentUserService)
+        TournamentUserService $tournamentUserService,
+        TournamentPrivilegeService $tournamentPrivilegeService
+    )
     {
         $this->paginator = $paginator;
         $this->tournamentUserRepository = $tournamentUserRepository;
         $this->userRepository = $userRepository;
         $this->tournamentUserService = $tournamentUserService;
+        $this->tournamentPrivilegeService = $tournamentPrivilegeService;
     }
 
     /**
@@ -73,7 +83,9 @@ class TournamentUserController extends CustomAbstractController
      */
     public function index(Request $request, Tournament $tournament): Response
     {
-        // TODO: co jeśli użytkownik już jest w konkursie
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournament, [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+        ]);
 
         $userDto = new AddUserToTournamentDto();
 
@@ -119,6 +131,10 @@ class TournamentUserController extends CustomAbstractController
      */
     public function delete(TournamentUser $tournamentUser): RedirectResponse
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournamentUser->getIdTournament(), [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+        ]);
+
         $this->tournamentUserService->delete($tournamentUser);
 
         return $this->redirectToRoute('tournament-user', [
@@ -135,6 +151,10 @@ class TournamentUserController extends CustomAbstractController
      */
     public function setPrivilege(TournamentUser $tournamentUser, string $privilege): RedirectResponse
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournamentUser->getIdTournament(), [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+        ]);
+
         $this->tournamentUserService->setPrivilege($tournamentUser, $privilege);
 
         return $this->redirectToRoute('tournament-user', [
