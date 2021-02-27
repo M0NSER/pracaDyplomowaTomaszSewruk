@@ -8,6 +8,7 @@ use App\Entity\Tournament;
 use App\Entity\TournamentUser;
 use App\Form\TournamentType;
 use App\Repository\TournamentRepository;
+use App\Service\TournamentPrivilegeService;
 use App\Util\FlashBag\MessageFactory;
 use App\Util\Mapper\Mapper;
 use AutoMapperPlus\Exception\UnregisteredMappingException;
@@ -36,20 +37,30 @@ class TournamentController extends CustomAbstractController
      */
     private TournamentRepository $tournamentRepository;
 
+    /**
+     * @var Mapper
+     */
     private Mapper $mapper;
+
+    /**
+     * @var TournamentPrivilegeService
+     */
+    private TournamentPrivilegeService $tournamentPrivilegeService;
 
     /**
      * TournamentController constructor.
      *
-     * @param PaginatorInterface   $paginator
-     * @param TournamentRepository $tournamentRepository
-     * @param Mapper               $mapper
+     * @param PaginatorInterface         $paginator
+     * @param TournamentRepository       $tournamentRepository
+     * @param Mapper                     $mapper
+     * @param TournamentPrivilegeService $tournamentPrivilegeService
      */
-    public function __construct(PaginatorInterface $paginator, TournamentRepository $tournamentRepository, Mapper $mapper)
+    public function __construct(PaginatorInterface $paginator, TournamentRepository $tournamentRepository, Mapper $mapper, TournamentPrivilegeService $tournamentPrivilegeService)
     {
         $this->paginator = $paginator;
         $this->tournamentRepository = $tournamentRepository;
         $this->mapper = $mapper;
+        $this->tournamentPrivilegeService = $tournamentPrivilegeService;
     }
 
     /**
@@ -86,6 +97,12 @@ class TournamentController extends CustomAbstractController
      */
     public function show(Tournament $tournament, Request $request): Response
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournament, [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+            $this->getTournamentPrivilege()['T_MODDER'],
+            $this->getTournamentPrivilege()['T_VOTER'],
+        ]);
+
         $query = $this->tournamentRepository->findAllOptionsInTournament($tournament, $this->getUser());
 
         $pagination = $this->paginator->paginate(
@@ -159,6 +176,10 @@ class TournamentController extends CustomAbstractController
      */
     public function edit(Request $request, Tournament $tournament)
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournament, [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+        ]);
+
         $tournamentDto = $this->mapper->map($tournament, TournamentDto::class);
 
         $form = $this->createForm(TournamentType::class, $tournamentDto);
@@ -199,6 +220,11 @@ class TournamentController extends CustomAbstractController
      */
     public function delete(Tournament $tournament): RedirectResponse
     {
+        $this->tournamentPrivilegeService->hasPrivilegeToTournament($tournament, [
+            $this->getTournamentPrivilege()['T_ADMIN'],
+            $this->getTournamentPrivilege()['T_MODDER'],
+        ]);
+
         try {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($tournament);
