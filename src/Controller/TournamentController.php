@@ -12,6 +12,7 @@ use App\Service\TournamentPrivilegeService;
 use App\Util\FlashBag\MessageFactory;
 use App\Util\Mapper\Mapper;
 use AutoMapperPlus\Exception\UnregisteredMappingException;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -48,6 +49,11 @@ class TournamentController extends CustomAbstractController
     private TournamentPrivilegeService $tournamentPrivilegeService;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private EntityManagerInterface $entityManager;
+
+    /**
      * TournamentController constructor.
      *
      * @param PaginatorInterface         $paginator
@@ -55,12 +61,13 @@ class TournamentController extends CustomAbstractController
      * @param Mapper                     $mapper
      * @param TournamentPrivilegeService $tournamentPrivilegeService
      */
-    public function __construct(PaginatorInterface $paginator, TournamentRepository $tournamentRepository, Mapper $mapper, TournamentPrivilegeService $tournamentPrivilegeService)
+    public function __construct(PaginatorInterface $paginator, TournamentRepository $tournamentRepository, Mapper $mapper, TournamentPrivilegeService $tournamentPrivilegeService, EntityManagerInterface $entityManager)
     {
         $this->paginator = $paginator;
         $this->tournamentRepository = $tournamentRepository;
         $this->mapper = $mapper;
         $this->tournamentPrivilegeService = $tournamentPrivilegeService;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -115,8 +122,12 @@ class TournamentController extends CustomAbstractController
         );
 
         return $this->render('tournament/show.html.twig', [
-            'tournament' => $tournament,
-            'pagination' => $pagination,
+            'tournament'     => $tournament,
+            'pagination'     => $pagination,
+            'tournamentUser' => $this->entityManager->getRepository(TournamentUser::class)->findOneBy([
+                'idTournament' => $tournament,
+                'idUser'       => $this->getUser(),
+            ])->getTournamentUserType(),
         ]);
     }
 

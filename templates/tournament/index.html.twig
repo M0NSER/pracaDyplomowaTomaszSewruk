@@ -13,58 +13,7 @@
             {% set tournament = item.tournamentUser.idTournament %}
             {% set uType = item.tournamentUser.tournamentUserType %}
 
-            <div class="col-lg-4 col-md-6 custom-card">
-
-                <div class="card
-                            {% if uType == tournament_privilege.T_ADMIN %}
-                                card-danger
-                            {% elseif uType == tournament_privilege.T_MODDER %}
-                                card-warning
-                            {% else %}
-                                card-gray-dark
-                            {% endif %}
-                            ">
-                    {% include 'base_component/tournament_finished.html.twig' %}
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            {{ tournament.id }}: {{ tournament.name|length > 50 ? tournament.name|slice(0,50)~'...' : tournament.name }}
-                        </h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <div class="card-body">
-                        <p class="card-text">
-                            {{ tournament.description|length > 150 ? tournament.description|slice(0,150)~'...' : tournament.description }}
-                        </p>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <a href="{{ path('tournament-show',{'id':tournament.id}) }}" class="btn btn-primary">
-                            <i class="fas fa-indent"></i>
-                            <span class="badge badge-warning">
-                                ({{ item.options }})
-                            </span>
-                        </a>
-                        <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-info">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                        <a href="{{ path('tournament-user', {'tournament':tournament.id}) }}" class="btn btn-secondary">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        {% if tournament.selectToDatetime < date('now') %}
-                            <a href="{{ path('result', {'id': tournament.id}) }}" class="btn btn-success">
-                                <i class="fas fa-vote-yea"></i>
-                            </a>
-                        {% endif %}
-                    </div>
-                    <!-- /.card-footer -->
-                </div>
-            </div>
-
-
+            {% include 'base_component/tournament_template.html.twig' %}
 
         {% else %}
             <div class="col-md-12">

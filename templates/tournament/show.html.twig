@@ -59,7 +59,9 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="{{ path('modder-select', {'id':item.id}) }}" class="btn btn-danger btn-sm">Select voters</a>
+                                        {% if tournamentUser == tournament_privilege.T_ADMIN or tournamentUser == tournament_privilege.T_MODDER %}
+                                            <a href="{{ path('modder-select', {'id':item.id}) }}" class="btn btn-danger btn-sm">Select voters</a>
+                                        {% endif %}
                                         <a href="{{ path('option-in-tournament-show',{'id':item.id}) }}"
                                            class="btn btn-sm btn-primary">
                                             <i class="fas fa-user"></i> Show
