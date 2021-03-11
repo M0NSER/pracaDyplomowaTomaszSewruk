@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0 ">
+                    <table class="table">
+                        <tbody>
+                        {% for tournament in pagination %}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ tournament.id }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {{ tournament.name }}
+                                                    <a href="{{ path('tournament-show', {'id': tournament.id}) }}"><i class="fa fa-arrow-right"></i></a>
+                                                    <a href="{{ path('tournament-edit', {'id': tournament.id}) }}"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ path('tournament-delete', {'id': tournament.id}) }}"><i class="fa fa-times-circle"></i></a>
+                                                    <a href="{{ path('tournament-user', {'tournament': tournament.id}) }}"><i class="fa fa-user"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {{ tournament.description }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="row">
+                                                Votes quantity: {{ tournament.votesQuantity }}
+                                                <br>
+                                                Vote to: {{ tournament.voteToDatetime ? tournament.voteToDatetime|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Select to: {{ tournament.selectToDatetime ? tournament.selectToDatetime|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Created at: {{ tournament.createAt ? tournament.createAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Updated at: {{ tournament.updateAt ? tournament.updateAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Deleted at: {{ tournament.deletedAt ? tournament.deletedAt|date("d-m-Y h:i:s") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">
+                                    No results here
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

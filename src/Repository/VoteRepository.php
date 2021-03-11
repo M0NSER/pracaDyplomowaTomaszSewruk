@@ -110,4 +110,20 @@ class VoteRepository extends ServiceEntityRepository
             ->setParameter('isSelectedByPromoter', true)
             ->getQuery();
     }
+
+    /**
+     * @return Query
+     */
+    public function findAllVoteAdmin(): Query
+    {
+        return $this->getBasicQuery()
+            ->select('v')
+            ->addSelect('oit')
+            ->addSelect('t')
+            ->leftJoin('v.idOptionInTournament', 'oit')
+            ->leftJoin('oit.idTournament', 't')
+            ->addOrderBy('t.createAt', 'DESC')
+            ->addOrderBy('oit.id', 'ASC')
+            ->getQuery();
+    }
 }

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0 ">
+                    <table class="table">
+                        <tbody>
+                        {% for optionInTournament in pagination %}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ optionInTournament.id }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {{ optionInTournament.title }}
+                                                    <a href="{{ path('option-in-tournament-show', {'id': optionInTournament.id}) }}"><i class="fa fa-arrow-right"></i></a>
+                                                    <a href="{{ path('option-in-tournament-edit', {'id': optionInTournament.id}) }}"><i class="fa fa-edit"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {{ optionInTournament.description }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="row">
+                                                Tournament:
+                                                <a href="{{ path('tournament-show', {'id': optionInTournament.idTournament.id}) }}">
+                                                    {{ optionInTournament.idTournament.name|length > 50 ? optionInTournament.idTournament.name|slice(0,50)~'...' : optionInTournament.idTournament.name }}
+                                                </a>
+                                                Number of slots: {{ optionInTournament.numberOfSlots }}
+                                                <br>
+                                                Created by: {{ optionInTournament.idUser }}
+                                                <br>
+                                                Created at: {{ optionInTournament.createAt ? optionInTournament.createAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Updated at: {{ optionInTournament.updateAt ? optionInTournament.updateAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Deleted at: {{ optionInTournament.deletedAt ? optionInTournament.deletedAt|date("d-m-Y h:i:s") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">
+                                    No results here
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

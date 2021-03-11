@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}
+{#    {{ dump(pagination[0]) }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0 ">
+                    <table class="table">
+                        <tbody>
+                        {% for vote in pagination %}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ vote.id }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            {{ vote.idUser }}
+                                            <a href="{{ path('admin-vote-edit', {'id': vote.id}) }}"><i class="fa fa-edit"></i></a>
+                                        </div>
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    Priority:
+                                                    {{ vote.priority }}/{{ vote.idOptionInTournament.idTournament.votesQuantity }}
+                                                </div>
+                                                <div class="col-12">
+                                                    Selected by promoter:
+                                                    <span class="badge badge-{{ vote.isSelectedByPromoter ? 'success' : 'danger' }}">
+                                                        {{ vote.isSelectedByPromoter ? 'YES' : 'NO' }}
+                                                    </span>
+                                                    {# {{ dump(vote) }} #}
+                                                    {# <a href="{{ path('tournament-show', {'id': vote.id}) }}"><i class="fa fa-arrow-right"></i></a> #}
+                                                    {# <a href="{{ path('tournament-edit', {'id': vote.id}) }}"><i class="fa fa-edit"></i></a> #}
+                                                    {# <a href="{{ path('tournament-delete', {'id': vote.id}) }}"><i class="fa fa-times-circle"></i></a> #}
+                                                    {# <a href="{{ path('tournament-user', {'tournament': vote.id}) }}"><i class="fa fa-user"></i></a> #}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    Tournament
+                                                    <a href="{{ path('tournament-show', {'id':vote.idOptionInTournament.idTournament.id}) }}">
+                                                        {{ vote.idOptionInTournament.idTournament.name|length > 50 ? vote.idOptionInTournament.idTournament.name|slice(0,50) ~'...' : vote.idOptionInTournament.idTournament.name }}
+                                                        <i class="fa fa-arrow-circle-right"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-12">
+                                                    Option:
+                                                    <a href="{{ path('option-in-tournament-show', {'id': vote.idOptionInTournament.id}) }}">
+                                                        {{ vote.idOptionInTournament.title|length > 50 ? vote.idOptionInTournament.title|slice(0,50) ~'...' : vote.idOptionInTournament.title }}
+                                                        <i class="fa fa-arrow-circle-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <div class="row">
+                                                 Created at: {{ vote.createAt ? vote.createAt|date("d-m-Y h:i:s") }}
+                                                 <br>
+                                                 Updated at: {{ vote.updateAt ? vote.updateAt|date("d-m-Y h:i:s") }}
+                                                 <br>
+                                                 Deleted at: {{ vote.deletedAt ? vote.deletedAt|date("d-m-Y h:i:s") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">
+                                    No results here
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

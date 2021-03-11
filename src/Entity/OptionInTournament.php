@@ -18,6 +18,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class OptionInTournament
 {
+    public function __toString()
+    {
+
+        return $this->id . ': ' . (strlen($this->title) < 50 ? $this->title : substr($this->title, 0, 50).'...');
+    }
+
     /**
      * @var int
      * @ORM\Column(name="id_options_in_tournaments", type="integer", nullable=false)

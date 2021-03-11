@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0 ">
+                    <table class="table">
+                        <tbody>
+                        {% for tournamentUser in pagination %}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ tournamentUser.id }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {{ tournamentUser.idUser }}
+                                                    {# {{ dump(tournamentUser) }} #}
+                                                    {# <a href="{{ path('tournament-show', {'id': tournament.id}) }}"><i class="fa fa-arrow-right"></i></a> #}
+                                                    {# <a href="{{ path('tournament-edit', {'id': tournament.id}) }}"><i class="fa fa-edit"></i></a> #}
+                                                    {# <a href="{{ path('tournament-delete', {'id': tournament.id}) }}"><i class="fa fa-times-circle"></i></a> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="row">
+                                                {# {{ dump(tournamentUser) }} #}
+                                                {# Votes quantity: {{ tournament.votesQuantity }} #}
+                                                {# <br> #}
+                                                {# Vote to: {{ tournament.voteToDatetime ? tournament.voteToDatetime|date("d-m-Y h:i:s") }} #}
+                                                {# <br> #}
+                                                {# Select to: {{ tournament.selectToDatetime ? tournament.selectToDatetime|date("d-m-Y h:i:s") }} #}
+                                                {# <br> #}
+                                                {# Created at: {{ tournament.createAt ? tournament.createAt|date("d-m-Y h:i:s") }} #}
+                                                {# <br> #}
+                                                {# Updated at: {{ tournament.updateAt ? tournament.updateAt|date("d-m-Y h:i:s") }} #}
+                                                {# <br> #}
+                                                {# Deleted at: {{ tournament.deletedAt ? tournament.deletedAt|date("d-m-Y h:i:s") }} #}
+                                                <a href="{{ path('tournament-show', {'id': tournamentUser.idTournament.id}) }}">
+                                                    {{ tournamentUser.idTournament.name|length > 50 ? tournamentUser.idTournament.name|slice(0,50)~'...' : tournamentUser.idTournament.name }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-1">
+                                            <div class="row">
+                                                <div>
+                                                    {% include('base_component/tournament_user_ribbon.html.twig') with {
+                                                        'userType' : tournamentUser.tournamentUserType
+                                                    } %}
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <div class="btn-group">
+                                                    <a type="button" class="btn btn-secondary btn-sm" href="{{ path('tournament-user-set-privilege', {'id':tournamentUser.id, 'privilege':tournament_privilege.T_DELETED}) }}">Delete</a>
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start">
+                                                        <a class="dropdown-item"
+                                                           href="{{ path('tournament-user-set-privilege', {'id':tournamentUser.id, 'privilege':tournament_privilege.T_VOTER}) }}">
+                                                            Set as {{ raw_tournament_privilege.T_VOTER }}
+                                                        </a>
+                                                        <a class="dropdown-item btn-warning"
+                                                           href="{{ path('tournament-user-set-privilege', {'id':tournamentUser.id, 'privilege':tournament_privilege.T_MODDER }) }}">
+                                                            Set as {{ raw_tournament_privilege.T_MODDER }}
+                                                        </a>
+                                                        <a class="dropdown-item"
+                                                           href="{{ path('tournament-user-set-privilege', {'id':tournamentUser.id, 'privilege':tournament_privilege.T_ADMIN }) }}">
+                                                            Set as {{ raw_tournament_privilege.T_ADMIN }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            <div class="row">
+                                                <br>
+                                                Created at: {{ tournamentUser.createAt ? tournamentUser.createAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Updated at: {{ tournamentUser.updateAt ? tournamentUser.updateAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Deleted at: {{ tournamentUser.deletedAt ? tournamentUser.deletedAt|date("d-m-Y h:i:s") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">
+                                    No results here
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

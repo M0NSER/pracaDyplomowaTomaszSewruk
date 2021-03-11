@@ -42,4 +42,12 @@ class OptionInTournamentRepository extends ServiceEntityRepository
     {
         return $this->getBasicQuery()->getQuery();
     }
+
+    public function findAllOptionInTournamentAdmin()
+    {
+        return $this
+            ->getBasicQuery()
+            ->select('oit')
+            ->getQuery();
+    }
 }
