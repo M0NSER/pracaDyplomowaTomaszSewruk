@@ -25,29 +25,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Dto/VoteAdminDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/option_in_tournament/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/tournament-code/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/tournament-user/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/vote/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/vote/form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/vote/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/VoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/VoteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OptionInTournament.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/OptionInTournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OptionInTournamentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentCodeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TournamentUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VoteRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VoteRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TournamentPrivilegeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TournamentPrivilegeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -317,7 +295,7 @@
       <workItem from="1614713821318" duration="10672000" />
       <workItem from="1614887726442" duration="9700000" />
       <workItem from="1615409904612" duration="605000" />
-      <workItem from="1615485523724" duration="7296000" />
+      <workItem from="1615485523724" duration="7930000" />
     </task>
     <servers />
   </component>
