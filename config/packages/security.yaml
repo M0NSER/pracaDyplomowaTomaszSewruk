@@ -43,6 +43,5 @@ security:
         - { path: ^/tournament, roles: ROLE_USER }
         - { path: ^/api, roles: ROLE_USER }
         - { path: ^/login, roles:  }
-
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 #         - { path: ^/profile, roles: ROLE_USER }

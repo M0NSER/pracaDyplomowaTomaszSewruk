@@ -55,13 +55,17 @@ class TournamentPrivilegeService
      */
     public function hasPrivilegeToTournament(Tournament $tournament, array $tournamentUserRoles = [])
     {
-        $tournamentUser = $this->tournamentUserRepository->findOneBy([
-            'idUser'       => $this->loggedInUser,
-            'idTournament' => $tournament,
-        ]);
+        $roles = $this->loggedInUser->getRoles();
 
-        if (!$tournamentUser || !in_array($tournamentUser->getTournamentUserType(), $tournamentUserRoles)) {
-            throw new UnauthorizedHttpException('', MessageFactory::getMessage('MESSAGE_YOU_HAVE_NO_PERMISSION'));
+        if (!in_array('ROLE_ADMIN', $roles)) {
+            $tournamentUser = $this->tournamentUserRepository->findOneBy([
+                'idUser'       => $this->loggedInUser,
+                'idTournament' => $tournament,
+            ]);
+
+            if (!$tournamentUser || !in_array($tournamentUser->getTournamentUserType(), $tournamentUserRoles)) {
+                throw new UnauthorizedHttpException('', MessageFactory::getMessage('MESSAGE_YOU_HAVE_NO_PERMISSION'));
+            }
         }
     }
 }

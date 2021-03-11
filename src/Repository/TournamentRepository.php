@@ -79,8 +79,10 @@ class TournamentRepository extends ServiceEntityRepository
             ->addSelect(sprintf("(%s) as options", $subQueryOption))
             ->leftJoin('tu.idTournament', 't')
             ->andWhere('tu.idUser = :idUser')
-            ->andWhere('t.deletedAt is NULL')
             ->setParameter('idUser', $user->getId())
+            ->andWhere('t.deletedAt is NULL')
+            ->andWhere('tu.tournamentUserType != :deletedUserType')
+            ->setParameter('deletedUserType', 'T_DELETED')
             ->getQuery();
 
     }
@@ -136,29 +138,6 @@ class TournamentRepository extends ServiceEntityRepository
             ->orderBy('v.priority', 'DESC')
             ->setMaxResults(1)
             ->getQuery();
-
-//        $subQueryVoted = $this->_em->createQueryBuilder()
-//            ->select('v.priority')
-//            ->from(Vote::class, 'v')
-//            ->andWhere('v.idUser = :user')
-//            ->andWhere('v.idOptionInTournament = oit.id')
-//            ->andWhere('v.isSelectedByPromoter = true')
-//            ->orderBy('v.priority', 'DESC')
-//            ->getQuery()
-//            ->getDQL();
-//
-//        return $this->_em->createQueryBuilder()
-//            ->select('partial oit.{id, title, description} AS oitInfo')
-//            ->addSelect(sprintf('(%s) as votePriority', $subQueryVoted))
-//            ->from(OptionInTournament::class, 'oit')
-//            ->andWhere('oit.idTournament = :idTournament')
-//            ->setParameter('idTournament', $tournament->getId())
-//            ->setParameter('user', $user->getId())
-//            ->andWhere('oit.deletedAt is NULL')
-//            ->orderBy('votePriority is NOT NULL')
-//            ->orderBy('votePriority', 'DESC')
-//            ->setMaxResults(1)
-//            ->getQuery();
     }
 
     /**
@@ -188,6 +167,18 @@ class TournamentRepository extends ServiceEntityRepository
             ->andWhere('v.isSelectedByPromoter = true')
             ->groupBy('u.id')
             ->orderBy('t.id')
+            ->getQuery();
+    }
+
+    /**
+     * @return Query
+     */
+    public function findAllTournamentAdmin(): Query
+    {
+        return $this
+            ->getBasicQuery()
+            ->select('t')
+            ->orderBy('t.createAt', 'DESC')
             ->getQuery();
     }
 }

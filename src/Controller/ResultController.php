@@ -82,7 +82,7 @@ class ResultController extends CustomAbstractController
             return $this->render('result/voter_index.html.twig', [
                 'result' => $result,
             ]);
-        } else if ($privilege == $this->getParameter('T_ADMIN') || $privilege == $this->getParameter('T_MODDER')) {
+        } else {
             $query = $this->tournamentRepository->getResultForModder($tournament)->getResult();
 
             $pagination = $this->paginator->paginate(
@@ -100,8 +100,5 @@ class ResultController extends CustomAbstractController
                 'tournamentInfo' => $tournament,
             ]);
         }
-        $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_YOU_HAVE_NO_PERMISSION'));
-
-        return $this->redirectToRoute('main');
     }
 }

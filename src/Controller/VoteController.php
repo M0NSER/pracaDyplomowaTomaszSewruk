@@ -41,7 +41,6 @@ class VoteController extends CustomAbstractController
      */
     public function delete(Vote $vote): RedirectResponse
     {
-        //TODO: zabezpieczyć jeśli konkurs minął
         try {
             $this->entityManager->remove($vote);
             $this->entityManager->flush();

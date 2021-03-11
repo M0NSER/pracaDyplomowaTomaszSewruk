@@ -97,4 +97,14 @@ class TournamentUserRepository extends ServiceEntityRepository
             ->setParameter('idUser', $user->getId())
             ->getQuery();
     }
+
+    /**
+     * @return Query
+     */
+    public function findAllTournamentUserAdmin(): Query
+    {
+        return $this->getBasicQuery()
+            ->select('tu')
+            ->getQuery();
+    }
 }

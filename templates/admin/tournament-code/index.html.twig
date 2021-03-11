@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block content_header %}
+    {# {{ dump(pagination[0]) }} #}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0 ">
+                    <table class="table">
+                        <tbody>
+                        {% for code in pagination %}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ code.id }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <input disabled="disabled" class="form-control form-control-sm" type="text" value="{{ code.generatedCode }}" placeholder=".form-control-sm">
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <a href="{{ path('tournament-show', {'id': code.idTournament.id}) }}">
+                                                {{ code.idTournament.name|length > 50 ? code.idTournament.name|slice(0,50)~'...' : code.idTournament.name }}
+                                            <i class="fa fa-arrow-circle-right"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <div class="row">
+                                                Expire at: {{ code.expireAt ? code.expireAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Created at: {{ code.createAt ? code.createAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Updated at: {{ code.updateAt ? code.updateAt|date("d-m-Y h:i:s") }}
+                                                <br>
+                                                Deleted at: {{ code.deletedAt ? code.deletedAt|date("d-m-Y h:i:s") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="100%">
+                                    No results here
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}
+

@@ -77,6 +77,19 @@ class TournamentCodeRepository extends ServiceEntityRepository
                 $this->getBasicQuery()->expr()->gt('tc.expireAt', 'CURRENT_TIMESTAMP()'),
                 $this->getBasicQuery()->expr()->isNull('tc.expireAt')
             ))
+            ->andWhere('tc.deletedAt is NULL')
+            ->getQuery();
+    }
+
+    /**
+     * @return Query
+     */
+    public function findAllTournamentCodeAdmin(): Query
+    {
+        return $this->getBasicQuery()
+            ->select('tc')
+            ->addSelect('t')
+            ->leftJoin('tc.idTournament', 't')
             ->getQuery();
     }
 }
