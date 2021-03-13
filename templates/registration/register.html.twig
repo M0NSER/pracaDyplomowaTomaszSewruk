@@ -1,19 +1,97 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_security.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}| Register{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row center">
-            <div class="col-md-4">
-                <h1>Register</h1>
-                {{ form_start(registrationForm) }}
-                {% for item in registrationForm %}
-                    {{ form_row(item) }}
-                {% endfor %}
-                <button type="submit" class="btn btn-lg center">Register</button>
-                {{ form_end(registrationForm) }}
-            </div>
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="{{ path('main') }}">Choose a <b>Promoter</b></a>
         </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new membership</p>
+
+                {{ form_start(registrationForm) }}
+                <div class="input-group mb-3">
+                    {{ form_errors(registrationForm.firstName) }}
+                    {{ form_widget(registrationForm.firstName) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    {{ form_errors(registrationForm.lastName) }}
+                    {{ form_widget(registrationForm.lastName) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    {{ form_errors(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    {{ form_errors(registrationForm.password.first) }}
+                    {{ form_widget(registrationForm.password.first) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    {{ form_errors(registrationForm.password.second) }}
+                    {{ form_widget(registrationForm.password.second) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                {{ form_end(registrationForm) }}
+
+                <a href="{{ path('app_login') }}" class="text-center">I already have a membership</a>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
     </div>
+
+
+
+
+    {# <div class="container"> #}
+    {# <div class="row center"> #}
+    {# <div class="col-md-4"> #}
+    {# <h1>Register</h1> #}
+    {# {{ form_start(registrationForm) }} #}
+    {# {% for item in registrationForm %} #}
+    {# {{ form_row(item) }} #}
+    {# {% endfor %} #}
+    {# <button type="submit" class="btn btn-lg center">Register</button> #}
+    {# {{ form_end(registrationForm) }} #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
 {% endblock %}

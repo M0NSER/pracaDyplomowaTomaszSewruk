@@ -20,62 +20,65 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'required' => true,
+                'required'    => true,
+                'label'       => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter Your first name',
                     ]),
                 ],
+                'attr'        => [
+                    'placeholder' => 'First Name',
+                ],
             ])
             ->add('lastName', TextType::class, [
-                'required' => true,
+                'required'    => true,
+                'label'       => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter Your last name',
                     ]),
                 ],
+                'attr'        => [
+                    'placeholder' => 'Last Name',
+                ],
             ])
             ->add('email', TextType::class, [
-                'required' => true,
+                'required'    => true,
+                'label'       => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter Your emial',
+                        'message' => 'Please enter Your email',
                     ]),
+                ],
+                'attr'        => [
+                    'placeholder' => 'Email',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
+                'label'       => 'I agree to the terms',
+                'mapped'      => false,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
             ])
-//            ->add('plainPassword', PasswordType::class, [
-//                // instead of being set onto the object directly,
-//                // this is read and encoded in the controller
-//                'mapped' => false,
-//                'constraints' => [
-//                    new NotBlank([
-//                        'message' => 'Please enter a password',
-//                    ]),
-//                    new Length([
-//                        'min' => 1,
-//                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-//                        // max length allowed by Symfony for security reasons
-//                        'max' => 100,
-//                    ]),
-//                ],
-//            ])
             ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => [
-                    'label' => 'Password',
+                'type'           => PasswordType::class,
+                'first_options'  => [
+                    'label'    => 'Password',
                     'required' => true,
+                    'attr'     => [
+                        'placeholder' => 'Password',
+                    ],
                 ],
                 'second_options' => [
-                    'label' => 'Repeat Password',
+                    'label'    => 'Repeat Password',
                     'required' => true,
+                    'attr'     => [
+                        'placeholder' => 'Repeat pssword',
+                    ],
                 ],
             ]);
     }
@@ -83,7 +86,7 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class'      => User::class,
             'csrf_protection' => true,
         ]);
     }

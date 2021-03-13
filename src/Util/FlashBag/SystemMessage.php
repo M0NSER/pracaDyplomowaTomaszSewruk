@@ -6,6 +6,8 @@ namespace App\Util\FlashBag;
 
 class SystemMessage
 {
+    const MESSAGE_EMAIL_PASSWORD_IS_INVALID = 'Invalid credentials.';
+
     const MESSAGE_NEW_SUCCESS = "Rekord został poprawnie dodany";
     const MESSAGE_NEW_FAILURE = "Nie można zapisać rekordu";
 
