@@ -1,47 +1,65 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_security.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}
+| Login
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-
-    </div>
-
-    <div class="section padding_layout_1">
-        <div class="container">
-            <div class="row center">
-                <div class="col-md-4">
-
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
-                    <form method="post">
-
-                        <h1 class="h3  font-weight-normal">Please sign in</h1>
-                        <div class="form-field">
-                            <label for="inputEmail">Email</label>
-                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('main') }}">Choose a <b>Promoter</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
                         </div>
-                        <label for="inputPassword">Password</label>
+                    </div>
+                    <div class="input-group mb-3">
                         <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-
-                        <div class="checkbox ">
-                            <label>
-                                <input type="checkbox" name="_remember_me"> Remember me
-                            </label>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember" name="_remember_me">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <!-- /.social-auth-links -->
 
-
-                        <button class="btn btn-lg btn-primary center" type="submit">
-                            Sign in
-                        </button>
-                    </form>
-
-                </div>
+                <p class="mb-1">
+                    <a href="{{ path('app_forgot_password_request') }}">I forgot my password</a>
+                </p>
+                <p class="mb-0">
+                    <a href="{{ path('app_register') }}" class="text-center">Register a new membership</a>
+                </p>
             </div>
+            <!-- /.login-card-body -->
         </div>
     </div>
 {% endblock %}

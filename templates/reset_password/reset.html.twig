@@ -1,12 +1,54 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_security.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}| Reset your password{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
+    {# {{ form_start(resetForm) }} #}
+    {# {{ form_row(resetForm.plainPassword) }} #}
+    {# <button class="btn btn-primary">Reset password</button> #}
+    {# {{ form_end(resetForm) }} #}
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+
+    {% for flashError in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('main') }}">Choose a <b>Promoter</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Now You can reset your password.</p>
+
+                {{ form_start(resetForm) }}
+                <div class="input-group mb-3">
+                    {{ form_errors(resetForm.plainPassword.first) }}
+                    {{ form_widget(resetForm.plainPassword.first) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    {{ form_errors(resetForm.plainPassword.second) }}
+                    {{ form_widget(resetForm.plainPassword.second) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Reset password</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                {{ form_end(resetForm) }}
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
 {% endblock %}
