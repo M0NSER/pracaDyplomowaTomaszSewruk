@@ -38,6 +38,7 @@ class TournamentDto
     /**
      * @var DateTime|null
      * @Assert\Type("\DateTimeInterface")
+     * @Assert\GreaterThan("+1 hour")
      * @Assert\NotNull
      */
     private ?DateTime $voteToDatetime = null;
@@ -45,6 +46,8 @@ class TournamentDto
     /**
      * @var DateTime|null
      * @Assert\Type("\DateTimeInterface")
+     * @Assert\GreaterThan("+2 hours")
+     * @Assert\GreaterThan(propertyPath="voteToDatetime")
      * @Assert\NotNull
      */
     private ?DateTime $selectToDatetime = null;

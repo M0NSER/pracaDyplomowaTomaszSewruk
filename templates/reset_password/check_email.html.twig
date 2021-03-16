@@ -3,6 +3,19 @@
 {% block title %}| Password Reset Email Sent{% endblock %}
 
 {% block body %}
-    <p>An email has been sent that contains a link that you can click to reset your password. This link will expire in {{ tokenLifetime|date('g') }} hour(s).</p>
-    <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('main') }}">Choose a <b>Promoter</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">An email has been sent that contains a link that you can click to reset your password. This link will expire in <b>{{ tokenLifetime/3600 }} hour(s)</b>.</p>
+                <p>If you don't receive an email please check your spam folder or
+                    <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+                <p class="login-box-msg">Back to login screen <a href="{{ path('app_login') }}">here</a> </p>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

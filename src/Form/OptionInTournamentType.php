@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Dto\OptionInTournamentDto;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,30 +17,41 @@ class OptionInTournamentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class,[
-                'label'=>'Title',
-                'required'=>true
+            ->add('title', TextType::class, [
+                'label'    => false,
+                'required' => true,
+                'attr'     => [
+                    'placeholder' => 'Title',
+                ],
             ])
             ->add('description', TextareaType::class, [
-                'label'=>'Description',
-                'required'=>false,
+                'label'    => false,
+                'required' => false,
+                'attr'     => [
+                    'placeholder' => 'Description',
+                ],
             ])
             ->add('numberOfSlots', IntegerType::class, [
-                'label'=>'Quantity of free slots',
-                'required'=>false,
+                'label'    => false,
+                'required' => false,
+                'attr'     => [
+                    'placeholder' => 'Quantity of free slots',
+                ],
             ])
-            ->add('photoUrl', UrlType::class, [
-                'label'=>'Photo url',
-                'required'=>false,
-            ])
-        ;
+            ->add('photoUrl', HiddenType    ::class, [
+                'label'    => false,
+                'required' => false,
+                'attr'     => [
+                    'placeholder' => 'Photo url',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => OptionInTournamentDto::class,
-            'csrf_token_id'=>'form_intention',
+            'data_class'    => OptionInTournamentDto::class,
+            'csrf_token_id' => 'form_intention',
         ]);
     }
 }

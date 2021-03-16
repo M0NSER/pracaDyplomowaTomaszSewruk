@@ -97,7 +97,9 @@ class TournamentUserController extends CustomAbstractController
             $this->get("security.csrf.token_manager")->refreshToken("form_intention");
             $this->tournamentUserService->addUsers($addUserForm->get('usersToAdd')->getData(), $tournament);
 
-            return $this->redirectToRoute('tournament-user', ['tournament' => $tournament->getId()]);
+            return $this->redirectToRoute('tournament-user', [
+                'tournament' => $tournament->getId(),
+            ]);
         }
 
         if ($request->query->getBoolean('showDeleted') == false) {
