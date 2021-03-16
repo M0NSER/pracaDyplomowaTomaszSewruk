@@ -27,16 +27,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TournamentUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dto/TournamentDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/TournamentDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OptionInTournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OptionInTournamentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TournamentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TournamentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,7 +303,7 @@
       <workItem from="1615661091119" duration="11592000" />
       <workItem from="1615743030272" duration="4554000" />
       <workItem from="1615840449116" duration="1373000" />
-      <workItem from="1615929624891" duration="339000" />
+      <workItem from="1615929624891" duration="1786000" />
     </task>
     <servers />
   </component>

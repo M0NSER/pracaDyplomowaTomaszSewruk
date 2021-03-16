@@ -11,14 +11,38 @@
                 {% include 'base_component/tournament_finished.html.twig' %}
                 <div class="card-header">
                     <h5 class="card-title m-0">{{ tournament.name }}</h5>
+
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ tournament.description }}</p>
                 </div>
+                <div class="card-footer">
+                    <div class="right">
+                        {% if tournamentUser == tournament_privilege.T_ADMIN %}
+                            <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning ">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        {% endif %}
+                        {% if tournamentUser == tournament_privilege.T_ADMIN or tournamentUser == tournament_privilege.T_MODDER %}
+                            <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-info ">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        {% endif %}
+                        {% if tournamentUser == tournament_privilege.T_ADMIN %}
+                            <a href="{{ path('tournament-user', {'tournament':tournament.id}) }}" class="btn btn-secondary ">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        {% endif %}
+                        {% if tournament.selectToDatetime < date('now') %}
+                            <a href="{{ path('result', {'id': tournament.id}) }}" class="btn btn-success ">
+                                <i class="fas fa-vote-yea"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
     <section class="content">
 
         <!-- Default box -->
