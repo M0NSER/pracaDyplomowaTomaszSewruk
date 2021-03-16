@@ -1,54 +1,51 @@
 {% extends 'base.html.twig' %}
 
+{% block content_header %}
+
+{% endblock %}
+
 {% block body %}
     <div class="section ">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="main_heading text_align_center">
+                <div class="col-lg-2 col-md-12"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="row">
+                        <div class="col-12">
                             <h2>Add new tournament</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row center">
-                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 contant_form">
-                    <div class="form_section">
-                        {{ form_start(form) }}
-                        <div class="row">
-                            <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                {{ form_row(form.name) }}
-                            </div>
-                            <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                {{ form_row(form.description) }}
-                            </div>
-                            <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                {{ form_row(form.voteToDatetime) }}
-                            </div>
-                            <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                {{ form_row(form.selectToDatetime) }}
-                            </div>
-                            <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                {{ form_errors(form.isPublic) }}
+
+                            <div class="form_section">
+                                {{ form_start(form) }}
                                 <div class="row">
-                                    <div class="col center" style="margin: auto">
-                                        <span class="make_it_public_label">{{ form_label(form.isPublic) }}</span>
+                                    <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        {{ form_row(form.name) }}
                                     </div>
-                                    <div class="col left">
-                                        {{ form_widget(form.isPublic) }}
+                                    <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        {{ form_row(form.description) }}
+                                    </div>
+                                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        {{ form_row(form.voteToDatetime) }}
+                                    </div>
+                                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        {{ form_row(form.selectToDatetime) }}
+                                    </div>
+                                    <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        {{ form_row(form.votesQuantity) }}
+                                    </div>
+{#                                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">#}
+{#                                        {{ form_row(form.isPublic) }}#}
+{#                                    </div>#}
+                                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="center">
-                                <button type="submit" class="btn main_bt">Save</button>
+                                {{ form_end(form) }}
                             </div>
                         </div>
-                        {{ form_end(form) }}
                     </div>
                 </div>
+                <div class="col-lg-2 col-md-12"></div>
             </div>
-
         </div>
     </div>
 

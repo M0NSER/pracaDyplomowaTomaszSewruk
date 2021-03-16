@@ -6,6 +6,7 @@ use App\Dto\TournamentDto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -52,15 +53,19 @@ class TournamentType extends AbstractType
                 ],
             ])
             ->add('votesQuantity', NumberType::class, [
+                'label'    => false,
                 'required' => true,
-                'label'    => 'Quantity of votes',
-            ])
-            ->add('isPublic', CheckboxType::class, [
-                'required' => false,
-                'label'    => 'Make it public?',
                 'attr'     => [
+                    'placeholder' => 'Quantity of votes',
+                ],
+            ])
+            ->add('isPublic', HiddenType::class, [
+                'required'   => false,
+                'label'      => 'Make it public?',
+                'attr'       => [
                     'class' => 'field_custom',
                 ],
+                'empty_data' => false,
             ]);
     }
 

@@ -39,27 +39,6 @@
                                 <a href="{{ path('app_register') }}" class="nav-link {{ currentPath == 'app_register' ? 'active' }}">Register</a>
                             </li>
                         {% endif %}
-                    </ul>
-
-                    <!-- SEARCH FORM -->
-                    {% if(is_granted('ROLE_USER')) %}
-                        <form action="{{ path('add-user-by-code') }}" class="form-inline ml-0 ml-md-3" method="get">
-                            <div class="input-group input-group-sm">
-                                <input type="text" placeholder="insert code" autocomplete="off" name="tournament_code" class="form-control" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    {% endif %}
-                </div>
-
-                <!-- Right navbar links -->
-                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                    <!-- Messages Dropdown Menu -->
-                    {% if app.user %}
                         {% if(is_granted('ROLE_ADMIN')) %}
                             <li class="nav-item dropdown ">
                                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -92,6 +71,27 @@
                                 </div>
                             </li>
                         {% endif %}
+                    </ul>
+
+                    <!-- SEARCH FORM -->
+                    {% if(is_granted('ROLE_USER')) %}
+                        <form action="{{ path('add-user-by-code') }}" class="form-inline ml-0 ml-md-3" method="get">
+                            <div class="input-group input-group-sm">
+                                <input type="text" placeholder="insert code" autocomplete="off" name="tournament_code" class="form-control" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+
+                <!-- Right navbar links -->
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                    {% if app.user %}
                         <li class="nav-item dropdown ">
                             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <i class="fa fa-sign-out-alt"></i>
@@ -132,18 +132,7 @@
             </div>
             <div class="container">
                 {% block content_header %}
-                    {# <div class="row mb-2"> #}
-                    {# <div class="col-sm-6"> #}
-                    {# <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1> #}
-                    {# </div><!-- /.col --> #}
-                    {# <div class="col-sm-6"> #}
-                    {# <ol class="breadcrumb float-sm-right"> #}
-                    {# <li class="breadcrumb-item"><a href="#">Home</a></li> #}
-                    {# <li class="breadcrumb-item"><a href="#">Layout</a></li> #}
-                    {# <li class="breadcrumb-item active">Top Navigation</li> #}
-                    {# </ol> #}
-                    {# </div><!-- /.col --> #}
-                    {# </div><!-- /.row --> #}
+
                 {% endblock %}
             </div><!-- /.container-fluid -->
         </div>
@@ -178,7 +167,7 @@
             <!-- To the right -->
             <div class="container">
                 <div class="float-right d-none d-sm-inline">
-                    Anything you want
+                    Made by Tomasz Sewruk
                 </div>
                 <!-- Default to the left -->
                 <strong>Copyright &copy; 2014-2020

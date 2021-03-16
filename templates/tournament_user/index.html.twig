@@ -49,58 +49,78 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th style="width: 10px">#</th>
-                                <th>{{ knp_pagination_sortable(pagination, 'Name', 'tu.id') }}</th>
-                                <th>{{ knp_pagination_sortable(pagination, 'Role', 'tu.tournamentUserType') }}</th>
-                                <th>{{ knp_pagination_sortable(pagination, 'Add time', 'tu.createAt') }}</th>
-                                <th>Action</th>
+                                <th>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ knp_pagination_sortable(pagination, '#', 'tu.id') }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            {{ knp_pagination_sortable(pagination, 'Name', 'tu.id') }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-1">
+                                            {{ knp_pagination_sortable(pagination, 'Role', 'tu.tournamentUserType') }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            {{ knp_pagination_sortable(pagination, 'Add time', 'tu.createAt') }}
+                                        </div>
+                                        <div class="col-sm-12 col-md-1">
+                                            Action
+                                        </div>
+                                    </div>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for tournamenUser in pagination %}
                                 <tr>
                                     <td>
-                                        {{ tournamenUser.id }}
-                                    </td>
-                                    <td>
-                                        {{ tournamenUser.idUser.firstName }}
-                                        {{ tournamenUser.idUser.lastName }}
-                                        ({{ tournamenUser.idUser.email }})
-                                        {{ tournamenUser.idUser == app.user ? '<span class="badge badge-warning">Me</span></h1>' }}
-                                    </td>
-                                    <td>
-                                        {% include 'base_component/tournament_user_ribbon.html.twig' with {'userType': tournamenUser.tournamentUserType} %}
-                                    </td>
-                                    <td>
-                                        {{ tournamenUser.updateAt ? tournamenUser.updateAt.format("d-m-Y h:i:s") : tournamenUser.createAt.format("d-m-Y h:i:s") }}
-                                    </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a type="button" class="btn btn-secondary btn-sm" href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_DELETED}) }}">Delete</a>
-                                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start">
-                                                <a class="dropdown-item"
-                                                   href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_VOTER}) }}">
-                                                    Set as {{ raw_tournament_privilege.T_VOTER }}
-                                                </a>
-                                                <a class="dropdown-item btn-warning"
-                                                   href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_MODDER }) }}">
-                                                    Set as {{ raw_tournament_privilege.T_MODDER }}
-                                                </a>
-                                                <a class="dropdown-item"
-                                                   href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_ADMIN }) }}">
-                                                    Set as {{ raw_tournament_privilege.T_ADMIN }}
-                                                </a>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-1">
+                                                {{ tournamenUser.id }}
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                {{ tournamenUser.idUser|length > 50 ? tournamenUser.idUser|slice(0,50)~'...' : tournamenUser.idUser }}
+                                                {{ tournamenUser.idUser == app.user ? '<span class="badge badge-warning">Me</span></h1>' }}
+                                            </div>
+                                            <div class="col-sm-12 col-md-1">
+                                                {% include 'base_component/tournament_user_ribbon.html.twig' with {'userType': tournamenUser.tournamentUserType} %}
+                                            </div>
+                                            <div class="col-sm-12 col-md-2">
+                                                {{ tournamenUser.updateAt ? tournamenUser.updateAt.format("d-m-Y h:i:s") : tournamenUser.createAt.format("d-m-Y h:i:s") }}
+                                            </div>
+                                            <div class="col-sm-12 col-md-1">
+                                                <div class="btn-group">
+                                                    <a type="button" class="btn btn-secondary btn-block" href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_DELETED}) }}">Delete</a>
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start">
+                                                        <a class="dropdown-item"
+                                                           href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_VOTER}) }}">
+                                                            Set as {{ raw_tournament_privilege.T_VOTER }}
+                                                        </a>
+                                                        <a class="dropdown-item btn-warning"
+                                                           href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_MODDER }) }}">
+                                                            Set as {{ raw_tournament_privilege.T_MODDER }}
+                                                        </a>
+                                                        <a class="dropdown-item"
+                                                           href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_ADMIN }) }}">
+                                                            Set as {{ raw_tournament_privilege.T_ADMIN }}
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                             {% else %}
                                 <tr>
-                                    <td colspan="100%">
-                                        No users here
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                No users here
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             {% endfor %}
