@@ -150,6 +150,7 @@ class TournamentRepository extends ServiceEntityRepository
         return $this->_em->createQueryBuilder()
             ->addSelect('v.id')
             ->addSelect('MAX(v.priority) maxPriority')
+            ->addSelect('t.votesQuantity')
             ->addSelect('u.firstName userName')
             ->addSelect('u.lastName userLastName')
             ->addSelect('u.email')
@@ -179,6 +180,35 @@ class TournamentRepository extends ServiceEntityRepository
             ->getBasicQuery()
             ->select('t')
             ->orderBy('t.createAt', 'DESC')
+            ->getQuery();
+    }
+
+    /**
+     * @param Tournament $tournament
+     *
+     * @return Query
+     */
+    public function getResultToCsv(Tournament $tournament): Query
+    {
+        $qb = $this->createQueryBuilder('x');
+
+        return $this->_em->createQueryBuilder()
+            ->addSelect('u.firstName userName')
+            ->addSelect('u.lastName userLastName')
+            ->addSelect('u.email')
+            ->addSelect('t.name tournamentName')
+            ->addSelect('oit.title optionInTournamentTitle')
+            ->addSelect('MAX(v.priority) maxPriority')
+            ->addSelect('t.votesQuantity')
+            ->from(Vote::class, 'v')
+            ->leftJoin('v.idOptionInTournament', 'oit')
+            ->leftJoin('v.idUser', 'u')
+            ->leftJoin('oit.idTournament', 't')
+            ->andWhere('oit.idTournament = :idTournament')
+            ->setParameter('idTournament', $tournament->getId())
+            ->andWhere('v.isSelectedByPromoter = true')
+            ->groupBy('u.id')
+            ->orderBy('t.id')
             ->getQuery();
     }
 }
