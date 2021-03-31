@@ -67,7 +67,7 @@ class RegistrationController extends CustomAbstractController
 //            );
             // do anything else you need here, like send an email
 
-            $this->addFlash('success', 'Poprawnie zarejestrowany');
+            $this->addFlash('success', 'Registered successfully');
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
