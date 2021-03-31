@@ -5,6 +5,7 @@ namespace App\Util\Mapper;
 
 use App\Dto\OptionInTournamentDto;
 use App\Dto\TournamentDto;
+use App\Dto\UserEditDto;
 use App\Dto\VoteDto;
 use App\Entity\OptionInTournament;
 use App\Entity\Tournament;
@@ -44,10 +45,25 @@ class MapperConfig implements MapperConfigInterface
     public function build(): AutoMapperConfig
     {
         return $this
+            ->buildUserEditMapping()
             ->buildTournamentMapping()
             ->buildOptionInTournamentMapping()
             ->buildVoteMapping()
             ->config;
+    }
+
+    /**
+     * Map UserEditDto => User
+     * Map User => UserEditDto
+     * @return MapperConfig
+     */
+    protected function buildUserEditMapping(): MapperConfig
+    {
+        $this->config
+            ->registerMapping(UserEditDto::class, User::class)
+            ->reverseMap();
+
+        return $this;
     }
 
     /**

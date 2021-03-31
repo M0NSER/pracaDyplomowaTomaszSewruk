@@ -26,7 +26,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Dto/UserEditDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/FlashBag/SystemMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/Mapper/MapperConfig.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/vote/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/vote/form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +221,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/vote" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Dto" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />

@@ -91,7 +91,7 @@
                                 {{ app.user.firstName~' '~app.user.lastName }}
                             </a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ path('user-profile-edit') }}" class="dropdown-item">
                                     <i class="fas fa-users mr-2"></i> Profile
                                 </a>
                                 <a href="{{ path('app_logout') }}" class="dropdown-item">

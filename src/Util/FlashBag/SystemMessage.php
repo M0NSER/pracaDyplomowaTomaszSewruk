@@ -57,5 +57,8 @@ class SystemMessage
 
     const MESSAGE_YOU_HAVE_NO_PERMISSION = 'You have no power here!';
 
+    const MESSAGE_USER_UPDATED_SUCCESS = 'User has been updated';
+    const MESSAGE_USER_UPDATED_FAILURE = 'User can not be updated';
+
     const LOGIN_FIRST = "Please login first";
 }
