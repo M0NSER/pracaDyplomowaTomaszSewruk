@@ -83,7 +83,7 @@ class TournamentController extends CustomAbstractController
         $pagination = $this->paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            6,
+            9,
             [
                 PaginatorInterface::DEFAULT_SORT_FIELD_NAME => 't.createAt',
                 PaginatorInterface::DEFAULT_SORT_DIRECTION  => 'desc',
