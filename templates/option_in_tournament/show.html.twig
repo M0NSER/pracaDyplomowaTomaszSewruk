@@ -14,31 +14,33 @@
                 </div>
                 <div class="card-body">
                     <p>{{ optionInTournament.description }}</p>
-                    {% if form is defined %}
-                        {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        <button type="submit" class="btn btn-primary">Vote</button>
-                        {{ form_end(form) }}
-                    {% elseif votePriority is defined %}
-                        <div class="alert alert-success alert-dismissible">
-                            <h5>
-                                <i class="icon fas fa-check"></i>
-                                You have already voted on this option
-                            </h5>
-                            Priority: {{ votePriority.priority }}
-                            (Max priority:<span class="font-weight-bold">{{ votePriority.idOptionInTournament.idTournament.votesQuantity }}</span>)
-                            <a class="btn btn-secondary" href="{{ path('vote-delete', {'id':votePriority.id}) }}">
-                                Delete vote
-                            </a>
-                        </div>
-                    {% else %}
-                        <div class="alert alert-info alert-dismissible">
-                            <h5>
-                                <i class="icon fas fa-exclamation-triangle"></i>
-                                You do not have free votes
-                            </h5>
-                            Delete votes in this tournament to vote this option
-                        </div>
+                    {% if  tournamentUserType is defined and tournamentUserType == tournament_privilege.T_VOTER %}
+                        {% if form is defined %}
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <button type="submit" class="btn btn-primary">Vote</button>
+                            {{ form_end(form) }}
+                        {% elseif votePriority is defined %}
+                            <div class="alert alert-success alert-dismissible">
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    You have already voted on this option
+                                </h5>
+                                Priority: {{ votePriority.priority }}
+                                (Max priority:<span class="font-weight-bold">{{ votePriority.idOptionInTournament.idTournament.votesQuantity }}</span>)
+                                <a class="btn btn-secondary" href="{{ path('vote-delete', {'id':votePriority.id}) }}">
+                                    Delete vote
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info alert-dismissible">
+                                <h5>
+                                    <i class="icon fas fa-exclamation-triangle"></i>
+                                    You do not have free votes
+                                </h5>
+                                Delete votes in this tournament to vote this option
+                            </div>
+                        {% endif %}
                     {% endif %}
                 </div>
                 <div class="card-footer">

@@ -80,7 +80,7 @@ class OptionInTournamentController extends CustomAbstractController
      */
     public function show(Request $request, OptionInTournament $optionInTournament, VoteService $voteService): Response
     {
-        $this->tournamentPrivilegeService->hasPrivilegeToTournament($optionInTournament->getIdTournament(), [
+        $tournamentUserType = $this->tournamentPrivilegeService->hasPrivilegeToTournament($optionInTournament->getIdTournament(), [
             $this->getTournamentPrivilege()['T_ADMIN'],
             $this->getTournamentPrivilege()['T_MODDER'],
             $this->getTournamentPrivilege()['T_VOTER'],
@@ -123,6 +123,7 @@ class OptionInTournamentController extends CustomAbstractController
             return $this->render('option_in_tournament/show.html.twig', [
                 'optionInTournament' => $optionInTournament,
                 'form'               => $form->createView(),
+                'tournamentUserType' => $tournamentUserType,
             ]);
         }
 
@@ -131,6 +132,7 @@ class OptionInTournamentController extends CustomAbstractController
             return $this->render('option_in_tournament/show.html.twig', [
                 'optionInTournament' => $optionInTournament,
                 'votePriority'       => $votePriority,
+                'tournamentUserType' => $tournamentUserType,
             ]);
         }
 
@@ -172,7 +174,9 @@ class OptionInTournamentController extends CustomAbstractController
 
                 $this->addFlash('success', MessageFactory::getMessage('MESSAGE_NEW_SUCCESS'));
 
-                return $this->redirectToRoute('option-in-tournament-show', ['id' => $optionInTournament->getId()]);
+                return $this->redirectToRoute('tournament-show', [
+                    'id' => $tournament->getId(),
+                ]);
             } catch (Exception $ex) {
                 $this->addFlash('danger', MessageFactory::getMessage('MESSAGE_NEW_FAILURE'));
             }
