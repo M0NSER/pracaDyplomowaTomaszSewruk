@@ -26,7 +26,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2525415-b16d-444b-903d-70a61d0d8e31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/dist/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OptionInTournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/TournamentPrivilegeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TournamentPrivilegeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option_in_tournament/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/result/modder_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/result/modder_index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament_user/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +222,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Dto" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -311,7 +321,17 @@
       <workItem from="1616700492477" duration="2612000" />
       <workItem from="1617214361216" duration="712000" />
       <workItem from="1617219503762" duration="2325000" />
-      <workItem from="1617392457068" duration="647000" />
+      <workItem from="1617392457068" duration="1420000" />
+      <workItem from="1617733801523" duration="1339000" />
+      <workItem from="1617735736749" duration="608000" />
+      <workItem from="1618517827514" duration="2959000" />
+      <workItem from="1618694147007" duration="2191000" />
+      <workItem from="1618777825276" duration="3735000" />
+      <workItem from="1618782054081" duration="1637000" />
+      <workItem from="1619461032956" duration="272000" />
+      <workItem from="1620489254184" duration="4319000" />
+      <workItem from="1620936808394" duration="129000" />
+      <workItem from="1620937032531" duration="5261000" />
     </task>
     <servers />
   </component>

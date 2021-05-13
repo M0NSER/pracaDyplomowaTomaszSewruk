@@ -38,6 +38,9 @@
                         <a class="btn btn-warning btn-sm" href="{{ path('generate-code', {'id':tournament.id}) }}">
                             Generate CODE
                         </a>
+                        <a class="btn btn-danger btn-sm" href="{{ path('tournament-show', {'id':tournament.id}) }}">
+                            Back to tournament
+                        </a>
                     </div>
                 </div>
             </div>
@@ -90,20 +93,22 @@
                                             </div>
                                             <div class="col-sm-12 col-md-1">
                                                 <div class="btn-group">
-                                                    <a type="button" class="btn btn-secondary btn-block" href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_DELETED}) }}">Delete</a>
+                                                    <a onclick="if (! confirm('You will deleted user from tournament?')) { return false; }" type="button" class="btn btn-secondary btn-block" href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_DELETED}) }}">
+                                                        Delete
+                                                    </a>
                                                     <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span class="sr-only">Toggle Dropdown</span>
                                                     </button>
                                                     <div class="dropdown-menu" x-placement="bottom-start">
-                                                        <a class="dropdown-item"
+                                                        <a class="dropdown-item" onclick="if (! confirm('Are you sure to set user {{ tournamenUser.idUser }} as {{ raw_tournament_privilege.T_VOTER }}?')) { return false; }"
                                                            href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_VOTER}) }}">
                                                             Set as {{ raw_tournament_privilege.T_VOTER }}
                                                         </a>
-                                                        <a class="dropdown-item btn-warning"
+                                                        <a class="dropdown-item btn-warning" onclick="if (! confirm('Are you sure to set user {{ tournamenUser.idUser }} as {{ raw_tournament_privilege.T_MODDER }}?')) { return false; }"
                                                            href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_MODDER }) }}">
                                                             Set as {{ raw_tournament_privilege.T_MODDER }}
                                                         </a>
-                                                        <a class="dropdown-item"
+                                                        <a class="dropdown-item" onclick="if (! confirm('Are you sure to set user {{ tournamenUser.idUser }} as {{ raw_tournament_privilege.T_ADMIN }}?')) { return false; }"
                                                            href="{{ path('tournament-user-set-privilege', {'id':tournamenUser.id, 'privilege':tournament_privilege.T_ADMIN }) }}">
                                                             Set as {{ raw_tournament_privilege.T_ADMIN }}
                                                         </a>
@@ -141,3 +146,6 @@
 
 {% endblock %}
 
+{% block customjs %}
+
+{% endblock %}

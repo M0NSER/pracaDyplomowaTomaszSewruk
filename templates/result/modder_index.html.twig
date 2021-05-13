@@ -14,6 +14,9 @@
             {{ tournamentInfo.description|length > 10 ? tournamentInfo.description|slice(0,10)~'...' : tournamentInfo.description }}
         </h6>
         <a class="btn btn-primary btn-sm" href="{{ path('report',{'tournament':tournamentInfo.id}) }}">Download report</a>
+        <a class="btn btn-danger btn-sm" href="{{ path('tournament-show', {'id':tournamentInfo.id}) }}">
+            Back to tournament
+        </a>
     {% endblock %}
 
 {% block body %}

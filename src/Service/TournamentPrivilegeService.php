@@ -21,7 +21,7 @@ class TournamentPrivilegeService
     private EntityManager $entityManager;
 
     /**
-     * @var array
+     * @var string[]
      */
     private array $tournamentPrivilege;
 
@@ -51,7 +51,7 @@ class TournamentPrivilegeService
      * @param Tournament $tournament
      * @param array      $tournamentUserRoles
      *
-     * @return mixed
+     * @return string
      */
     public function hasPrivilegeToTournament(Tournament $tournament, array $tournamentUserRoles = [])
     {
@@ -66,6 +66,10 @@ class TournamentPrivilegeService
             if (!$tournamentUser || !in_array($tournamentUser->getTournamentUserType(), $tournamentUserRoles)) {
                 throw new UnauthorizedHttpException('', MessageFactory::getMessage('MESSAGE_YOU_HAVE_NO_PERMISSION'));
             }
+
+            return $tournamentUser->getTournamentUserType();
         }
+
+        return $this->tournamentPrivilege['T_ADMIN'];
     }
 }
