@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block content_header %}
-    <h2>{{ optionInTournament.idTournament.name }}</h2>
+    <h2>{{ optionInTournament.idTournament.name }} <a href="{{ path('tournament-show', {'id': optionInTournament.idTournament.id }) }}"><i class="fa fa-arrow-left"></i></a></h2>
 {% endblock %}
 {% block body %}
     <div class="row">

@@ -18,10 +18,12 @@
                 </div>
                 <div class="card-footer">
                     <div class="right">
-                        {% if tournamentUser == tournament_privilege.T_ADMIN %}
-                            <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning ">
-                                <i class="fas fa-edit"></i>
-                            </a>
+                        {% if tournament.selectToDatetime > date('now') %}
+                            {% if tournamentUser == tournament_privilege.T_ADMIN %}
+                                <a href="{{ path('tournament-edit',{'id':tournament.id}) }}" class="btn btn-warning ">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            {% endif %}
                         {% endif %}
                         {% if tournamentUser == tournament_privilege.T_ADMIN or tournamentUser == tournament_privilege.T_MODDER %}
                             <a href="{{ path('option-in-tournament-new',{'tournament':tournament.id}) }}" class="btn btn-info ">
@@ -90,7 +92,7 @@
                                         {% endif %}
                                         <a href="{{ path('option-in-tournament-show',{'id':item.id}) }}"
                                            class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> {{  tournamentUser == tournament_privilege.T_VOTER ? 'Vote' : 'Show' }}
+                                            <i class="fas fa-user"></i> {{ tournamentUser == tournament_privilege.T_VOTER ? 'Vote' : 'Show' }}
                                         </a>
                                     </div>
                                 </div>
